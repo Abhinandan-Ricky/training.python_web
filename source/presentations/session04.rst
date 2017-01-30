@@ -607,9 +607,11 @@ later::
 
     .. code-block:: python
 
+        import pathlib
+        ...
         def load_inspection_page(name):
             file_path = pathlib.Path(name)
-            return file_path.read_text(encoding='utf8')
+            return file_path.read_text(encoding = 'utf8', errors = 'ignore')
 
     Finally, bolt that in to your script to use it:
 
