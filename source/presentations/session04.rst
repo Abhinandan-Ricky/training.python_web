@@ -14,6 +14,54 @@ Scraping, APIs and Mashups
 Wherein we learn how to make order from the chaos of the wild internet.
 
 
+But First
+---------
+
+.. rst-class:: build left
+.. container::
+
+  Agenda:
+
+  .. rst-class:: build
+
+  * Class website - where to find this week's materials
+  * Review of last week
+  * Homework review
+  * XXX
+  * Break
+  * Lightning Talks (Isaac Cowhey, Nachiket Galande, and Enrique Silva)
+  * XXX
+  * Homework and plan for next week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Class website - where to find this week's materials
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Review of last week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Homework Review and Questions
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+On to APIs and Mashups!
+
+
 A Dilemma
 ---------
 
@@ -129,7 +177,7 @@ HTML
     </html>
 
 
-.. nextslide:: FFFFFFFFFUUUUUUUUUUUUU!!!!
+.. nextslide:: That can be very frustrating!
 
 .. figure:: /_static/scream.jpg
     :align: center
@@ -168,6 +216,22 @@ Luckily, there are tools to help with this.
         $ source soupenv/bin/activate
 
     (remember, for Windows users that should be ``soupenv/Scripts/activate.bat``)
+
+
+Taming the Mess
+---------------
+
+My steps on Windows:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: bash
+
+        $ virtualenv soupenv
+        ...
+        $ cd soupenv/Scripts
+        $ activate
 
 
 .. nextslide:: Install BeautifulSoup
@@ -507,7 +571,7 @@ script.
 .. container::
 
     .. code-block:: bash
-    
+
         (soupenv)$ python mashup.py
         ...
            <script src="http://www.kingcounty.gov/kcscripts/kcPageAnalytics.js" type="text/javascript">
@@ -815,7 +879,7 @@ Now we have a list of the rows that contain our data.
     Let's start by trying to get at the first label
 
     .. code-block:: ipython
-    
+
         In [18]: row1 = data_rows[0]
         In [19]: cells = row1.find_all('td')
         In [20]: cell1 = cells[0]
@@ -844,7 +908,7 @@ Try writing such a function for yourself now in ``mashup.py``
     Add it to your interpreter and test it out:
 
     .. code-block:: ipython
-    
+
         In [25]: def clean_data(td):
            ....:     return td.text.strip(" \n:-")
            ....:
@@ -898,7 +962,7 @@ Add it to our script:
 .. container::
 
     .. code-block:: python
-    
+
         # ...
         data_list = restaurant_data_generator(content_col)
         for data_div in data_list:
@@ -908,7 +972,7 @@ Add it to our script:
     And then try it out:
 
     .. code-block:: bash
-    
+
         (soupenv)$ python mashup.py
         ...
         {u'Business Category': [u'Seating 0-12 - Risk Category III'],
@@ -961,7 +1025,7 @@ Let's start by getting our bearings. Return to viewing the
     * Rows with inspection data in them have four ``<td>`` children
     * The text in the first cell contains the word "inspection"
     * But the text does not *start* with the word "inspection"
-    
+
     Let's try to write a filter function like the one above that will catch
     these rows for us.
 
@@ -1003,7 +1067,7 @@ We can test this function by adding it into our script:
     And try running the script in your terminal:
 
     .. code-block:: bash
-    
+
         (soupenv)$ python mashup.py
         {u'Business Category': [u'Seating 0-12 - Risk Category III'],
          u'Longitude': [u'122.3401786000'], u'Phone': [u'(206) 501-9554'],
@@ -1599,7 +1663,7 @@ Update the ``main`` block of your ``mashup.py`` script to use the new function:
     number of results that print.
 
     .. code-block:: bash
-    
+
         (soupenv)$ python mashup.py
         # you should see 10 dictionaries print here.
 
@@ -1616,7 +1680,7 @@ The API for geocoding with ``geocoder`` is the same for all providers.
     You provide latitude and longitude, it provides address data
 
     .. code-block:: ipython
-    
+
         In [1]: response = geocoder.google(<address>)
         In [2]: response.json
         Out[2]: # json result data
@@ -1630,7 +1694,7 @@ Let's add a new function ``get_geojson`` to ``mashup.py``
 .. rst-class:: build
 .. container::
 
-    It will 
+    It will
 
     .. rst-class:: build
 
@@ -1641,7 +1705,7 @@ Let's add a new function ``get_geojson`` to ``mashup.py``
     Try to write this function on your own
 
     .. code-block:: python
-    
+
         def get_geojson(result):
             address = " ".join(result.get('Address', ''))
             if not address:
@@ -1667,7 +1731,7 @@ it:
     Then test your results by running your script:
 
     .. code-block:: bash
-    
+
         (soupenv)$ python mashup.py
         {'geometry': {'type': 'Point', 'coordinates': [-122.3393005, 47.6134378]},
          'type': 'Feature', 'properties': {'neighborhood': 'Belltown',
@@ -1739,7 +1803,7 @@ We are now generating a series of ``geojson`` *Feature* objects.
     The structure of such a collection looks like this:
 
     .. code-block:: json
-    
+
         {'type': 'FeatureCollection', 'features': [...]}
 
     Let's update our ``main`` function to append each feature to such a
@@ -1886,4 +1950,3 @@ As you implement the above features, commit early and commit often.
 
 When you're ready for us to look it over, email a link to your repository to
 Maria and I.
-
