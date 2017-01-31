@@ -43,23 +43,7 @@
     </a>
   </div>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="session05.html" title="Session 05"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="session03.html" title="Session 03"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>  
+<generator object macro at 0x000001547F0EE5C8>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -68,13 +52,33 @@
             
   <div class="section" id="session-04">
 <h1>Session 04<a class="headerlink" href="#session-04" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/granny_mashup.png"><img alt="../_images/granny_mashup.png" src="../_images/granny_mashup.png" style="width: 70%;" /></a>
 <p class="caption"><span class="caption-text">Paul Downey <a class="reference external" href="http://www.flickr.com/photos/psd/492139935/">http://www.flickr.com/photos/psd/492139935/</a> - CC-BY</span></p>
 </div>
 <div class="section" id="scraping-apis-and-mashups">
 <h2>Scraping, APIs and Mashups<a class="headerlink" href="#scraping-apis-and-mashups" title="Permalink to this headline">¶</a></h2>
 <p>Wherein we learn how to make order from the chaos of the wild internet.</p>
+<div class="section" id="but-first">
+<h3>But First<a class="headerlink" href="#but-first" title="Permalink to this headline">¶</a></h3>
+<div class="build left docutils container">
+<p>Agenda:</p>
+<ul class="build simple">
+<li>Class website - where to find this week&#8217;s materials</li>
+<li>Review of last week</li>
+<li>Homework review</li>
+<li>Mashup exercise</li>
+<li>Break</li>
+<li>Lightning Talks (Isaac Cowhey, Nachiket Galande, and Enrique Silva)</li>
+<li>APIs and mashups</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div>
+<p class="large centered">Class website - where to find this week&#8217;s materials</p>
+<p class="large centered">Review of last week</p>
+<p class="large centered">Homework Review and Questions</p>
+<p class="large centered">On to APIs and Mashups!</p>
+</div>
 <div class="section" id="a-dilemma">
 <h3>A Dilemma<a class="headerlink" href="#a-dilemma" title="Permalink to this headline">¶</a></h3>
 <p>The internet makes a vast quantity of data available.</p>
@@ -152,7 +156,7 @@ create <em>meaning</em>.</p>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="../_images/scream.jpg"><img alt="../_images/scream.jpg" src="../_images/scream.jpg" style="width: 32%;" /></a>
 <p class="caption"><span class="caption-text">Photo by Matthew via Flickr (<a class="reference external" href="http://www.flickr.com/photos/purplemattfish/3918004964/">http://www.flickr.com/photos/purplemattfish/3918004964/</a>) - CC-BY-NC-ND</span></p>
 </div>
@@ -172,6 +176,18 @@ $ <span class="nb">source</span> soupenv/bin/activate
 </pre></div>
 </div>
 <p>(remember, for Windows users that should be <code class="docutils literal"><span class="pre">soupenv/Scripts/activate.bat</span></code>)</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Taming the Mess<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>My steps on Windows:</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ virtualenv soupenv
+...
+$ <span class="nb">cd</span> soupenv/Scripts
+$ activate
+</pre></div>
+</div>
 </div>
 <p>Once the virtualenv is activated, you can simply use pip or easy_install to
 install the libraries you want:</p>
@@ -345,8 +361,8 @@ object as the sole argument:</p>
 (<a class="reference external" href="http://www.crummy.com/software/BeautifulSoup/bs4/doc">http://www.crummy.com/software/BeautifulSoup/bs4/doc</a>)</p>
 </div>
 </div>
-<div class="section" id="id1">
-<h3>My Solution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>My Solution<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Take a shot at writing this new function in <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add this import at the top</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -379,8 +395,8 @@ object as the sole argument:</p>
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>My Solution<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>My Solution<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Try to come up with the proper code on your own.  Add it to <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
 <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">use_params</span> <span class="o">=</span> <span class="p">{</span>
@@ -423,9 +439,11 @@ later:</p>
 </div>
 <div class="build docutils container">
 <p>Then add a quick function to our script that will use these saved results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_inspection_page</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="o">...</span>
+<span class="k">def</span> <span class="nf">load_inspection_page</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="n">file_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">file_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">errors</span> <span class="o">=</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, bolt that in to your script to use it:</p>
@@ -478,12 +496,17 @@ attribute.</p>
 <span class="k">print</span> <span class="n">content_col</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
+</div>
+<div class="build docutils container">
+<p>Run the script now to see the results</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 &lt;td <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span>&gt;
     ...
 &lt;/td&gt;
 </pre></div>
 </div>
+</div></blockquote>
 </div>
 <p>The next job is to find the inspection data we can see when we click on the
 restaurant names in our page.</p>
@@ -527,6 +550,8 @@ print the first of the many divs that match):</p>
 <span class="k">print</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="build docutils container">
 <p>Finally, test it out:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 &lt;div <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;PR0001203~&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;PR0001203~&quot;</span> <span class="nv">onclick</span><span class="o">=</span><span class="s2">&quot;toggleShow(this.id);&quot;</span>...&gt;
@@ -561,7 +586,9 @@ print the first of the many divs that match):</p>
 <li>verifies that it is a <code class="docutils literal"><span class="pre">&lt;tr&gt;</span></code> element</li>
 <li>verifies that it has two immediate children that are <code class="docutils literal"><span class="pre">&lt;td&gt;</span></code> elements</li>
 </ul>
+</div>
 <p>My solution:</p>
+<div class="build docutils container">
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_two_tds</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
     <span class="n">is_tr</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;tr&#39;</span>
     <span class="n">td_children</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -804,7 +831,12 @@ extracted.</p>
 <div class="section" id="break-time">
 <h3>Break Time<a class="headerlink" href="#break-time" title="Permalink to this headline">¶</a></h3>
 <p>Once you have this working, take a break.</p>
-<p>When we return, we&#8217;ll try a saner approach to getting data from online</p>
+<p>When we return - lighting talks</p>
+<p>Then, we&#8217;ll try a saner approach to getting data from online</p>
+</div>
+<div class="section" id="lightning-talks">
+<h3>Lightning Talks<a class="headerlink" href="#lightning-talks" title="Permalink to this headline">¶</a></h3>
+<p>Isaac Cowhey, Nachiket Galande, Enrique Silva</p>
 </div>
 </div>
 <div class="section" id="another-approach">
@@ -860,7 +892,7 @@ namespaces</li>
 <li>It can be installed using <code class="docutils literal"><span class="pre">easy_install</span></code> or <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code></li>
 <li>A <a class="reference external" href="https://github.com/cackharot/suds-py3">fork of the library</a> compatible with Python 3 does exist</li>
 </ul>
-<p><strong>I HATE SOAP</strong></p>
+<p><strong>SOAP is difficult</strong></p>
 </div>
 <p>SOAP was invented in part to provide completely machine-readable
 interoperability.</p>
@@ -898,11 +930,10 @@ a lot of extra characters transmitted that lack any meaning.</p>
 <p class="centered"><strong>Representational State Transfer</strong></p>
 <div class="build docutils container">
 <ul class="build simple">
-<li>Originally described by Roy T. Fielding (worth reading)</li>
+<li>Originally described by Roy T. Fielding</li>
 <li>Use HTTP for what it can do</li>
-<li>Read more in <a class="reference external" href="http://www.crummy.com/writing/RESTful-Web-Services/">RESTful Web Services</a>*</li>
+<li>Read more in <cite>RESTful Web Services &lt;http://www.crummy.com/writing/RESTful-Web-Services/&gt;</cite></li>
 </ul>
-<p>* Seriously. Buy it and read it</p>
 </div>
 <p>The XML-RCP/SOAP way:</p>
 <ul class="build simple">
@@ -961,7 +992,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
 <li>object: <code class="docutils literal"><span class="pre">{</span> <span class="pre">string:</span> <span class="pre">value,</span> <span class="pre">...}</span></code></li>
 <li>array: <code class="docutils literal"><span class="pre">[value,</span> <span class="pre">value,</span> <span class="pre">]</span></code></li>
 </ul>
-<p class="centered">pythonic, no?</p>
+<p class="centered">How Pythonic!</p>
 </div>
 <p>JSON provides a few basic data types (see <a class="reference external" href="http://json.org/">http://json.org/</a>):</p>
 <div class="build docutils container">
@@ -1072,7 +1103,7 @@ specific to least.</p>
 tedious.</p>
 <p>Luckily, people create <em>wrappers</em> for popular REST apis like google&#8217;s
 geocoding service.</p>
-<p>Once such wrapper is <a class="reference external" href="http://geocoder.readthedocs.org/en/latest/">geocoder</a>, which provides not only google&#8217;s service,
+<p>Once such wrapper is <a class="reference external" href="http://geocoder.readthedocs.io/">geocoder</a>, which provides not only google&#8217;s service,
 but many others under a single umbrella.</p>
 </div>
 <p>Install geocoder into your <code class="docutils literal"><span class="pre">soupenv</span></code> so that it&#8217;s available to use:</p>
@@ -1288,34 +1319,20 @@ average, high score or most inspections:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python mashup.py highscore 25
 </pre></div>
 </div>
-<p>Or allow them to reverse the results, showing the lowest scores first:</p>
+<p>Or, allow them to reverse the results, showing the lowest scores first:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python mashup.py highscore 25 reverse
 </pre></div>
 </div>
-<p>If you&#8217;re feeling particularly adventurous, see if you can use the
-<a class="reference external" href="https://docs.python.org/2/library/argparse.html#module-argparse">argparse</a> module from the standard library to handle command line
-arguments</p>
 </div>
 </div>
 <div class="section" id="more-fun">
 <h3>More Fun<a class="headerlink" href="#more-fun" title="Permalink to this headline">¶</a></h3>
-<p>Next, try adding a bit of information to your map by setting the
+<p>If you want to do more, try adding a bit of information to your map by setting the
 <code class="docutils literal"><span class="pre">marker-color</span></code> property. This will display a marker with the provided
 css-style color (<code class="docutils literal"><span class="pre">#FF0000</span></code>)</p>
 <div class="build docutils container">
-<p>See if you can make the color change according to the values used for the
-sorting of the list.  Either vary the intensity of the color, or the hue.</p>
-<p>Finally, if you are feeling particularly frisky, you can update your script
-to automatically open a browser window with your map loaded on
-<em>geojson.io</em>.</p>
-<p>To do this, you&#8217;ll want to read about the <a class="reference external" href="https://docs.python.org/3/library/webbrowser.html">webbrowser</a> module from the
-standard library.</p>
-<p>In addition, you&#8217;ll want to read up on using the URL parameters API for
-<em>geojson.io</em>.  Click on the <strong>help</strong> tab in the sidebar to view the
-information.</p>
-<p>You will also need to learn about how to properly quote special characters
-for a URL, using the <a class="reference external" href="https://docs.python.org/3/library/urllib.parse.html#urllib.parse.quote">urllib.parse</a> <code class="docutils literal"><span class="pre">quote</span></code> function.</p>
-</div>
+See if you can make the color change according to the values used for the
+sorting of the list.  Either vary the intensity of the color, or the hue.</div>
 </div>
 <div class="section" id="submitting-your-work">
 <h3>Submitting Your Work<a class="headerlink" href="#submitting-your-work" title="Permalink to this headline">¶</a></h3>
@@ -1331,105 +1348,9 @@ Maria and I.</p>
 
           </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Session 04</a><ul>
-<li><a class="reference internal" href="#scraping-apis-and-mashups">Scraping, APIs and Mashups</a><ul>
-<li><a class="reference internal" href="#a-dilemma">A Dilemma</a></li>
-<li><a class="reference internal" href="#the-big-question">The Big Question</a></li>
-<li><a class="reference internal" href="#the-big-answer">The Big Answer</a></li>
-<li><a class="reference internal" href="#mashups">Mashups</a></li>
-<li><a class="reference internal" href="#data-sources">Data Sources</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#web-scraping">Web Scraping</a><ul>
-<li><a class="reference internal" href="#html">HTML</a></li>
-<li><a class="reference internal" href="#taming-the-mess">Taming the Mess</a></li>
-<li><a class="reference internal" href="#our-class-mashup">Our Class Mashup</a></li>
-<li><a class="reference internal" href="#fetching-search-results">Fetching Search Results</a></li>
-<li><a class="reference internal" href="#my-solution">My Solution</a></li>
-<li><a class="reference internal" href="#parse-the-results">Parse the Results</a></li>
-<li><a class="reference internal" href="#id1">My Solution</a></li>
-<li><a class="reference internal" href="#put-it-together">Put It Together</a></li>
-<li><a class="reference internal" href="#id2">My Solution</a></li>
-<li><a class="reference internal" href="#extracting-data">Extracting Data</a></li>
-<li><a class="reference internal" href="#parsing-restaurant-data">Parsing Restaurant Data</a></li>
-<li><a class="reference internal" href="#extracting-inspection-data">Extracting Inspection Data</a></li>
-<li><a class="reference internal" href="#break-time">Break Time</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#another-approach">Another Approach</a><ul>
-<li><a class="reference internal" href="#web-services">Web Services</a></li>
-<li><a class="reference internal" href="#rest">REST</a></li>
-<li><a class="reference internal" href="#rest-uses-json">REST uses JSON</a></li>
-<li><a class="reference internal" href="#json-in-python">JSON in Python</a></li>
-<li><a class="reference internal" href="#playing-with-rest">Playing With REST</a></li>
-<li><a class="reference internal" href="#mashing-it-up">Mashing It Up</a></li>
-<li><a class="reference internal" href="#add-geocoding">Add Geocoding</a></li>
-<li><a class="reference internal" href="#display-the-results">Display the Results</a></li>
-<li><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">Homework</a><ul>
-<li><a class="reference internal" href="#more-fun">More Fun</a></li>
-<li><a class="reference internal" href="#submitting-your-work">Submitting Your Work</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="session03.html"
-                        title="previous chapter">Session 03</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="session05.html"
-                        title="next chapter">Session 05</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/presentations/session04.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-  <h3>Slides</h3>
-  <ul class="this-page-menu">
-    <li><a href="../.././slides\presentations/session04.html"
-           rel="nofollow">View as slides</a></li>
-  </ul>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+      </div><generator object macro at 0x000001547F0E0410>
       <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="session05.html" title="Session 05"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="session03.html" title="Session 03"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>
+    </div><generator object macro at 0x000001547F0EE5C8>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
