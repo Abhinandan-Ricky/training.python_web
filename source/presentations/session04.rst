@@ -27,10 +27,10 @@ But First
   * Class website - where to find this week's materials
   * Review of last week
   * Homework review
-  * XXX
+  * Mashup exercise
   * Break
   * Lightning Talks (Isaac Cowhey, Nachiket Galande, and Enrique Silva)
-  * XXX
+  * APIs and mashups
   * Homework and plan for next week
 
 
@@ -686,6 +686,14 @@ The ``find`` method allows us to pass *kwargs*.
         content_col = parsed.find("td", id="contentcol")
         print content_col.prettify()
 
+
+.. nextslide:: Searching by Attribute
+
+.. rst-class:: build
+.. container::
+
+  Run the script now to see the results
+
     .. code-block:: bash
 
         (soupenv)$ python mashup.py
@@ -718,6 +726,7 @@ restaurant names in our page.
     Each number is different for each restaurant
 
     We can use a regular expression to help us here.
+
 
 .. nextslide:: Getting the Information Divs
 
@@ -761,6 +770,11 @@ print the first of the many divs that match):
         data_list = restaurant_data_generator(content_col)
         print data_list[0].prettify()
 
+
+.. nextslide:: Verify It Works
+
+.. rst-class:: build
+.. container::
 
     Finally, test it out:
 
@@ -814,7 +828,13 @@ Each record consists of a table with a series of *rows* (``<tr>``).
     * verifies that it is a ``<tr>`` element
     * verifies that it has two immediate children that are ``<td>`` elements
 
-    My solution:
+
+.. nextslide:: Complex Filtering
+
+My solution:
+
+.. rst-class:: build
+.. container::
 
     .. code-block:: python
 
@@ -823,6 +843,7 @@ Each record consists of a table with a series of *rows* (``<tr>``).
             td_children = elem.find_all('td', recursive=False)
             has_two = len(td_children) == 2
             return is_tr and has_two
+
 
 .. nextslide:: Test It Out
 
@@ -838,6 +859,7 @@ Let's try this out in an interpreter:
     In [4]: content_col = parsed.find('td', id='contentcol')
     In [5]: records = restaurant_data_generator(content_col)
     In [6]: rec = records[4]
+
 
 .. nextslide:: Test It Out
 
@@ -1159,8 +1181,15 @@ Break Time
 
 Once you have this working, take a break.
 
-When we return, we'll try a saner approach to getting data from online
+When we return - lighting talks
 
+Then, we'll try a saner approach to getting data from online
+
+
+Lightning Talks
+---------------
+
+Isaac Cowhey, Nachiket Galande, Enrique Silva
 
 
 Another Approach
@@ -1257,7 +1286,7 @@ SOAP extends XML-RPC in a couple of useful ways:
     * It can be installed using ``easy_install`` or ``pip install``
     * A `fork of the library`_ compatible with Python 3 does exist
 
-    **I HATE SOAP**
+    **SOAP is difficult**
 
 .. _fork of the library: https://github.com/cackharot/suds-py3
 
@@ -1331,11 +1360,10 @@ REST
 
     .. rst-class:: build
 
-    * Originally described by Roy T. Fielding (worth reading)
+    * Originally described by Roy T. Fielding
     * Use HTTP for what it can do
-    * Read more in `RESTful Web Services <http://www.crummy.com/writing/RESTful-Web-Services/>`_\*
+    * Read more in `RESTful Web Services <http://www.crummy.com/writing/RESTful-Web-Services/>`
 
-    \* Seriously. Buy it and read it
 
 .. nextslide:: A Comparison
 
@@ -1424,7 +1452,7 @@ JavaScript Object Notation:
 
     .. rst-class:: centered
 
-    pythonic, no?
+    How Pythonic!
 
 
 .. nextslide:: JSON Data Types
@@ -1594,7 +1622,7 @@ Google's geocoding data is quite nice.
     Once such wrapper is `geocoder`_, which provides not only google's service,
     but many others under a single umbrella.
 
-.. _geocoder: http://geocoder.readthedocs.org/en/latest/
+.. _geocoder: http://geocoder.readthedocs.io/
 .. _geojson: http://geojson.org
 
 .. nextslide:: Install ``geocoder``
@@ -1877,8 +1905,6 @@ We've built a simple mashup combining data from different sources.
     to see some of the possibilities
 
 
-
-
 Homework
 ========
 
@@ -1902,20 +1928,15 @@ Homework
 
             (soupenv)$ python mashup.py highscore 25
 
-        Or allow them to reverse the results, showing the lowest scores first::
+        Or, allow them to reverse the results, showing the lowest scores first::
 
             (soupenv)$ python mashup.py highscore 25 reverse
 
-        If you're feeling particularly adventurous, see if you can use the
-        `argparse`_ module from the standard library to handle command line
-        arguments
-
-.. _argparse: https://docs.python.org/2/library/argparse.html#module-argparse
 
 More Fun
 --------
 
-Next, try adding a bit of information to your map by setting the
+If you want to do more, try adding a bit of information to your map by setting the
 ``marker-color`` property. This will display a marker with the provided
 css-style color (``#FF0000``)
 
@@ -1925,22 +1946,6 @@ css-style color (``#FF0000``)
     See if you can make the color change according to the values used for the
     sorting of the list.  Either vary the intensity of the color, or the hue.
 
-    Finally, if you are feeling particularly frisky, you can update your script
-    to automatically open a browser window with your map loaded on
-    *geojson.io*.
-
-    To do this, you'll want to read about the `webbrowser`_ module from the
-    standard library.
-
-    In addition, you'll want to read up on using the URL parameters API for
-    *geojson.io*.  Click on the **help** tab in the sidebar to view the
-    information.
-
-    You will also need to learn about how to properly quote special characters
-    for a URL, using the `urllib.parse`_ ``quote`` function.
-
-.. _urllib.parse: https://docs.python.org/3/library/urllib.parse.html#urllib.parse.quote
-.. _webbrowser: https://docs.python.org/3/library/webbrowser.html
 
 Submitting Your Work
 --------------------
