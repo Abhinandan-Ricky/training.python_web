@@ -29,16 +29,22 @@ But First
   * Homework review
   * Mashup exercise
   * Break
-  * Lightning Talks (Isaac Cowhey, Nachiket Galande, and Enrique Silva)
-  * APIs and mashups
+  * Lightning Talks (Isaac Cowhey and Enrique Silva)
+  * Web Services, APIs, and adding to our mashup
   * Homework and plan for next week
 
 
 .. nextslide::
 
-.. rst-class:: large centered
+.. rst-class:: build left
+.. container::
 
-Class website - where to find this week's materials
+  Class website - where to find this week's materials
+
+  .. rst-class:: build
+
+  * https://github.com/christyheaton/Internet_Session04
+  * https://christyheaton.github.io/training.python_web/slides/presentations/session04.html#1
 
 
 .. nextslide::
@@ -60,6 +66,27 @@ Homework Review and Questions
 .. rst-class:: large centered
 
 On to APIs and Mashups!
+
+
+APIs
+----
+
+Application program interface (API) is a set of routines, protocols, and tools for building
+software applications. An API specifies how software components should interact. Additionally,
+APIs are used when programming graphical user interface (GUI) components. -Webopedia
+
+
+.. nextslide:: Examples
+
+.. rst-class:: build
+.. container::
+
+    .. rst-class:: build
+
+    * Twitter - https://dev.twitter.com/rest/public
+    * Slack - https://api.slack.com/
+    * Google maps - https://developers.google.com/maps/
+    * Facebook - https://www.programmableweb.com/api/facebook
 
 
 A Dilemma
@@ -119,6 +146,7 @@ The key to mashups is the idea of data sources.
     * Web services providing structured data
     * Web services providing tranformative service (geocoding)
     * Web services providing presentation (mapping)
+
 
 Web Scraping
 ============
@@ -191,6 +219,13 @@ HTML
 .. rst-class:: large centered
 
 "Be strict in what you send and tolerant in what you receive"
+
+
+.. nextslide:: Example
+
+A mashup that adds fact to meme images
+
+https://github.com/christyheaton/memefacter/blob/master/memefacter.py
 
 
 Taming the Mess
@@ -1189,7 +1224,7 @@ Then, we'll try a saner approach to getting data from online
 Lightning Talks
 ---------------
 
-Isaac Cowhey, Nachiket Galande, Enrique Silva
+Isaac Cowhey, Enrique Silva
 
 
 Another Approach
