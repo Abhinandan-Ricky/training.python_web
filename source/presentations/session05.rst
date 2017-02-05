@@ -23,6 +23,75 @@ explore data persistence in Python.
 
     By Alan Evangelista (Own work) [CC0], via Wikimedia Commons
 
+
+But First
+---------
+
+.. rst-class:: build left
+.. container::
+
+Agenda:
+
+    .. rst-class:: build
+
+    * Class website - where to find this week's materials
+    * Review of last week
+    * Homework review
+    * The Model View Controller (MVC) approach to application design
+    * Starting our Pyramid Application
+    * Break
+    * Lightning Talks (Bradley Baumel, Adam Hollis, Shu Latif, and Nachiket Galande)
+    * Setting up our Pyramid model with sqlalchemy
+    * Homework and plan for next week
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+    Class website - where to find this week's materials
+
+    .. rst-class:: build
+
+    * https://christyheaton.github.io/training.python_web/slides/presentations/session05.html#1
+    * no repo this week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Review of last week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Homework Review and Questions
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+On to MVC
+
+
+MVC Applications
+================
+
+Wherin we learn about the Model View Controller approach to app design and
+explore data persistence in Python.
+
+.. figure:: http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png
+    :align: center
+    :width: 40%
+
+    By Alan Evangelista (Own work) [CC0], via Wikimedia Commons
+
+
 Separation of Concerns
 ----------------------
 
@@ -378,7 +447,7 @@ Python creates ``.pyc`` files when it executes your code.
     Finally, add this new file to your repository, too.
 
     .. code-block:: bash
-    
+
         (ljenv)$ git add .gitignore
 
 .. nextslide:: Make It Permanent
@@ -559,12 +628,18 @@ sessions.
 
 .. _configuration chapter: http://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html
 
+
 .. nextslide:: Break Time
 
 Let's take a moment to rest up and absorb what we've learned.
 
-When we return, we'll see how we can create *models* that will embody the data
+When we return:
+
+Lightning talks
+
+We'll see how we can create *models* that will embody the data
 for our Learning Journal application.
+
 
 .. rst-class:: centered
 
@@ -927,7 +1002,7 @@ this command available to us when we install it.
 .. rst-class:: build
 .. container::
 
-    When we exectute the script at the command line, we will be running this
+    When we execute the script at the command line, we will be running this
     function.
 
     But before we try it out, let's update the name we use so we don't have to
@@ -936,7 +1011,7 @@ this command available to us when we install it.
     In ``setup.py`` change ``initialize_learning_journal_db`` to ``setup_db``:
 
     .. code-block:: python
-        
+
         entry_points="""\
         [paste.app_factory]
         main = learning_journal:main
@@ -944,12 +1019,19 @@ this command available to us when we install it.
         setup_db = learning_journal.scripts.initializedb:main
         """,
 
-    Then, as you have changed ``setup.py``, re-install your package:
+
+.. nextslide:: Console Scripts
+
+Then, as you have changed ``setup.py``, re-install your package:
+
+.. rst-class:: build
+.. container::
 
     .. code-block:: bash
-    
+
         (ljenv)$ python setup.py develop
         ...
+
 
 .. nextslide:: Running the Script
 
@@ -1008,7 +1090,7 @@ It's pretty easy to play with your models from in an interpreter.
     Just install it with ``pip``:
 
     .. code-block:: bash
-    
+
         (ljenv)$ pip install ipython pyramid_ipython
 
     Once that finishes, you'll be able to use iPython as your interpreter for
@@ -1028,7 +1110,7 @@ disposal:
 .. container::
 
     .. code-block:: bash
-    
+
         (ljenv)$ pshell development.ini
         Python 3.5.0 (default, Sep 16 2015, 10:42:55)
         Type "copyright", "credits" or "license" for more information.
@@ -1048,7 +1130,7 @@ disposal:
 
 .. nextslide::
 
-The ``environment`` created by ``pshell`` provides us with a few useful tools. 
+The ``environment`` created by ``pshell`` provides us with a few useful tools.
 
 .. code-block:: bash
 
@@ -1066,8 +1148,8 @@ The ``environment`` created by ``pshell`` provides us with a few useful tools.
 * The ``request`` is an artificial HTTP request we can use if we need to
   pretend we are listening to clients
 * ...
-  
-.. nextslide:: 
+
+.. nextslide::
 
 Let's use this environment to build a database session and interact with our
 data:
@@ -1201,7 +1283,7 @@ instance only.
         In [16]: session.query(MyModel).get(1)
         Out[16]: <learning_journal.models.MyModel at 0x105f30208>
         In [17]: session.query(MyModel).get(10)
-        In [18]: 
+        In [18]:
 
 
     If no item with that primary key is present, then the method returns
@@ -1246,7 +1328,7 @@ Before getting into the other category, let's learn how to create new objects.
 
         .. code-block:: ipython
 
-            In [21]: new_model = MyModel(name='fred', value=3)
+            In [21]: new_model = MyModel(name='tobias', value=3)
             In [22]: new_model
             Out[22]: <learning_journal.models.MyModel at 0x105f4af28>
 
@@ -1279,7 +1361,7 @@ session:
     .. code-block:: ipython
 
         In [26]: new = []
-        In [27]: for name, val in [('bob', 34), ('tom', 13)]:
+        In [27]: for name, val in [('walter', 34), ('sherry', 13)]:
            ....:     new.append(MyModel(name=name, value=val))
            ....:
         In [28]: session.add_all(new)
@@ -1327,22 +1409,22 @@ a query.
     it's been updated:
 
     .. code-block:: ipython
-    
+
         In [34]: new_model
         Out[34]: <learning_journal.models.MyModel at 0x105f4af28>
         In [35]: new_model.name
-        Out[35]: 'fred'
-        In [36]: new_model.name = 'larry'
+        Out[35]: 'tobias'
+        In [36]: new_model.name = 'ginny'
         In [37]: session.dirty
         Out[37]: IdentitySet([<learning_journal.models.MyModel object at 0x105f4af28>])
 
     Commit the session to persist the changes:
 
     .. code-block:: ipython
-    
+
         In [38]: session.commit()
         In [39]: [model.name for model in other_session.query(MyModel)]
-        Out[39]: ['one', 'larry', 'bob', 'tom']
+        Out[39]: ['one', 'ginny', 'walter', 'sherry']
 
 .. nextslide:: Methods Returning Queries
 
@@ -1355,9 +1437,9 @@ method.
     This method allows you to reduce the number of results, based on criteria:
 
     .. code-block:: ipython
-    
+
         In [40]: [(o.name, o.value) for o in session.query(MyModel).filter(MyModel.value < 20)]
-        Out[40]: [('one', 1), ('larry', 3), ('tom', 13)]
+        Out[40]: [('one', 1), ('ginny', 3), ('sherry', 13)]
 
 .. nextslide:: ``order_by``
 
@@ -1367,12 +1449,12 @@ Another typical method in this category is ``order_by``:
 .. container::
 
     .. code-block:: ipython
-    
+
         In [41]: [o.value for o in session.query(MyModel).order_by(MyModel.value)]
         Out[41]: [1, 3, 13, 34]
 
         In [42]: [o.name for o in session.query(MyModel).order_by(MyModel.name)]
-        Out[42]: ['bob', 'larry', 'one', 'tom']
+        Out[42]: ['walter', 'ginny', 'one', 'sherry']
 
 .. nextslide:: Method Chaining
 
@@ -1387,7 +1469,7 @@ Since methods in this category return ``Query`` objects, they can be safely
         In [43]: q1 = session.query(MyModel).filter(MyModel.value < 20)
         In [44]: q1 = q1.order_by(MyModel.name)
         In [45]: [(o.name, o.value) for o in q1]
-        Out[45]: [('larry', 3), ('one', 1), ('tom', 13)]
+        Out[45]: [('ginny', 3), ('one', 1), ('sherry', 13)]
 
     Note that you can do this inline as well
     (``s.query(Model).filter().order_by()``)
@@ -1415,7 +1497,7 @@ messy or incomplete.
     database and start over:
 
     .. code-block:: bash
-    
+
         $ rm learning_journal.sqlite
 
     You can always re-create it by executing ``setup_db``
@@ -1490,34 +1572,29 @@ but you'll gain a session that can be used again.
 
 .. nextslide:: Submitting Your Work
 
-I want to be able to review your code (and you want to be able to share it).
-
-To submit this assignment, you'll need to add this learning_journal repository
-to GitHub.
-
 On the GitHub website you can create a new repository.  Set it up to be
 completely empty. Name it ``learning_journal`` and give it any description you
 like.
 
 When you've created an empty repository in GitHub, you should see a set of
 directions for connecting it to a repository that you've already built. Follow
-those instructions to connect your emtpy GitHub repository as the ``origin``
+those instructions to connect your empty GitHub repository as the ``origin``
 remote to your ``learning_journal`` repository on your machine.
 
 Finally, push your ``master`` branch to your new ``origin`` remote on GitHub.
 
-When you are done, send me an email with the URL for your new repository.
 
 .. nextslide::
 
-**Our work next week will assume that you have completed this assignment**
+Our work next week will assume that you have completed this assignment
 
-Do not delay working on this until the last moment.
+But we will provide a starting point for next week as well
 
-Do not skip this assignment.
 
-Do ask questions frequently via email (use the `class google group`_).
+.. nextslide::
+
+Next week's lightning talks:
+
+Josh Hicks, Spencer McGhin, Sheree Pena, Deana Holmer
 
 See you next week!
-
-.. _class google group: https://groups.google.com/forum/#!forum/programming-in-python
