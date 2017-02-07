@@ -43,7 +43,23 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x000002719FCEC0A0>  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="session06.html" title="Session 06"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="session04.html" title="Session 04"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -72,7 +88,7 @@ explore data persistence in Python.</p>
 <li>The Model View Controller (MVC) approach to application design</li>
 <li>Starting our Pyramid Application</li>
 <li>Break</li>
-<li>Lightning Talks (Bradley Baumel, Adam Hollis, Shu Latif, and Nachiket Galande)</li>
+<li>Lightning Talks (Adam Hollis, Shu Latif, and Nachiket Galande)</li>
 <li>Setting up our Pyramid model with sqlalchemy</li>
 <li>Homework and plan for next week</li>
 </ul>
@@ -189,10 +205,13 @@ note of the things you are learning about Python development.</p>
 power of Python</p>
 </div>
 </div>
-<div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://talkpython.fm/">https://talkpython.fm/</a></p>
 <p><a class="reference external" href="https://talkpython.fm/episodes/show/3/pyramid-web-framework">https://talkpython.fm/episodes/show/3/pyramid-web-framework</a></p>
+<p><a class="reference external" href="https://www.cars.com/">https://www.cars.com/</a></p>
+<p><a class="reference external" href="https://www.surveymonkey.com/">https://www.surveymonkey.com/</a></p>
+<p><a class="reference external" href="https://trypyramid.com/">https://trypyramid.com/</a></p>
 </div>
 <div class="section" id="starting-the-project">
 <h3>Starting the Project<a class="headerlink" href="#starting-the-project" title="Permalink to this headline">¶</a></h3>
@@ -451,7 +470,7 @@ sessions.</p>
 </div>
 <p>Let&#8217;s take a moment to rest up and absorb what we&#8217;ve learned.</p>
 <p>When we return:</p>
-<p>Lightning talks</p>
+<p>Lightning talks (Adam Hollis, Shu Latif, and Nachiket Galande)</p>
 <p>We&#8217;ll see how we can create <em>models</em> that will embody the data
 for our Learning Journal application.</p>
 <p class="centered"><strong>Pyramid Models</strong></p>
@@ -1096,9 +1115,95 @@ remote to your <code class="docutils literal"><span class="pre">learning_journal
 
           </div>
         </div>
-      </div><generator object macro at 0x000002719FCECF10>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Session 05</a><ul>
+<li><a class="reference internal" href="#mvc-applications">MVC Applications</a><ul>
+<li><a class="reference internal" href="#but-first">But First</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">MVC Applications</a><ul>
+<li><a class="reference internal" href="#separation-of-concerns">Separation of Concerns</a></li>
+<li><a class="reference internal" href="#three-components">Three Components</a></li>
+<li><a class="reference internal" href="#on-the-web">On the Web</a></li>
+<li><a class="reference internal" href="#a-word-about-terminology">A Word About Terminology</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#our-first-application">Our First Application</a><ul>
+<li><a class="reference internal" href="#id2">Pyramid</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#starting-the-project">Starting the Project</a></li>
+<li><a class="reference internal" href="#working-with-pyramid">Working with Pyramid</a></li>
+<li><a class="reference internal" href="#pyramid-is-python">Pyramid is Python</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models-in-pyramid">Models in Pyramid</a><ul>
+<li><a class="reference internal" href="#models-and-orms">Models and ORMs</a></li>
+<li><a class="reference internal" href="#sqlalchemy">SQLAlchemy</a></li>
+<li><a class="reference internal" href="#creating-the-database">Creating The Database</a></li>
+<li><a class="reference internal" href="#interacting-with-sqla-models">Interacting with SQLA Models</a></li>
+<li><a class="reference internal" href="#cleaning-up-after-ourselves">Cleaning Up After Ourselves</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#homework">Homework</a><ul>
+<li><a class="reference internal" href="#the-model">The Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="session04.html"
+                        title="previous chapter">Session 04</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="session06.html"
+                        title="next chapter">Session 06</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/presentations/session05.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h3>Slides</h3>
+  <ul class="this-page-menu">
+    <li><a href="../.././slides\presentations/session05.html"
+           rel="nofollow">View as slides</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
-    </div><generator object macro at 0x000002719FCEC0A0>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="session06.html" title="Session 06"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="session04.html" title="Session 04"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
