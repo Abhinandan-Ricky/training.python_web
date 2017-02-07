@@ -94,7 +94,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>Wherin we learn about the Model View Controller approach to app design and
 explore data persistence in Python.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id5">
 <a class="reference internal image-reference" href="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png"><img alt="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" src="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-text">By Alan Evangelista (Own work) [CC0], via Wikimedia Commons</span></p>
 </div>
@@ -102,6 +102,108 @@ explore data persistence in Python.</p>
 
 
 <div class="slide-no">2</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="but-first">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Class website - where to find this week's materials</li>
+<li>Review of last week</li>
+<li>Homework review</li>
+<li>The Model View Controller (MVC) approach to application design</li>
+<li>Starting our Pyramid Application</li>
+<li>Break</li>
+<li>Lightning Talks (Bradley Baumel, Adam Hollis, Shu Latif, and Nachiket Galande)</li>
+<li>Setting up our Pyramid model with sqlalchemy</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">3</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id7">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <div class="build left docutils container">
+<p>Class website - where to find this week's materials</p>
+<ul class="build simple">
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/slides/presentations/session05.html#1">https://christyheaton.github.io/training.python_web/slides/presentations/session05.html#1</a></li>
+<li>no repo this week</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">4</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id8">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">Review of last week</p>
+
+
+
+<div class="slide-no">5</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id9">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">Homework Review and Questions</p>
+
+
+
+<div class="slide-no">6</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id10">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large centered">On to MVC</p>
+
+
+
+<div class="slide-no">7</div>
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id1">
+    <hgroup>
+      <h2>MVC Applications</h2>
+    </hgroup>
+    <article class="">
+      <p>Wherin we learn about the Model View Controller approach to app design and
+explore data persistence in Python.</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png"><img alt="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" src="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">By Alan Evangelista (Own work) [CC0], via Wikimedia Commons</span></p>
+</div>
+
+
+
+<div class="slide-no">8</div>
 
 
     </article>
@@ -125,7 +227,7 @@ concerns</em> in a system.</p>
 
 
 
-<div class="slide-no">3</div>
+<div class="slide-no">9</div>
 
 
     </article>
@@ -154,7 +256,7 @@ that information to the View.</p>
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">10</div>
 
 
     </article>
@@ -176,11 +278,11 @@ the user via <em>HTTP responses</em></p>
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">11</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id5">
+  </slide>  <slide class="level-3" id="id11">
     <hgroup>
       <h3>On the Web</h3>
     </hgroup>
@@ -198,7 +300,7 @@ cycle</em>, leaving simple MVC components for the developer to use.</p>
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">12</div>
 
 
     </article>
@@ -219,7 +321,7 @@ documentation.</p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">13</div>
 
 
     </article>
@@ -241,29 +343,39 @@ note of the things you are learning about Python development.</p>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">14</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id1">
+  </slide>  <slide class="level-3" id="id2">
     <hgroup>
       <h3>Pyramid</h3>
     </hgroup>
     <article class="">
-      <p>First published in 2010, <a class="reference external" href="http://www.pylonsproject.org/projects/pyramid/about">Pyramid</a> is a powerful, flexible web framework.</p>
+      <p>First published in 2010, Pyramid is a powerful, flexible web framework.</p>
 <div class="build docutils container">
-<p>You can create compelling one-page applications, much like in
-microframeworks like Flask</p>
+<p>You can create compelling one-page applications</p>
 <p>You can also create powerful, scalable applications using the full
 power of Python</p>
-<p>Created by the combined powers of the teams behind Pylons and Zope</p>
-<p>It represents the first true second-generation web framework in
-existence.</p>
 </div>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">15</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="example">
+    <hgroup>
+      <h3>Example</h3>
+    </hgroup>
+    <article class="">
+      <p><a class="reference external" href="https://talkpython.fm/">https://talkpython.fm/</a></p>
+<p><a class="reference external" href="https://talkpython.fm/episodes/show/3/pyramid-web-framework">https://talkpython.fm/episodes/show/3/pyramid-web-framework</a></p>
+
+
+
+<div class="slide-no">16</div>
 
 
     </article>
@@ -275,26 +387,23 @@ existence.</p>
       <p>The first step is to prepare for the project.</p>
 <div class="build docutils container">
 <p>Begin by creating a location where you'll do your work.</p>
-<p>I generally put all my work in a folder called <code class="docutils literal"><span class="pre">projects</span></code> in my home
-directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span>
+<p>Identify your working directory and then:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;your working directory&gt;
 $ mkdir projects
 $ <span class="nb">cd</span> projects
 $ mkdir learning-journal
 $ <span class="nb">cd</span> learning-journal
-$ <span class="nb">pwd</span>
-/Users/cewing/project/learning-journal
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">17</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id6">
+  </slide>  <slide class="level-3" id="id12">
     <hgroup>
       <h3>Creating an Environment</h3>
     </hgroup>
@@ -308,7 +417,7 @@ we do.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ pyvenv ljenv
 </pre></div>
 </div>
-<div class="highlight-posh"><div class="highlight"><pre><span></span>c:\Temp&gt;python -m venv myenv
+<div class="highlight-posh"><div class="highlight"><pre><span></span>c:\Temp&gt;virtualenv ljenv
 </pre></div>
 </div>
 <p>And then, how to activate it?</p>
@@ -316,18 +425,18 @@ we do.</p>
 <span class="o">(</span>ljenv<span class="o">)</span>$
 </pre></div>
 </div>
-<div class="highlight-posh"><div class="highlight"><pre><span></span>C:&gt; ljenv/Scripts/activate.bat
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:\temp&gt;ljenv/Scripts/activate.bat
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">18</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id7">
+  </slide>  <slide class="level-3" id="id13">
     <hgroup>
       <h3>Installing Pyramid</h3>
     </hgroup>
@@ -337,12 +446,12 @@ we do.</p>
 <p>We can do this with the <code class="docutils literal"><span class="pre">pip</span></code> in our active <code class="docutils literal"><span class="pre">ljenv</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip install pyramid
 Collecting pyramid
-  Downloading pyramid-1.5.2-py2.py3-none-any.whl <span class="o">(</span>545kB<span class="o">)</span>
+  Downloading pyramid-1.8.1-py2.py3-none-any.whl <span class="o">(</span>545kB<span class="o">)</span>
     100% <span class="p">|</span><span class="c1">################################| 548kB 172kB/s</span>
 ...
-Successfully installed PasteDeploy-1.5.2 WebOb-1.4
-pyramid-1.5.2 repoze.lru-0.6 translationstring-1.3
-venusian-1.0 zope.deprecation-4.1.1 zope.interface-4.1.2
+Successfully installed PasteDeploy-1.5.2 WebOb-1.7.1
+pyramid-1.8.1 repoze.lru-0.6 translationstring-1.3
+venusian-1.0 zope.deprecation-4.2.0 zope.interface-4.3.3
 </pre></div>
 </div>
 <p>Once that is complete, we are ready to create a <em>scaffold</em> for our project.</p>
@@ -350,7 +459,7 @@ venusian-1.0 zope.deprecation-4.1.1 zope.interface-4.1.2
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">19</div>
 
 
     </article>
@@ -359,16 +468,12 @@ venusian-1.0 zope.deprecation-4.1.1 zope.interface-4.1.2
       <h3>Working with Pyramid</h3>
     </hgroup>
     <article class="">
-      <p>Many web frameworks require at least a bit of <em>boilerplate</em> code to get
-started.</p>
+      <p>We need a scaffold for our project that will use alchemy</p>
+<p>We will use SQLAlchemy to interact with our database</p>
 <div class="build docutils container">
-<p>Pyramid does not.</p>
-<p>However, our application will require a database and handling that does
-require some.</p>
-<p>Pyramid provides a system for creating boilerplate called <code class="docutils literal"><span class="pre">pcreate</span></code>.</p>
-<p>You use it to generate the skeleton for a project based on some pattern:</p>
+<p>Pyramid provides <code class="docutils literal"><span class="pre">pcreate</span></code> to generate the skeleton for a project based on some pattern:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pcreate -s alchemy learning_journal
-Creating directory /Users/cewing/projects/learning-journal/learning_journal
+Creating directory ..../learning-journal/learning_journal
 ...
 Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 <span class="o">===============================================================================</span>
@@ -379,11 +484,11 @@ Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 
 
 
-<div class="slide-no">13</div>
+<div class="slide-no">20</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id8">
+  </slide>  <slide class="level-3" id="id14">
     <hgroup>
       <h3>What You Get</h3>
     </hgroup>
@@ -392,16 +497,24 @@ Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 ├── development.ini
 ├── learning_journal
 │   ├── __init__.py
-│   ├── models.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── meta.py
+│   │   └── mymodel.py
 │   ├── scripts
 │   │   ├── __init__.py
 │   │   └── initializedb.py
 │   ├── static
 ...
 │   ├── templates
-│   │   └── mytemplate.pt
+│   │   ├── 404.jinja2
+│   │   ├── layout.jinja2
+│   │   └── mytemplate.jinja2
 │   ├── tests.py
-│   └── views.py
+│   └── views
+│   │   ├── __init__.py
+│   │   ├── default.py
+│   │   ├── notfound.py
 ├── production.ini
 └── setup.py
 </pre></div>
@@ -409,11 +522,11 @@ Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 
 
 
-<div class="slide-no">14</div>
+<div class="slide-no">21</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id9">
+  </slide>  <slide class="level-3" id="id15">
     <hgroup>
       <h3>Saving Your Work</h3>
     </hgroup>
@@ -425,18 +538,18 @@ you just created:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ <span class="nb">cd</span> learning_journal
 <span class="o">(</span>ljenv<span class="o">)</span>$ git init
 Initialized empty Git repository in
- /Users/cewing/projects/learning-journal/learning_journal/.git/
+ .../learning-journal/learning_journal/.git/
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">15</div>
+<div class="slide-no">22</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id10">
+  </slide>  <slide class="level-3" id="id16">
     <hgroup>
       <h3>Saving Your Work</h3>
     </hgroup>
@@ -462,11 +575,11 @@ Untracked files:
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">23</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id11">
+  </slide>  <slide class="level-3" id="id17">
     <hgroup>
       <h3>Add the Project Code</h3>
     </hgroup>
@@ -488,11 +601,11 @@ Changes to be committed:
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">24</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id12">
+  </slide>  <slide class="level-3" id="id18">
     <hgroup>
       <h3>Ignore Irrelevant Files</h3>
     </hgroup>
@@ -514,11 +627,11 @@ Changes to be committed:
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">25</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id13">
+  </slide>  <slide class="level-3" id="id19">
     <hgroup>
       <h3>Make It Permanent</h3>
     </hgroup>
@@ -529,17 +642,17 @@ Changes to be committed:
 </div>
 <div class="build docutils container">
 <p>This will make a first commit here in this local repository.</p>
-<p>For homework, you'll put this into GitHub, but this is enough for now.</p>
-<p>Let's move on to learning about what we've built so far.</p>
+<p>Later you'll put this into GitHub, but this is enough for now.</p>
+<p>Let's look at what we have so far.</p>
 </div>
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">26</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id14">
+  </slide>  <slide class="level-3" id="id20">
     <hgroup>
       <h3>Project Structure</h3>
     </hgroup>
@@ -557,11 +670,11 @@ Changes to be committed:
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">27</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id15">
+  </slide>  <slide class="level-3" id="id21">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">setup.py</span></code></h3>
     </hgroup>
@@ -572,24 +685,24 @@ Changes to be committed:
     <span class="s1">&#39;pyramid&#39;</span><span class="p">,</span>
     <span class="o">...</span> <span class="c1"># packages on which this software depends (dependencies)</span>
     <span class="p">]</span>
-<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;learning_journal&#39;</span><span class="p">,</span>
-      <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0&#39;</span><span class="p">,</span>
-      <span class="o">...</span> <span class="c1"># package metadata (used by PyPI)</span>
-      <span class="n">install_requires</span><span class="o">=</span><span class="n">requires</span><span class="p">,</span>
-      <span class="c1"># Entry points are ways that we can run our code once installed</span>
-      <span class="n">entry_points</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s2">      [paste.app_factory]</span>
-<span class="s2">      main = learning_journal:main</span>
-<span class="s2">      [console_scripts]</span>
-<span class="s2">      initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
-<span class="s2">      &quot;&quot;&quot;</span><span class="p">,</span>
-      <span class="p">)</span>
+    <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;learning_journal&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0&#39;</span><span class="p">,</span>
+    <span class="o">...</span> <span class="c1"># package metadata (used by PyPI)</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="n">requires</span><span class="p">,</span>
+    <span class="c1"># Entry points are ways that we can run our code once installed</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">    [paste.app_factory]</span>
+<span class="s2">    main = learning_journal:main</span>
+<span class="s2">    [console_scripts]</span>
+<span class="s2">    initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 
 
 
-<div class="slide-no">21</div>
+<div class="slide-no">28</div>
 
 
     </article>
@@ -603,26 +716,23 @@ function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-    <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_jinja2&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;.models&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;.routes&#39;</span><span class="p">)</span>
     <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Let's take a closer look at this, line by line.</p>
+<p>Let's take a closer look at this.</p>
 
 
 
-<div class="slide-no">22</div>
+<div class="slide-no">29</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id16">
+  </slide>  <slide class="level-3" id="id22">
     <hgroup>
       <h3>System Configuration</h3>
     </hgroup>
@@ -633,82 +743,74 @@ function:</p>
 <p>Configuration is passed in to an application after being read from the
 <code class="docutils literal"><span class="pre">.ini</span></code> file we saw above.</p>
 <div class="build docutils container">
-<p>These files contain sections (<code class="docutils literal"><span class="pre">[app:main]</span></code>) containing <code class="docutils literal"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">value</span></code>
+<p>These config files contain sections (<code class="docutils literal"><span class="pre">[app:main]</span></code>) containing <code class="docutils literal"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">value</span></code>
 pairs of <em>configuration data</em></p>
-<p>This data is parsed with the Python
-<a class="reference external" href="http://docs.python.org/2/library/configparser.html">ConfigParser</a> module.</p>
-<p>The result is a dict of values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;app:main&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;pyramid.reload_templates&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="o">...</span><span class="p">}</span>
+<p>For example, in development.ini:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">app</span><span class="p">:</span><span class="n">main</span><span class="p">]</span>
+<span class="n">use</span> <span class="o">=</span> <span class="n">egg</span><span class="p">:</span><span class="n">learning</span><span class="o">-</span><span class="n">journal</span>
+
+<span class="n">pyramid</span><span class="o">.</span><span class="n">reload_templates</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">pyramid</span><span class="o">.</span><span class="n">debug_authorization</span> <span class="o">=</span> <span class="n">false</span>
 </pre></div>
 </div>
-<p>The default section of the file is passed in as <code class="docutils literal"><span class="pre">global_config</span></code>, the
-section for <em>this app</em> as <code class="docutils literal"><span class="pre">settings</span></code>.</p>
 </div>
 
 
 
-<div class="slide-no">23</div>
+<div class="slide-no">30</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id17">
-    <hgroup>
-      <h3>Database Configuration</h3>
-    </hgroup>
-    <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">DBSession</span><span class="p">,</span> <span class="n">Base</span>
-<span class="o">...</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-<span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
-</pre></div>
-</div>
-<p>We will use a package called <code class="docutils literal"><span class="pre">SQLAlchemy</span></code> to interact with our database.</p>
-<div class="build docutils container">
-<p>Our connection is set up using settings read from the <code class="docutils literal"><span class="pre">.ini</span></code> file.</p>
-<p>Can you find the settings for the database?</p>
-<p>The <code class="docutils literal"><span class="pre">DBSession</span></code> ensures that each <em>database transaction</em> is tied to HTTP
-requests.</p>
-<p>The <code class="docutils literal"><span class="pre">Base</span></code> provides a parent class that will hook our <em>models</em> to the
-database.</p>
-</div>
-
-
-
-<div class="slide-no">24</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="id18">
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>App Configuration</h3>
     </hgroup>
     <article class="">
       <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_jinja2&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;.models&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;.routes&#39;</span><span class="p">)</span>
 <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Pyramid controlls application-level configuration using a <code class="docutils literal"><span class="pre">Configurator</span></code> class.</p>
+<p>Pyramid controls application-level configuration using a <code class="docutils literal"><span class="pre">Configurator</span></code> class.</p>
 <div class="build docutils container">
 <p>It uses app-specific settings passed in from the <code class="docutils literal"><span class="pre">.ini</span></code> file</p>
 <p>We can also <code class="docutils literal"><span class="pre">include</span></code> configuration from other add-on packages</p>
-<p>Additionally, we can configure <em>routes</em> and <em>views</em> needed to connect our
-application to the outside world here (more on this next week).</p>
-<p>Finally, the <code class="docutils literal"><span class="pre">Configurator</span></code> instance performs a <code class="docutils literal"><span class="pre">scan</span></code> to ensure there
+<p>The <code class="docutils literal"><span class="pre">Configurator</span></code> instance performs a <code class="docutils literal"><span class="pre">scan</span></code> to ensure there
 are no problems with what we've created.</p>
 </div>
 
 
 
-<div class="slide-no">25</div>
+<div class="slide-no">31</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id19">
+  </slide>  <slide class="level-3" id="id24">
+    <hgroup>
+      <h3>Database Configuration</h3>
+    </hgroup>
+    <article class="">
+      <p>In models/meta.py</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.schema</span> <span class="kn">import</span> <span class="n">MetaData</span>
+<span class="o">....</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">(</span><span class="n">naming_convention</span><span class="o">=</span><span class="n">NAMING_CONVENTION</span><span class="p">)</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will use a package called <code class="docutils literal"><span class="pre">SQLAlchemy</span></code> to interact with our database.</p>
+<p>The <code class="docutils literal"><span class="pre">Base</span></code> provides a parent class that will hook our <em>models</em> to the database.</p>
+
+
+
+<div class="slide-no">32</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id25">
     <hgroup>
       <h3>A Last Word on Configuration</h3>
     </hgroup>
@@ -718,29 +820,31 @@ sessions.</p>
 <div class="build docutils container">
 <p>Pyramid configuration is powerful and flexible.</p>
 <p>We'll use a few of its features</p>
-<p>But there's a lot more you could (and should) learn.</p>
+<p>But there's a lot more you could learn.</p>
 <p>Read about it in the <a class="reference external" href="http://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html">configuration chapter</a> of the Pyramid documentation.</p>
 </div>
 
 
 
-<div class="slide-no">26</div>
+<div class="slide-no">33</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id20">
+  </slide>  <slide class="level-3" id="id26">
     <hgroup>
       <h3>Break Time</h3>
     </hgroup>
     <article class="">
       <p>Let's take a moment to rest up and absorb what we've learned.</p>
-<p>When we return, we'll see how we can create <em>models</em> that will embody the data
+<p>When we return:</p>
+<p>Lightning talks</p>
+<p>We'll see how we can create <em>models</em> that will embody the data
 for our Learning Journal application.</p>
 <p class="centered"><strong>Pyramid Models</strong></p>
 
 
 
-<div class="slide-no">27</div>
+<div class="slide-no">34</div>
 
 
     </article>
@@ -759,7 +863,7 @@ application</p>
 
 
 
-<div class="slide-no">28</div>
+<div class="slide-no">35</div>
 
 
     </article>
@@ -783,11 +887,11 @@ classes.</p>
 
 
 
-<div class="slide-no">29</div>
+<div class="slide-no">36</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id21">
+  </slide>  <slide class="level-3" id="id27">
     <hgroup>
       <h3>Persistence</h3>
     </hgroup>
@@ -806,17 +910,16 @@ system.</p>
 
 
 
-<div class="slide-no">30</div>
+<div class="slide-no">37</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id22">
+  </slide>  <slide class="level-3" id="id28">
     <hgroup>
       <h3>Alternatives</h3>
     </hgroup>
     <article class="">
-      <p>In the last class from part one of this series, you explored a number of
-alternatives for persistence</p>
+      <p>There are a number of options for persistence</p>
 <ul class="build simple">
 <li>Python Literals</li>
 <li>Pickle/Shelf</li>
@@ -836,11 +939,11 @@ alternatives for persistence</p>
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">38</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id29">
     <hgroup>
       <h3>Choosing One</h3>
     </hgroup>
@@ -851,19 +954,19 @@ alternatives for persistence</p>
 data.</p>
 <p>In systems where the dominant feature is viewing/interacting with
 individual objects, a NoSQL storage solution might be the best way to go.</p>
-<p>In systems with objects that are related to eachother, SQL-based Relational
+<p>In systems with objects that are related to each other, SQL-based Relational
 Databases are a better choice.</p>
-<p>Our system is more like this latter type (trust me on that one for now).</p>
-<p>We'll be using SQL (sqlite to start with).</p>
+<p>Our system is more like this latter type, so we'll be using SQL
+(sqlite to start with).</p>
 </div>
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">39</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id30">
     <hgroup>
       <h3>Objects and Tables</h3>
     </hgroup>
@@ -887,11 +990,11 @@ database.</p>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">40</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id25">
+  </slide>  <slide class="level-3" id="id31">
     <hgroup>
       <h3>ORMs</h3>
     </hgroup>
@@ -909,7 +1012,7 @@ back)</p>
 
 
 
-<div class="slide-no">34</div>
+<div class="slide-no">41</div>
 
 
     </article>
@@ -937,11 +1040,11 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
 
 
 
-<div class="slide-no">35</div>
+<div class="slide-no">42</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id26">
+  </slide>  <slide class="level-3" id="id32">
     <hgroup>
       <h3>SQLAlchemy</h3>
     </hgroup>
@@ -949,21 +1052,21 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
       <p>Once that is complete, all the <em>dependencies</em> listed in our <code class="docutils literal"><span class="pre">setup.py</span></code> will
 be installed.</p>
 <div class="build docutils container">
-<p>You can also install the package using <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
-<p>But using <code class="docutils literal"><span class="pre">develop</span></code> allows us to continue developing our package without
+<p>If that didn't work, you can also install the package using</p>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
+<p>Using <code class="docutils literal"><span class="pre">develop</span></code> allows us to continue developing our package without
 needing to re-install it every time we change something.</p>
-<p>It is very similar to using the <code class="docutils literal"><span class="pre">-e</span></code> option to <code class="docutils literal"><span class="pre">pip</span></code></p>
-<p>Now, we'll only need to re-run this command if we change <code class="docutils literal"><span class="pre">setup.py</span></code>
-itself.</p>
+<p>If you used develop, you'll only need to re-run this command if
+we change <code class="docutils literal"><span class="pre">setup.py</span></code> itself.</p>
 </div>
 
 
 
-<div class="slide-no">36</div>
+<div class="slide-no">43</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id27">
+  </slide>  <slide class="level-3" id="id33">
     <hgroup>
       <h3>SQLAlchemy</h3>
     </hgroup>
@@ -988,19 +1091,20 @@ change</p>
 
 
 
-<div class="slide-no">37</div>
+<div class="slide-no">44</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id28">
+  </slide>  <slide class="level-3" id="id34">
     <hgroup>
       <h3>Our First Model</h3>
     </hgroup>
     <article class="">
       <p>Our project skeleton contains up a first, basic model created for us:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in models.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in models/meta.py</span>
 <span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
 
+<span class="c1">#in models/mymodel.py</span>
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
     <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;models&#39;</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -1017,11 +1121,11 @@ change</p>
 
 
 
-<div class="slide-no">38</div>
+<div class="slide-no">45</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id29">
+  </slide>  <slide class="level-3" id="id35">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">Base</span></code></h3>
     </hgroup>
@@ -1041,11 +1145,11 @@ columns in the table.</p>
 
 
 
-<div class="slide-no">39</div>
+<div class="slide-no">46</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id30">
+  </slide>  <slide class="level-3" id="id36">
     <hgroup>
       <h3>Columns</h3>
     </hgroup>
@@ -1065,7 +1169,7 @@ argument and must be a string.</p>
 
 
 
-<div class="slide-no">40</div>
+<div class="slide-no">47</div>
 
 
     </article>
@@ -1076,7 +1180,7 @@ argument and must be a string.</p>
     <article class="">
       <p>We have a <em>model</em> which allows us to persist Python objects to an SQL database.</p>
 <div class="build docutils container">
-<p>But we're still missing one ingredient here.</p>
+<p>But we're still missing one ingredient - the database itself.</p>
 <p>We need to create our database, or there will be nowhere for our data to
 go.</p>
 <p>Luckily, our <code class="docutils literal"><span class="pre">pcreate</span></code> scaffold also gave us a convenient way to handle
@@ -1095,18 +1199,18 @@ this:</p>
 
 
 
-<div class="slide-no">41</div>
+<div class="slide-no">48</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id31">
+  </slide>  <slide class="level-3" id="id37">
     <hgroup>
       <h3>Initializing the Database</h3>
     </hgroup>
     <article class="">
       <p>Let's look at that code for a moment.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in scripts/intitalizedb.py</span>
-<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">DBSession</span><span class="p">,</span> <span class="n">MyModel</span><span class="p">,</span> <span class="n">Base</span>
+<span class="kn">from</span> <span class="nn">..models.meta</span> <span class="kn">import</span> <span class="n">Base</span>
 <span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -1116,21 +1220,17 @@ this:</p>
     <span class="n">setup_logging</span><span class="p">(</span><span class="n">config_uri</span><span class="p">)</span>
     <span class="n">settings</span> <span class="o">=</span> <span class="n">get_appsettings</span><span class="p">(</span><span class="n">config_uri</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
     <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-    <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 
 
 
-<div class="slide-no">42</div>
+<div class="slide-no">49</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id32">
+  </slide>  <slide class="level-3" id="id38">
     <hgroup>
       <h3>Console Scripts</h3>
     </hgroup>
@@ -1138,7 +1238,7 @@ this:</p>
       <p>By connecting this function as a <code class="docutils literal"><span class="pre">console</span> <span class="pre">script</span></code>, our Python package makes
 this command available to us when we install it.</p>
 <div class="build docutils container">
-<p>When we exectute the script at the command line, we will be running this
+<p>When we execute the script at the command line, we will be running this
 function.</p>
 <p>But before we try it out, let's update the name we use so we don't have to
 type that whole big mess.</p>
@@ -1151,8 +1251,27 @@ type that whole big mess.</p>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Then, as you have changed <code class="docutils literal"><span class="pre">setup.py</span></code>, re-install your package:</p>
+</div>
+
+
+
+<div class="slide-no">50</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id39">
+    <hgroup>
+      <h3>Console Scripts</h3>
+    </hgroup>
+    <article class="">
+      <p>Then, as you have changed <code class="docutils literal"><span class="pre">setup.py</span></code>, re-install your package:</p>
+<div class="build docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
+...
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py install
 ...
 </pre></div>
 </div>
@@ -1160,11 +1279,11 @@ type that whole big mess.</p>
 
 
 
-<div class="slide-no">43</div>
+<div class="slide-no">51</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id33">
+  </slide>  <slide class="level-3" id="id40">
     <hgroup>
       <h3>Running the Script</h3>
     </hgroup>
@@ -1174,9 +1293,9 @@ type that whole big mess.</p>
 <p>We'll need to provide a configuration file name, let's use
 <code class="docutils literal"><span class="pre">development.ini</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ setup_db development.ini
-2015-01-05 18:59:55,426 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> SELECT CAST<span class="o">(</span><span class="s1">&#39;test plain returns&#39;</span> AS VARCHAR<span class="o">(</span>60<span class="o">))</span> AS anon_1
+2017-02-06 18:59:55,426 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> SELECT CAST<span class="o">(</span><span class="s1">&#39;test plain returns&#39;</span> AS VARCHAR<span class="o">(</span>60<span class="o">))</span> AS anon_1
 ...
-2015-01-05 18:59:55,434 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> COMMIT
+2017-02-06 18:59:55,434 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> COMMIT
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">[loggers]</span></code> configuration in our <code class="docutils literal"><span class="pre">.ini</span></code> file sends a stream of
@@ -1185,11 +1304,11 @@ INFO-level logging to sys.stdout as the console script runs.</p>
 
 
 
-<div class="slide-no">44</div>
+<div class="slide-no">52</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id34">
+  </slide>  <slide class="level-3" id="id41">
     <hgroup>
       <h3>A Bit More Cleanup</h3>
     </hgroup>
@@ -1210,7 +1329,7 @@ inadvertently add that file to your repository.</p>
 
 
 
-<div class="slide-no">45</div>
+<div class="slide-no">53</div>
 
 
     </article>
@@ -1219,12 +1338,12 @@ inadvertently add that file to your repository.</p>
       <h3>Interacting with SQLA Models</h3>
     </hgroup>
     <article class="">
-      <p>It's pretty easy to play with your models from in an interpreter.</p>
+      <p>We can play with our models in an Python interpreter.</p>
 <div class="build docutils container">
 <p>But before we do so, let's make a nicer interpreter available for our
 project</p>
 <p>You've been using iPython in class, we can use it here too.</p>
-<p>Just install it with <code class="docutils literal"><span class="pre">pip</span></code>:</p>
+<p>Install it with <code class="docutils literal"><span class="pre">pip</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip install ipython pyramid_ipython
 </pre></div>
 </div>
@@ -1237,11 +1356,11 @@ application code you are writing:</p>
 
 
 
-<div class="slide-no">46</div>
+<div class="slide-no">54</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id35">
+  </slide>  <slide class="level-3" id="id42">
     <hgroup>
       <h3>The <code class="docutils literal"><span class="pre">pshell</span></code> command</h3>
     </hgroup>
@@ -1250,10 +1369,10 @@ application code you are writing:</p>
 disposal:</p>
 <div class="build docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pshell development.ini
-Python 3.5.0 <span class="o">(</span>default, Sep <span class="m">16</span> 2015, 10:42:55<span class="o">)</span>
+Python 3.5.2 <span class="o">(</span>June <span class="m">26</span> 2016, 22:18:55<span class="o">)</span>
 Type <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 
-IPython 4.0.1 -- An enhanced Interactive Python.
+IPython 5.2.2 -- An enhanced Interactive Python.
 ?         -&gt; Introduction and overview of IPython<span class="s1">&#39;s features.</span>
 <span class="s1">%quickref -&gt; Quick reference.</span>
 <span class="s1">help      -&gt; Python&#39;</span>s own <span class="nb">help</span> system.
@@ -1271,11 +1390,11 @@ Environment:
 
 
 
-<div class="slide-no">47</div>
+<div class="slide-no">55</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id36">
+  </slide>  <slide class="level-3" id="id43">
     <hgroup>
       <h3>Interacting with SQLA Models</h3>
     </hgroup>
@@ -1299,11 +1418,11 @@ pretend we are listening to clients</li>
 
 
 
-<div class="slide-no">48</div>
+<div class="slide-no">56</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id37">
+  </slide>  <slide class="level-3" id="id44">
     <hgroup>
       <h3>Interacting with SQLA Models</h3>
     </hgroup>
@@ -1318,21 +1437,21 @@ data:</p>
 <span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">learning_journal.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
 <span class="gp">In [7]: </span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">...</span>
-<span class="go">2015-12-21 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value</span>
+<span class="go">2017-02-06 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value</span>
 <span class="go">FROM models</span>
-<span class="go">2015-12-21 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()</span>
+<span class="go">2017-02-06 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()</span>
 <span class="gh">Out[7]: </span><span class="go">[&lt;learning_journal.models.MyModel at 0x105f30208&gt;]</span>
 </pre></div>
 </div>
-<p>We've stolen a lot of this from the <code class="docutils literal"><span class="pre">initializedb.py</span></code> script</p>
+<p>Much of this was stolen from /models/__init__.py</p>
 
 
 
-<div class="slide-no">49</div>
+<div class="slide-no">57</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id38">
+  </slide>  <slide class="level-3" id="id45">
     <hgroup>
       <h3>Basic Interactions</h3>
     </hgroup>
@@ -1355,11 +1474,11 @@ a model class.</p>
 
 
 
-<div class="slide-no">50</div>
+<div class="slide-no">58</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id39">
+  </slide>  <slide class="level-3" id="id46">
     <hgroup>
       <h3>Queries are Iterators</h3>
     </hgroup>
@@ -1379,11 +1498,11 @@ a model class.</p>
 
 
 
-<div class="slide-no">51</div>
+<div class="slide-no">59</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id40">
+  </slide>  <slide class="level-3" id="id47">
     <hgroup>
       <h3>Queries are Iterators</h3>
     </hgroup>
@@ -1411,11 +1530,11 @@ a model class.</p>
 
 
 
-<div class="slide-no">52</div>
+<div class="slide-no">60</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id41">
+  </slide>  <slide class="level-3" id="id48">
     <hgroup>
       <h3>Queries have SQL</h3>
     </hgroup>
@@ -1436,11 +1555,11 @@ you expect.</p>
 
 
 
-<div class="slide-no">53</div>
+<div class="slide-no">61</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id42">
+  </slide>  <slide class="level-3" id="id49">
     <hgroup>
       <h3>Methods of the Query Object</h3>
     </hgroup>
@@ -1456,11 +1575,11 @@ you expect.</p>
 
 
 
-<div class="slide-no">54</div>
+<div class="slide-no">62</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id43">
+  </slide>  <slide class="level-3" id="id50">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">query.get()</span></code></h3>
     </hgroup>
@@ -1481,11 +1600,11 @@ instance only.</p>
 
 
 
-<div class="slide-no">55</div>
+<div class="slide-no">63</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id44">
+  </slide>  <slide class="level-3" id="id51">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">query.all()</span></code></h3>
     </hgroup>
@@ -1510,11 +1629,11 @@ by the query:</p>
 
 
 
-<div class="slide-no">56</div>
+<div class="slide-no">64</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id45">
+  </slide>  <slide class="level-3" id="id52">
     <hgroup>
       <h3>Creating New Objects</h3>
     </hgroup>
@@ -1524,7 +1643,7 @@ by the query:</p>
 <div class="docutils container">
 <p>We can create new instances of our <em>model</em> just like normal Python
 objects:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;tobias&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">In [22]: </span><span class="n">new_model</span>
 <span class="gh">Out[22]: </span><span class="go">&lt;learning_journal.models.MyModel at 0x105f4af28&gt;</span>
 </pre></div>
@@ -1542,11 +1661,11 @@ nothing about it:</p>
 
 
 
-<div class="slide-no">57</div>
+<div class="slide-no">65</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id46">
+  </slide>  <slide class="level-3" id="id53">
     <hgroup>
       <h3>Adding Objects to the Session</h3>
     </hgroup>
@@ -1561,7 +1680,7 @@ session:</p>
 </div>
 <p>We can even bulk-add new objects:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">In [27]: </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]:</span>
+<span class="gp">In [27]: </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;walter&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sherry&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]:</span>
 <span class="gp">   ....: </span>    <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val</span><span class="p">))</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [28]: </span><span class="n">session</span><span class="o">.</span><span class="n">add_all</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
@@ -1575,11 +1694,11 @@ session:</p>
 
 
 
-<div class="slide-no">58</div>
+<div class="slide-no">66</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id47">
+  </slide>  <slide class="level-3" id="id54">
     <hgroup>
       <h3>Committing Changes</h3>
     </hgroup>
@@ -1605,11 +1724,11 @@ response is sent back.</p>
 
 
 
-<div class="slide-no">59</div>
+<div class="slide-no">67</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id48">
+  </slide>  <slide class="level-3" id="id55">
     <hgroup>
       <h3>Altering Objects</h3>
     </hgroup>
@@ -1622,8 +1741,8 @@ it's been updated:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">new_model</span>
 <span class="gh">Out[34]: </span><span class="go">&lt;learning_journal.models.MyModel at 0x105f4af28&gt;</span>
 <span class="gp">In [35]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span>
-<span class="gh">Out[35]: </span><span class="go">&#39;fred&#39;</span>
-<span class="gp">In [36]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;larry&#39;</span>
+<span class="gh">Out[35]: </span><span class="go">&#39;tobias&#39;</span>
+<span class="gp">In [36]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ginny&#39;</span>
 <span class="gp">In [37]: </span><span class="n">session</span><span class="o">.</span><span class="n">dirty</span>
 <span class="gh">Out[37]: </span><span class="go">IdentitySet([&lt;learning_journal.models.MyModel object at 0x105f4af28&gt;])</span>
 </pre></div>
@@ -1631,18 +1750,18 @@ it's been updated:</p>
 <p>Commit the session to persist the changes:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 <span class="gp">In [39]: </span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">other_session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)]</span>
-<span class="gh">Out[39]: </span><span class="go">[&#39;one&#39;, &#39;larry&#39;, &#39;bob&#39;, &#39;tom&#39;]</span>
+<span class="gh">Out[39]: </span><span class="go">[&#39;one&#39;, &#39;ginny&#39;, &#39;walter&#39;, &#39;sherry&#39;]</span>
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">60</div>
+<div class="slide-no">68</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id49">
+  </slide>  <slide class="level-3" id="id56">
     <hgroup>
       <h3>Methods Returning Queries</h3>
     </hgroup>
@@ -1652,18 +1771,18 @@ method.</p>
 <div class="build docutils container">
 <p>This method allows you to reduce the number of results, based on criteria:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)]</span>
-<span class="gh">Out[40]: </span><span class="go">[(&#39;one&#39;, 1), (&#39;larry&#39;, 3), (&#39;tom&#39;, 13)]</span>
+<span class="gh">Out[40]: </span><span class="go">[(&#39;one&#39;, 1), (&#39;ginny&#39;, 3), (&#39;sherry&#39;, 13)]</span>
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">61</div>
+<div class="slide-no">69</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id50">
+  </slide>  <slide class="level-3" id="id57">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">order_by</span></code></h3>
     </hgroup>
@@ -1674,18 +1793,18 @@ method.</p>
 <span class="gh">Out[41]: </span><span class="go">[1, 3, 13, 34]</span>
 
 <span class="gp">In [42]: </span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">)]</span>
-<span class="gh">Out[42]: </span><span class="go">[&#39;bob&#39;, &#39;larry&#39;, &#39;one&#39;, &#39;tom&#39;]</span>
+<span class="gh">Out[42]: </span><span class="go">[&#39;ginny&#39;, &#39;one&#39;, &#39;sherry&#39;, &#39;walter&#39;]</span>
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">62</div>
+<div class="slide-no">70</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id51">
+  </slide>  <slide class="level-3" id="id58">
     <hgroup>
       <h3>Method Chaining</h3>
     </hgroup>
@@ -1696,7 +1815,7 @@ method.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [43]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span>
 <span class="gp">In [44]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">In [45]: </span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">q1</span><span class="p">]</span>
-<span class="gh">Out[45]: </span><span class="go">[(&#39;larry&#39;, 3), (&#39;one&#39;, 1), (&#39;tom&#39;, 13)]</span>
+<span class="gh">Out[45]: </span><span class="go">[(&#39;ginny&#39;, 3), (&#39;one&#39;, 1), (&#39;sherry&#39;, 13)]</span>
 </pre></div>
 </div>
 <p>Note that you can do this inline as well
@@ -1707,7 +1826,7 @@ sent to the database until you require a result.</p>
 
 
 
-<div class="slide-no">63</div>
+<div class="slide-no">71</div>
 
 
     </article>
@@ -1733,7 +1852,7 @@ database and start over:</p>
 
 
 
-<div class="slide-no">64</div>
+<div class="slide-no">72</div>
 
 
     </article>
@@ -1755,7 +1874,7 @@ API.</p>
 
 
 
-<div class="slide-no">65</div>
+<div class="slide-no">73</div>
 
 
     </article>
@@ -1781,11 +1900,11 @@ was last edited.</li>
 
 
 
-<div class="slide-no">66</div>
+<div class="slide-no">74</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id52">
+  </slide>  <slide class="level-3" id="id59">
     <hgroup>
       <h3>The Model</h3>
     </hgroup>
@@ -1803,11 +1922,11 @@ re-run the <code class="docutils literal"><span class="pre">initialize_learning_
 
 
 
-<div class="slide-no">67</div>
+<div class="slide-no">75</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id53">
+  </slide>  <slide class="level-3" id="id60">
     <hgroup>
       <h3>Words of Advice</h3>
     </hgroup>
@@ -1826,48 +1945,56 @@ but you'll gain a session that can be used again.</p>
 
 
 
-<div class="slide-no">68</div>
+<div class="slide-no">76</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id54">
+  </slide>  <slide class="level-3" id="id61">
     <hgroup>
       <h3>Submitting Your Work</h3>
     </hgroup>
     <article class="">
-      <p>I want to be able to review your code (and you want to be able to share it).</p>
-<p>To submit this assignment, you'll need to add this learning_journal repository
-to GitHub.</p>
-<p>On the GitHub website you can create a new repository.  Set it up to be
+      <p>On the GitHub website you can create a new repository.  Set it up to be
 completely empty. Name it <code class="docutils literal"><span class="pre">learning_journal</span></code> and give it any description you
 like.</p>
 <p>When you've created an empty repository in GitHub, you should see a set of
 directions for connecting it to a repository that you've already built. Follow
-those instructions to connect your emtpy GitHub repository as the <code class="docutils literal"><span class="pre">origin</span></code>
+those instructions to connect your empty GitHub repository as the <code class="docutils literal"><span class="pre">origin</span></code>
 remote to your <code class="docutils literal"><span class="pre">learning_journal</span></code> repository on your machine.</p>
 <p>Finally, push your <code class="docutils literal"><span class="pre">master</span></code> branch to your new <code class="docutils literal"><span class="pre">origin</span></code> remote on GitHub.</p>
-<p>When you are done, send me an email with the URL for your new repository.</p>
 
 
 
-<div class="slide-no">69</div>
+<div class="slide-no">77</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id55">
+  </slide>  <slide class="level-3" id="id62">
     <hgroup>
       <h3>The Model</h3>
     </hgroup>
     <article class="">
-      <p><strong>Our work next week will assume that you have completed this assignment</strong></p>
-<p>Do not delay working on this until the last moment.</p>
-<p>Do not skip this assignment.</p>
-<p>Do ask questions frequently via email (use the <a class="reference external" href="https://groups.google.com/forum/#!forum/programming-in-python">class google group</a>).</p>
+      <p>Our work next week will assume that you have completed this assignment</p>
+<p>But we will provide a starting point for next week as well</p>
+
+
+
+<div class="slide-no">78</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id63">
+    <hgroup>
+      <h3>The Model</h3>
+    </hgroup>
+    <article class="">
+      <p>Next week's lightning talks:</p>
+<p>Josh Hicks, Spencer McGhin, Sheree Pena, Deana Holmer</p>
 <p>See you next week!</p>
 
 
 
-<div class="slide-no">70</div>
+<div class="slide-no">79</div>
 
 
     </article>
