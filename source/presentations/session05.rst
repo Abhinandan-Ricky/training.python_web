@@ -229,21 +229,23 @@ But enough abstract blabbering.
 Pyramid
 -------
 
-First published in 2010, `Pyramid`_ is a powerful, flexible web framework.
+First published in 2010, Pyramid is a powerful, flexible web framework.
 
 .. rst-class:: build
 .. container::
 
-    You can create compelling one-page applications, much like in
-    microframeworks like Flask
+    You can create compelling one-page applications
 
     You can also create powerful, scalable applications using the full
     power of Python
 
-    Created by the combined powers of the teams behind Pylons and Zope
+Example
+-------
 
-    It represents the first true second-generation web framework in
-    existence.
+https://talkpython.fm/
+
+https://talkpython.fm/episodes/show/3/pyramid-web-framework
+
 
 Starting the Project
 --------------------
@@ -255,18 +257,15 @@ The first step is to prepare for the project.
 
     Begin by creating a location where you'll do your work.
 
-    I generally put all my work in a folder called ``projects`` in my home
-    directory:
+    Identify your working directory and then:
 
     .. code-block:: bash
 
-        $ cd
+        $ cd <your working directory>
         $ mkdir projects
         $ cd projects
         $ mkdir learning-journal
         $ cd learning-journal
-        $ pwd
-        /Users/cewing/project/learning-journal
 
 .. nextslide:: Creating an Environment
 
@@ -287,7 +286,7 @@ for our project.
 
     .. code-block:: posh
 
-        c:\Temp>python -m venv myenv
+        c:\Temp>virtualenv ljenv
 
     And then, how to activate it?
 
@@ -298,7 +297,8 @@ for our project.
 
     .. code-block:: posh
 
-        C:> ljenv/Scripts/activate.bat
+        C:\temp>ljenv/Scripts/activate.bat
+
 
 .. nextslide:: Installing Pyramid
 
@@ -313,37 +313,31 @@ Next, we install the Pyramid web framework into our new virtualenv.
 
         (ljenv)$ pip install pyramid
         Collecting pyramid
-          Downloading pyramid-1.5.2-py2.py3-none-any.whl (545kB)
+          Downloading pyramid-1.8.1-py2.py3-none-any.whl (545kB)
             100% |################################| 548kB 172kB/s
         ...
-        Successfully installed PasteDeploy-1.5.2 WebOb-1.4
-        pyramid-1.5.2 repoze.lru-0.6 translationstring-1.3
-        venusian-1.0 zope.deprecation-4.1.1 zope.interface-4.1.2
+        Successfully installed PasteDeploy-1.5.2 WebOb-1.7.1
+        pyramid-1.8.1 repoze.lru-0.6 translationstring-1.3
+        venusian-1.0 zope.deprecation-4.2.0 zope.interface-4.3.3
 
     Once that is complete, we are ready to create a *scaffold* for our project.
 
 Working with Pyramid
 --------------------
 
-Many web frameworks require at least a bit of *boilerplate* code to get
-started.
+We need a scaffold for our project that will use alchemy
+
+We will use SQLAlchemy to interact with our database
 
 .. rst-class:: build
 .. container::
 
-    Pyramid does not.
-
-    However, our application will require a database and handling that does
-    require some.
-
-    Pyramid provides a system for creating boilerplate called ``pcreate``.
-
-    You use it to generate the skeleton for a project based on some pattern:
+    Pyramid provides ``pcreate`` to generate the skeleton for a project based on some pattern:
 
     .. code-block:: bash
 
         (ljenv)$ pcreate -s alchemy learning_journal
-        Creating directory /Users/cewing/projects/learning-journal/learning_journal
+        Creating directory ..../learning-journal/learning_journal
         ...
         Welcome to Pyramid.  Sorry for the convenience.
         ===============================================================================
@@ -358,16 +352,24 @@ started.
     ├── development.ini
     ├── learning_journal
     │   ├── __init__.py
-    │   ├── models.py
+    │   ├── models
+    │   │   ├── __init__.py
+    │   │   ├── meta.py
+    │   │   └── mymodel.py
     │   ├── scripts
     │   │   ├── __init__.py
     │   │   └── initializedb.py
     │   ├── static
     ...
     │   ├── templates
-    │   │   └── mytemplate.pt
+    │   │   ├── 404.jinja2
+    │   │   ├── layout.jinja2
+    │   │   └── mytemplate.jinja2
     │   ├── tests.py
-    │   └── views.py
+    │   └── views
+    │   │   ├── __init__.py
+    │   │   ├── default.py
+    │   │   ├── notfound.py
     ├── production.ini
     └── setup.py
 
@@ -386,7 +388,7 @@ You've now created something worth saving.
         (ljenv)$ cd learning_journal
         (ljenv)$ git init
         Initialized empty Git repository in
-         /Users/cewing/projects/learning-journal/learning_journal/.git/
+         .../learning-journal/learning_journal/.git/
 
 .. nextslide:: Saving Your Work
 
@@ -463,9 +465,9 @@ To preserve all these changes, you'll need to commit what you've done:
 
     This will make a first commit here in this local repository.
 
-    For homework, you'll put this into GitHub, but this is enough for now.
+    Later you'll put this into GitHub, but this is enough for now.
 
-    Let's move on to learning about what we've built so far.
+    Let's look at what we have so far.
 
 .. nextslide:: Project Structure
 
@@ -496,18 +498,18 @@ When you ran the ``pcreate`` command, a new folder was created:
         'pyramid',
         ... # packages on which this software depends (dependencies)
         ]
-    setup(name='learning_journal',
-          version='0.0',
-          ... # package metadata (used by PyPI)
-          install_requires=requires,
-          # Entry points are ways that we can run our code once installed
-          entry_points="""\
-          [paste.app_factory]
-          main = learning_journal:main
-          [console_scripts]
-          initialize_learning_journal_db = learning_journal.scripts.initializedb:main
-          """,
-          )
+        setup(name='learning_journal',
+        version='0.0',
+        ... # package metadata (used by PyPI)
+        install_requires=requires,
+        # Entry points are ways that we can run our code once installed
+        entry_points="""\
+        [paste.app_factory]
+        main = learning_journal:main
+        [console_scripts]
+        initialize_learning_journal_db = learning_journal.scripts.initializedb:main
+        """,
+        )
 
 Pyramid is Python
 -----------------
@@ -520,17 +522,14 @@ function:
     def main(global_config, **settings):
         """ This function returns a Pyramid WSGI application.
         """
-        engine = engine_from_config(settings, 'sqlalchemy.')
-        DBSession.configure(bind=engine)
-        Base.metadata.bind = engine
         config = Configurator(settings=settings)
-        config.include('pyramid_chameleon')
-        config.add_static_view('static', 'static', cache_max_age=3600)
-        config.add_route('home', '/')
+        config.include('pyramid_jinja2')
+        config.include('.models')
+        config.include('.routes')
         config.scan()
         return config.make_wsgi_app()
 
-Let's take a closer look at this, line by line.
+Let's take a closer look at this.
 
 .. nextslide:: System Configuration
 
@@ -544,58 +543,32 @@ Configuration is passed in to an application after being read from the
 .. rst-class:: build
 .. container::
 
-    These files contain sections (``[app:main]``) containing ``name = value``
+    These config files contain sections (``[app:main]``) containing ``name = value``
     pairs of *configuration data*
 
-    This data is parsed with the Python
-    `ConfigParser <http://docs.python.org/2/library/configparser.html>`_ module.
-
-    The result is a dict of values:
+    For example, in development.ini:
 
     .. code-block:: python
 
-        {'app:main': {'pyramid.reload_templates': True, ...}, ...}
+      [app:main]
+      use = egg:learning-journal
 
-    The default section of the file is passed in as ``global_config``, the
-    section for *this app* as ``settings``.
+      pyramid.reload_templates = true
+      pyramid.debug_authorization = false
 
-.. nextslide:: Database Configuration
-
-.. code-block:: python
-
-    from sqlalchemy import engine_from_config
-    from .models import DBSession, Base
-    ...
-    engine = engine_from_config(settings, 'sqlalchemy.')
-    DBSession.configure(bind=engine)
-    Base.metadata.bind = engine
-
-We will use a package called ``SQLAlchemy`` to interact with our database.
-
-.. rst-class:: build
-.. container::
-
-    Our connection is set up using settings read from the ``.ini`` file.
-
-    Can you find the settings for the database?
-
-    The ``DBSession`` ensures that each *database transaction* is tied to HTTP
-    requests.
-
-    The ``Base`` provides a parent class that will hook our *models* to the
-    database.
 
 .. nextslide:: App Configuration
 
 .. code-block:: python
 
     config = Configurator(settings=settings)
-    config.include('pyramid_chameleon')
-    config.add_static_view('static', 'static', cache_max_age=3600)
-    config.add_route('home', '/')
+    config.include('pyramid_jinja2')
+    config.include('.models')
+    config.include('.routes')
     config.scan()
+    return config.make_wsgi_app()
 
-Pyramid controlls application-level configuration using a ``Configurator`` class.
+Pyramid controls application-level configuration using a ``Configurator`` class.
 
 .. rst-class:: build
 .. container::
@@ -604,11 +577,25 @@ Pyramid controlls application-level configuration using a ``Configurator`` class
 
     We can also ``include`` configuration from other add-on packages
 
-    Additionally, we can configure *routes* and *views* needed to connect our
-    application to the outside world here (more on this next week).
-
-    Finally, the ``Configurator`` instance performs a ``scan`` to ensure there
+    The ``Configurator`` instance performs a ``scan`` to ensure there
     are no problems with what we've created.
+
+.. nextslide:: Database Configuration
+
+In models/meta.py
+
+.. code-block:: python
+
+    from sqlalchemy.ext.declarative import declarative_base
+    from sqlalchemy.schema import MetaData
+    ....
+    metadata = MetaData(naming_convention=NAMING_CONVENTION)
+    Base = declarative_base(metadata=metadata)
+
+We will use a package called ``SQLAlchemy`` to interact with our database.
+
+The ``Base`` provides a parent class that will hook our *models* to the database.
+
 
 .. nextslide:: A Last Word on Configuration
 
@@ -622,7 +609,7 @@ sessions.
 
     We'll use a few of its features
 
-    But there's a lot more you could (and should) learn.
+    But there's a lot more you could learn.
 
     Read about it in the `configuration chapter`_ of the Pyramid documentation.
 
@@ -707,8 +694,7 @@ system.
 
 .. nextslide:: Alternatives
 
-In the last class from part one of this series, you explored a number of
-alternatives for persistence
+There are a number of options for persistence
 
 .. rst-class:: build
 
@@ -744,12 +730,11 @@ How do you choose one over the other?
     In systems where the dominant feature is viewing/interacting with
     individual objects, a NoSQL storage solution might be the best way to go.
 
-    In systems with objects that are related to eachother, SQL-based Relational
+    In systems with objects that are related to each other, SQL-based Relational
     Databases are a better choice.
 
-    Our system is more like this latter type (trust me on that one for now).
-
-    We'll be using SQL (sqlite to start with).
+    Our system is more like this latter type, so we'll be using SQL
+    (sqlite to start with).
 
 
 .. nextslide:: Objects and Tables
@@ -832,15 +817,15 @@ be installed.
 .. rst-class:: build
 .. container::
 
-    You can also install the package using ``python setup.py install``
+    If that didn't work, you can also install the package using
 
-    But using ``develop`` allows us to continue developing our package without
+    ``python setup.py install``
+
+    Using ``develop`` allows us to continue developing our package without
     needing to re-install it every time we change something.
 
-    It is very similar to using the ``-e`` option to ``pip``
-
-    Now, we'll only need to re-run this command if we change ``setup.py``
-    itself.
+    If you used develop, you'll only need to re-run this command if
+    we change ``setup.py`` itself.
 
 .. nextslide::
 
@@ -875,9 +860,10 @@ Our project skeleton contains up a first, basic model created for us:
 
 .. code-block:: python
 
-    # in models.py
+    # in models/meta.py
     Base = declarative_base()
 
+    #in models/mymodel.py
     class MyModel(Base):
         __tablename__ = 'models'
         id = Column(Integer, primary_key=True)
@@ -951,7 +937,7 @@ We have a *model* which allows us to persist Python objects to an SQL database.
 .. rst-class:: build
 .. container::
 
-    But we're still missing one ingredient here.
+    But we're still missing one ingredient - the database itself.
 
     We need to create our database, or there will be nowhere for our data to
     go.
@@ -978,7 +964,7 @@ Let's look at that code for a moment.
 .. code-block:: python
 
     # in scripts/intitalizedb.py
-    from ..models import DBSession, MyModel, Base
+    from ..models.meta import Base
     # ...
     def main(argv=sys.argv):
         if len(argv) < 2:
@@ -988,11 +974,7 @@ Let's look at that code for a moment.
         setup_logging(config_uri)
         settings = get_appsettings(config_uri, options=options)
         engine = engine_from_config(settings, 'sqlalchemy.')
-        DBSession.configure(bind=engine)
-        Base.metadata.create_all(engine)
-        with transaction.manager:
-            model = MyModel(name='one', value=1)
-            DBSession.add(model)
+        ...
 
 .. nextslide:: Console Scripts
 
@@ -1032,6 +1014,13 @@ Then, as you have changed ``setup.py``, re-install your package:
         (ljenv)$ python setup.py develop
         ...
 
+    or
+
+    .. code-block:: bash
+
+        (ljenv)$ python setup.py install
+        ...
+
 
 .. nextslide:: Running the Script
 
@@ -1046,9 +1035,9 @@ Now that the script has been renamed, let's try it out.
     .. code-block:: bash
 
         (ljenv)$ setup_db development.ini
-        2015-01-05 18:59:55,426 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
+        2017-02-06 18:59:55,426 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT CAST('test plain returns' AS VARCHAR(60)) AS anon_1
         ...
-        2015-01-05 18:59:55,434 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
+        2017-02-06 18:59:55,434 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
 
     The ``[loggers]`` configuration in our ``.ini`` file sends a stream of
     INFO-level logging to sys.stdout as the console script runs.
@@ -1077,7 +1066,7 @@ So what was the outcome of running that script?
 Interacting with SQLA Models
 ----------------------------
 
-It's pretty easy to play with your models from in an interpreter.
+We can play with our models in an Python interpreter.
 
 .. rst-class:: build
 .. container::
@@ -1087,7 +1076,7 @@ It's pretty easy to play with your models from in an interpreter.
 
     You've been using iPython in class, we can use it here too.
 
-    Just install it with ``pip``:
+    Install it with ``pip``:
 
     .. code-block:: bash
 
@@ -1112,10 +1101,10 @@ disposal:
     .. code-block:: bash
 
         (ljenv)$ pshell development.ini
-        Python 3.5.0 (default, Sep 16 2015, 10:42:55)
+        Python 3.5.2 (June 26 2016, 22:18:55)
         Type "copyright", "credits" or "license" for more information.
 
-        IPython 4.0.1 -- An enhanced Interactive Python.
+        IPython 5.2.2 -- An enhanced Interactive Python.
         ?         -> Introduction and overview of IPython's features.
         %quickref -> Quick reference.
         help      -> Python's own help system.
@@ -1164,12 +1153,12 @@ data:
     In [6]: from learning_journal.models import MyModel
     In [7]: session.query(MyModel).all()
     ...
-    2015-12-21 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value
+    2017-02-06 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value
     FROM models
-    2015-12-21 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()
+    2017-02-06 18:06:05,179 INFO  [sqlalchemy.engine.base.Engine][MainThread] ()
     Out[7]: [<learning_journal.models.MyModel at 0x105f30208>]
 
-We've stolen a lot of this from the ``initializedb.py`` script
+Much of this was stolen from /models/__init__.py
 
 .. nextslide:: Basic Interactions
 
@@ -1454,7 +1443,7 @@ Another typical method in this category is ``order_by``:
         Out[41]: [1, 3, 13, 34]
 
         In [42]: [o.name for o in session.query(MyModel).order_by(MyModel.name)]
-        Out[42]: ['walter', 'ginny', 'one', 'sherry']
+        Out[42]: ['ginny', 'one', 'sherry', 'walter']
 
 .. nextslide:: Method Chaining
 
