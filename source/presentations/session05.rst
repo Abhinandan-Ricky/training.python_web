@@ -40,7 +40,7 @@ Agenda:
     * The Model View Controller (MVC) approach to application design
     * Starting our Pyramid Application
     * Break
-    * Lightning Talks (Bradley Baumel, Adam Hollis, Shu Latif, and Nachiket Galande)
+    * Lightning Talks (Adam Hollis, Shu Latif, and Nachiket Galande)
     * Setting up our Pyramid model with sqlalchemy
     * Homework and plan for next week
 
@@ -239,12 +239,18 @@ First published in 2010, Pyramid is a powerful, flexible web framework.
     You can also create powerful, scalable applications using the full
     power of Python
 
-Example
+Examples
 -------
 
 https://talkpython.fm/
 
 https://talkpython.fm/episodes/show/3/pyramid-web-framework
+
+https://www.cars.com/
+
+https://www.surveymonkey.com/
+
+https://trypyramid.com/
 
 
 Starting the Project
@@ -622,7 +628,7 @@ Let's take a moment to rest up and absorb what we've learned.
 
 When we return:
 
-Lightning talks
+Lightning talks (Adam Hollis, Shu Latif, and Nachiket Galande)
 
 We'll see how we can create *models* that will embody the data
 for our Learning Journal application.
