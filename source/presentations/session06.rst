@@ -58,12 +58,12 @@ Over the last week, your assignment was to create the new model.
 
 .. nextslide:: A Complete Example
 
-I've added a working ``models.py`` file to our `class repository`_ in the
+There is a working ``mymodel.py`` file to our `class repository`_ in the
 ``resources/session06/`` folder.
 
 Let's review how it works.
 
-.. _class repository: https://github.com/UWPCE-PythonCert/training.python_web/tree/master/resources/session06
+.. _class repository: https://github.com/christyheaton/training.python_web/tree/master/resources/session06
 
 .. nextslide:: Demo Interaction
 
@@ -114,7 +114,7 @@ Here's a demo interaction using ``pshell`` with these new features:
         Custom Variables:
           create_session learning_journal.create_session
           entry        learning_journal.models.Entry
-        
+
         In [1]: session = create_session(registry.settings)
 
     [demo]
@@ -167,7 +167,7 @@ An HTTP request arrives at a server through the magic of a **URL**
 
 .. code-block:: bash
 
-    http://uwpce-pythoncert.github.io/training.python_web/html/index.html
+    https://christyheaton.github.io/training.python_web/html/index.html
 
 .. rst-class:: build
 .. container::
@@ -179,7 +179,7 @@ An HTTP request arrives at a server through the magic of a **URL**
     \http://:
       This part is the *protocol*, it determines how the request will be sent
 
-    uwpce-pythoncert.github.io:
+    christyheaton.github.io:
       This is a *domain name*.  It's the human-facing address for a server
       somewhere.
 
@@ -204,7 +204,7 @@ location** in the server's filesystem.
     If the path leads to a location that doesn't exist, the server responds
     with a **404 Not Found** error.
 
-    In the golden days of yore, this was the only way content was served via
+    Back in the day, this was the only way content was served via
     HTTP.
 
 .. nextslide:: Paths in an MVC System
@@ -231,29 +231,40 @@ Pyramid.
 Routes in Pyramid
 -----------------
 
-In Pyramid, routes are handled as *configuration* and are set up in the *main*
-function in ``__init__.py``:
+In Pyramid, routes are handled as *configuration* and are referenced in
+the *main* function in ``__init__.py``:
 
 .. code-block:: python
 
     # learning_journal/__init__.py
     def main(global_config, **settings):
         # ...
-        config.add_route('home', '/')
+        config.include('.routes')
         # ...
+
+.. nextslide::
+
+They are set up in ``routes.py``
 
 .. rst-class:: build
 .. container::
 
-    Our code template created a sample route for us, using the ``add_route``
-    method of the ``Configurator`` class.
+.. code-block:: python
 
-    The ``add_route`` method has two required arguments: a *name* and a
-    *pattern*
+    # learning_journal/routes.py
+    def includeme(config):
+        config.add_static_view('static', 'static', cache_max_age=3600)
+        config.add_route('home', '/')
 
-    In our sample route, the *name* is ``'home'``
+Our code template created a sample route for us, using the ``add_route``
+method of the ``Configurator`` class.
 
-    In our sample route, the *pattern* is ``'/'``
+The ``add_route`` method has two required arguments: a *name* and a
+*pattern*
+
+In our sample route, the *name* is ``'home'``
+
+In our sample route, the *pattern* is ``'/'``
 
 .. nextslide::
 
@@ -304,7 +315,7 @@ Let's add routes for our application.
 .. rst-class:: build
 .. container::
 
-    Open ``learning_journal/__init__.py``.
+    Open ``learning_journal/routes.py``.
 
     For our list page, the existing ``'home'`` route will do fine, leave it.
 
@@ -359,16 +370,16 @@ In Pyramid, a *route* is connected by configuration to a *view*.
 .. rst-class:: build
 .. container::
 
-    In our app, a sample view has been created for us, in ``views.py``:
+    In our app, a sample view has been created for us, in ``views/default.py``:
 
     .. code-block:: python
 
-        @view_config(route_name='home', renderer='templates/mytemplate.pt')
+        @view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
         def my_view(request):
             # ...
 
     The order in which *routes* are configured *is important*, so that must be
-    done in ``__init__.py``.
+    done in ``routes.py``.
 
     The order in which views are connected to routes *is not important*, so the
     *declarative* ``@view_config`` decorator can be used.
@@ -414,7 +425,7 @@ So, a *view* is a callable that takes the *request* as an argument.
 
     .. code-block:: python
 
-        @view_config(route_name='home', renderer='templates/mytemplate.pt')
+        @view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
         def my_view(request):
             # ...
 
@@ -430,7 +441,7 @@ So, a *view* is a callable that takes the *request* as an argument.
 
 .. nextslide:: Adding Stub Views
 
-Add temporary views to our application in ``views.py`` (and comment out the
+Add temporary views to our application in ``views\default.py`` (and comment out the
 sample view):
 
 .. code-block:: python
@@ -764,7 +775,7 @@ Call the ``render`` method, providing *context*:
     Note the resemblance to something you've seen before:
 
     .. code-block:: python
-    
+
         >>> "This is {owner}'s string".format(owner="Cris")
         'This is Cris's string'
 
@@ -922,7 +933,7 @@ show it.
     In ``learning_journal/templates`` create a new file ``detail.jinja2``:
 
     .. code-block:: jinja
-    
+
         <article>
           <h1>{{ entry.title }}</h1>
           <hr/>
@@ -934,7 +945,7 @@ show it.
     Then wire it up to the detail view in ``views.py``:
 
     .. code-block:: ipython
-    
+
         # views.py
         @view_config(route_name='detail', renderer='templates/detail.jinja2')
         def view(request):
@@ -1010,7 +1021,7 @@ It's worth taking a look at a few specifics of this template.
 It's worth taking a look at a few specifics of this template.
 
     .. code-block:: jinja
-    
+
         <a href="{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a>
 
     The *request* object is also placed in the context by Pyramid.
@@ -1112,7 +1123,7 @@ The important part here is the ``{% block body %}{% endblock %}`` expression.
     Let's update our detail and list templates:
 
     .. code-block:: jinja
-    
+
         {% extends "layout.jinja2" %}
         {% block body %}
         <!-- everything else that was already there goes here -->
@@ -1165,7 +1176,7 @@ Luckily, ``pcreate`` already handled that for us:
 .. container::
 
     .. code-block:: python
-    
+
         # in learning_journal/__init__.py
         def main(global_config, **settings):
             # ...
@@ -1197,7 +1208,7 @@ templates.
     Add the following to our ``layout.jinja2`` template:
 
     .. code-block:: jinja
-    
+
         <head>
           <!-- ... -->
           <link href="{{ request.static_path('learning_journal:static/styles.css') }}" rel="stylesheet">
@@ -1321,7 +1332,7 @@ We'll want a form to allow a user to create a new Journal Entry.
     ``models.py``:
 
     .. code-block:: python
-    
+
         from wtforms import Form, TextField, TextAreaField, validators
 
         strip_filter = lambda x: x.strip() if x else None
@@ -1379,7 +1390,7 @@ We already have a route that connects here.  Let's test it.
     And then try connecting to the ``action`` route:
 
     * http://localhost:6543/journal/create
-    
+
     You should see something like this::
 
         {'action': u'create', 'form': <learning_journal.forms.EntryCreateForm object at 0x10e7d6b90>}
@@ -1423,7 +1434,7 @@ You'll need to update the view configuration to use this new renderer.
     Update the configuration in ``learning_journal/views.py``:
 
     .. code-block:: python
-    
+
         @view_config(route_name='action', match_param='action=create',
                      renderer='templates/edit.jinja2')
         def create(request):
@@ -1580,7 +1591,7 @@ Submitting Your Work
 As usual, submit your work by committing and pushing it to your project github
 repository
 
-Commit early and commit often.  
+Commit early and commit often.
 
 Write yourself good commit messages explaining what you have done and why.
 
