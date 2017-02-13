@@ -47,77 +47,172 @@ Over the last week, your assignment was to create the new model.
 .. rst-class:: build
 .. container::
 
-    Did you get that done?
+  Homework explanation
 
-    If not, what stopped you?
-
-    Let's take a few minutes here to answer questions about this task so you
-    are more comfortable.
-
-    Questions?
 
 .. nextslide:: A Complete Example
 
-There is a working ``mymodel.py`` file to our `class repository`_ in the
-``resources/session06/`` folder.
+We have a scaffold with a working ``mymodel.py`` file.
 
 Let's review how it works.
 
-.. _class repository: https://github.com/christyheaton/training.python_web/tree/master/resources/session06
+https://github.com/christyheaton/Session06
 
-.. nextslide:: Demo Interaction
 
-I've also made a few small changes to make the ``pshell`` command a bit more
-helpful.
+.. nextslide:: The Database
 
-.. rst-class:: build
-.. container::
+Let's make sure we all have a working model and can use it to make
+our database.
 
-    In ``learning_journal/__init__.py`` I added the following function:
 
-    .. code-block:: python
-
-        def create_session(settings):
-            from sqlalchemy.orm import sessionmaker
-            engine = engine_from_config(settings, 'sqlalchemy.')
-            Session = sessionmaker(bind=engine)
-            return Session()
-
-    Then, in ``development.ini`` I added the following configuration:
-
-    .. code-block:: ini
-
-        [pshell]
-        create_session = learning_journal.create_session
-        entry = learning_journal.models.Entry
-
-.. nextslide:: Using the new ``pshell``
-
-Here's a demo interaction using ``pshell`` with these new features:
+.. nextslide:: Create the Database
 
 .. rst-class:: build
 .. container::
 
-    First ``cd`` to your project code, fire up your project virtualenv and
-    start python:
+    We'll need to provide a configuration file name, let's use
+    ``development.ini``:
 
     .. code-block:: bash
 
-        $ cd projects/learning-journal/learning_journal
-        $ source ../ljenv/bin/activate
-        (ljenv)$ pshell development.ini
-        Python 3.5.0 (default, Sep 16 2015, 10:42:55)
+        (ljenv)$ setup_db development.ini
+        2017-02-12 18:59:55,426 INFO  [sqlalchemy.engine.base.Engine][MainThread] SELECT CAST...
         ...
+        2017-02-12 18:59:55,434 INFO  [sqlalchemy.engine.base.Engine][MainThread] COMMIT
+
+    The ``[loggers]`` configuration in our ``.ini`` file sends a stream of
+    INFO-level logging to sys.stdout as the console script runs.
+
+
+.. nextslide:: Starter Data
+
+Now let's add a an entry so that we have something to play with as
+we build our learning journal
+
+
+.. nextslide:: The ``pshell`` command
+
+Let's fire up ``pshell`` and explore for a moment to see what we have at our
+disposal:
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: bash
+
+        (ljenv)$ pshell development.ini
+        Python 3.5.2 (February 12 2017, 22:18:55)
+        Type "copyright", "credits" or "license" for more information.
+
+        IPython 5.2.2 -- An enhanced Interactive Python.
+        ?         -> Introduction and overview of IPython's features.
+        %quickref -> Quick reference.
+        help      -> Python's own help system.
+        object?   -> Details about 'object', use 'object??' for extra details.
+
         Environment:
           app          The WSGI application.
-          ...
-        Custom Variables:
-          create_session learning_journal.create_session
-          entry        learning_journal.models.Entry
+          registry     Active Pyramid registry.
+          request      Active request object.
+          root         Root of the default resource tree.
+          root_factory Default root factory used to create `root`.
 
-        In [1]: session = create_session(registry.settings)
 
-    [demo]
+.. nextslide::
+
+The ``environment`` created by ``pshell`` provides us with a few useful tools.
+
+.. code-block:: bash
+
+    app          The WSGI application.
+    registry     Active Pyramid registry.
+    request      Active request object.
+    root         Root of the default resource tree.
+    root_factory Default root factory used to create `root`.
+
+.. rst-class:: build
+
+* The ``app`` is our new learning journal application
+* The ``registry`` provides us with access to settings and other useful
+  information
+* The ``request`` is an artificial HTTP request we can use if we need to
+  pretend we are listening to clients
+* ...
+
+
+.. nextslide::
+
+Let's use this environment to build a database session and interact with our
+data:
+
+.. code-block:: ipython
+
+    In [1]: from sqlalchemy import engine_from_config
+    In [2]: engine = engine_from_config(registry.settings, 'sqlalchemy.')
+    In [3]: from sqlalchemy.orm import sessionmaker
+    In [4]: Session = sessionmaker(bind=engine)
+    In [5]: session = Session()
+    In [6]: from learning_journal.models import Entry
+
+
+.. nextslide:: Add an Entry
+
+Create a new model. Set the id, title, and body. Then add and commit.
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: ipython
+
+        In [7]: new_model = Entry(id=1, title="My First Entry", body="I like Python")
+        In [8]: session.add(new_model)
+        In [9]: session.commit()
+
+
+.. nextslide:: Connect database to application
+
+In learning_journal/learning_journal/__init__.py
+
+.. code-block:: python
+
+    from pyramid.config import Configurator
+    #add these imports
+    from sqlalchemy import engine_from_config
+    from .models.mymodel import Base, DBSession
+
+    def main(global_config, **settings):
+      """ This function returns a Pyramid WSGI application."""
+      # add this
+      engine = engine_from_config(settings, 'sqlalchemy.')
+      DBSession.configure(bind=engine)
+      Base.metadata.bind = engine
+      # already there
+      config = Configurator(settings=settings)
+      ...
+
+
+.. nextslide:: Connect database to application
+
+In learning_journal/learning_journal/models/mymodel.py
+
+.. code-block:: python
+
+    from .meta import Base
+
+    #add this
+    import sqlalchemy as sa
+    from sqlalchemy.ext.declarative import declarative_base
+
+    from sqlalchemy.orm import (
+      scoped_session,
+      sessionmaker,
+      )
+
+      from zope.sqlalchemy import ZopeTransactionExtension
+      DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+      Base = declarative_base()
+      ...
+
 
 The MVC Controller
 ==================
@@ -506,12 +601,6 @@ information from our database
         from ..models.mymodel import (
             DBSession,
             Entry # <- Add this import
-        )
-
-        from .models import (
-            DBSession,
-            MyModel,
-            Entry, # <- Add this import
         )
 
         # and update this view function
