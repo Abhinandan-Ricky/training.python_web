@@ -208,10 +208,10 @@ In learning_journal/learning_journal/models/mymodel.py
       sessionmaker,
       )
 
-      from zope.sqlalchemy import ZopeTransactionExtension
-      DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
-      Base = declarative_base()
-      ...
+    from zope.sqlalchemy import ZopeTransactionExtension
+    DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+    Base = declarative_base()
+    ...
 
 
 The MVC Controller
@@ -744,33 +744,8 @@ not the only ones available.
 
 .. nextslide:: Configuring a Template Renderer
 
-.. code-block:: python
-
-    # in setup.py
-    requires = [
-        # ...
-        'pyramid_chameleon',
-        # ...
-    ]
-
-    # in learning_journal/__init__.py
-    def main(global_config, **settings):
-        # ...
-        config.include('pyramid_chameleon')
-
-.. rst-class:: build
-.. container::
-
-    The `pyramid_chameleon` package supports using the `chameleon` template
-    language.
-
-    The language is quite nice and powerful, but not so easy to learn.
-
-    Let's use a different one, *jinja2*
-
-.. nextslide:: Changing Template Renderers
-
-Change ``pyramid_chameleon`` to ``pyramid_jinja2`` in both of these files:
+The `pyramid_jinja2` package supports using the `jinja2` template
+language.
 
 .. code-block:: python
 
@@ -786,24 +761,12 @@ Change ``pyramid_chameleon`` to ``pyramid_jinja2`` in both of these files:
         # ...
         config.include('pyramid_jinja2')
 
-.. nextslide:: Picking up the Changes
+.. nextslide:: Jinja2 Templates
 
-We've changed the dependencies for our Pyramid project.
+We will use *Jinja2* templates in our project.
 
 .. rst-class:: build
 .. container::
-
-    As a result, we will need to re-install it so the new dependencies are also
-    installed:
-
-    .. code-block:: bash
-
-        (ljenv)$ python setup.py develop
-        ...
-        Finished processing dependencies for learning-journal==0.0
-        (ljenv)$
-
-    Now, we can use *Jinja2* templates in our project.
 
     Let's learn a bit about how `Jinja2 templates`_ work.
 
@@ -856,10 +819,10 @@ Call the ``render`` method, providing *context*:
 
 .. code-block:: ipython
 
-    In [3]: t1.render(name="Freddy")
-    Out[3]: 'Hello Freddy, how are you'
-    In [4]: t1.render(name="Gloria")
-    Out[4]: 'Hello Gloria, how are you'
+    In [3]: t1.render(name="Cosmo")
+    Out[3]: 'Hello Cosmo, how are you'
+    In [4]: t1.render(name="Sherry")
+    Out[4]: 'Hello Sherry, how are you'
 
 .. rst-class:: build
 .. container::
@@ -870,8 +833,8 @@ Call the ``render`` method, providing *context*:
 
     .. code-block:: python
 
-        >>> "This is {owner}'s string".format(owner="Cris")
-        'This is Cris's string'
+        >>> "This is {owner}'s string".format(owner="Christy")
+        'This is Christy's string'
 
 
 .. nextslide:: Dictionaries in Context
@@ -881,11 +844,11 @@ subscript or dotted notation:
 
 .. code-block:: ipython
 
-    In [5]: person = {'first_name': 'Frank',
-       ...:           'last_name': 'Herbert'}
+    In [5]: person = {'first_name': 'Princess',
+       ...:           'last_name': 'Leia'}
     In [6]: t2 = Template("{{ person.last_name }}, {{ person['first_name'] }}")
     In [7]: t2.render(person=person)
-    Out[7]: 'Herbert, Frank'
+    Out[7]: 'Leia, Princess'
 
 .. rst-class:: build
 
@@ -906,12 +869,12 @@ The exact same is true of objects passed in as part of *context*:
 
         In [8]: t3 = Template("{{ obj.x }} + {{ obj['y'] }} = Fun!")
         In [9]: class Game(object):
-           ...:     x = 'babies'
-           ...:     y = 'bubbles'
+           ...:     x = 'kittens'
+           ...:     y = 'yarn'
            ...:
         In [10]: bathtime = Game()
         In [11]: t3.render(obj=bathtime)
-        Out[11]: 'babies + bubbles = Fun!'
+        Out[11]: 'kittens + yarn = Fun!'
 
     This means your templates can be agnostic as to the nature of the
     things found in *context*
@@ -1036,11 +999,11 @@ show it.
           <p>Created <strong title="{{ entry.created }}">{{entry.created}}</strong></p>
         </article>
 
-    Then wire it up to the detail view in ``views.py``:
+    Then wire it up to the detail view in ``views\default.py``:
 
     .. code-block:: ipython
 
-        # views.py
+        # views\default.py
         @view_config(route_name='detail', renderer='templates/detail.jinja2')
         def view(request):
             # ...
@@ -1105,7 +1068,7 @@ It's worth taking a look at a few specifics of this template.
     Jinja2 templates are rendered with a *context*.
 
     A Pyramid *view* returns a dictionary, which is passed to the renderer as
-    part of of that *context*
+    part of that *context*
 
     This means we can access values we return from our *view* in the *renderer*
     using the names we assigned to them.
@@ -1414,6 +1377,21 @@ The first step to working with this library is to install it.
         ...
         Finished processing dependencies for learning-journal==0.0
 
+
+.. nextslide:: Installing WTForms
+
+The first step to working with this library is to install it.
+
+.. rst-class:: build
+.. container::
+
+    I still had to pip install `wtforms` to get it to work.
+
+    .. code-block:: bash
+
+        (ljenv)$ pip install wtforms
+
+
 Using WTForms
 -------------
 
@@ -1423,7 +1401,7 @@ We'll want a form to allow a user to create a new Journal Entry.
 .. container::
 
     Add a new file called ``forms.py`` in our learning_journal package, next to
-    ``models.py``:
+    ``models\mymodel.py``:
 
     .. code-block:: python
 
@@ -1448,7 +1426,7 @@ Next, we need to add a new view that uses this form to create a new entry.
 .. rst-class:: build
 .. container::
 
-    Add this to ``views.py``:
+    Add this to ``views\default.py``:
 
     .. code-block:: python
 
@@ -1525,7 +1503,7 @@ You'll need to update the view configuration to use this new renderer.
 .. rst-class:: build
 .. container::
 
-    Update the configuration in ``learning_journal/views.py``:
+    Update the configuration in ``learning_journal/views/default.py``:
 
     .. code-block:: python
 
