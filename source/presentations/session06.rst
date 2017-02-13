@@ -503,6 +503,11 @@ information from our database
 
     .. code-block:: python
 
+        from ..models.mymodel import (
+            DBSession,
+            Entry # <- Add this import
+        )
+
         from .models import (
             DBSession,
             MyModel,
@@ -1409,7 +1414,7 @@ Finally, we need to create a template that will render our form.
 
         {% extends "templates/layout.jinja2" %}
         {% block body %}
-        <form action="." method="POST">
+        <form method="POST">
         {% for field in form %}
           {% if field.errors %}
             <ul>
