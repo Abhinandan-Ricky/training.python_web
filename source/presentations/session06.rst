@@ -647,10 +647,8 @@ information from our database
 
     .. code-block:: python
 
-        from ..models.mymodel import (
-            DBSession,
-            Entry # <- Add this import
-        )
+        from ..models.mymodel import Entry, DBSession # <- Add this import
+
 
         # and update this view function
         def index_page(request):
@@ -1341,7 +1339,7 @@ templates.
 
 .. nextslide:: Basic Styles
 
-I've created some very very basic styles for our learning journal.
+We have some very basic styles for our learning journal.
 
 .. rst-class:: build
 .. container::
@@ -1461,7 +1459,7 @@ We'll want a form to allow a user to create a new Journal Entry.
 .. container::
 
     Add a new file called ``forms.py`` in our learning_journal package, next to
-    ``models\mymodel.py``:
+    ``views\default.py``:
 
     .. code-block:: python
 
