@@ -74,6 +74,30 @@
 <p><strong>Wherein we learn to display our data, and to create and edit it too!</strong></p>
 <div class="section" id="but-first">
 <h3>But First<a class="headerlink" href="#but-first" title="Permalink to this headline">¶</a></h3>
+<p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Class website - where to find this week&#8217;s materials</li>
+<li>Review of last week</li>
+<li>Homework review</li>
+<li>Routes and Controllers (aka Views)</li>
+<li>Break</li>
+<li>Lightning Talks (Sheree Pena, Deana Holmer, and (maybe) Brad Baumel)</li>
+<li>Views (aka Templates aka Renderers)</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div></blockquote>
+<div class="build left docutils container">
+<p>Class website - where to find this week&#8217;s materials</p>
+<ul class="build simple">
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/slides/presentations/session06.html#1">https://christyheaton.github.io/training.python_web/slides/presentations/session06.html#1</a></li>
+<li><a class="reference external" href="https://github.com/christyheaton/Session06">https://github.com/christyheaton/Session06</a></li>
+<li><a class="reference external" href="https://github.com/christyheaton/training.python_web/tree/master/resources/session06">https://github.com/christyheaton/training.python_web/tree/master/resources/session06</a></li>
+</ul>
+</div>
+<p class="large centered">Review of last week</p>
+<p class="large centered">Homework Review and Questions</p>
+<p class="large centered">Let&#8217;s continue working on our Pyramid App</p>
 <p>Last week we discussed the <strong>model</strong> part of the <em>MVC</em> application design
 pattern.</p>
 <div class="build docutils container">
@@ -91,53 +115,114 @@ and a pair of methods we think we will need to make the model complete.</p>
 <h3>Our Data Model<a class="headerlink" href="#our-data-model" title="Permalink to this headline">¶</a></h3>
 <p>Over the last week, your assignment was to create the new model.</p>
 <div class="build docutils container">
-<p>Did you get that done?</p>
-<p>If not, what stopped you?</p>
-<p>Let&#8217;s take a few minutes here to answer questions about this task so you
-are more comfortable.</p>
-<p>Questions?</p>
-</div>
-<p>I&#8217;ve added a working <code class="docutils literal"><span class="pre">models.py</span></code> file to our <a class="reference external" href="https://github.com/UWPCE-PythonCert/training.python_web/tree/master/resources/session06">class repository</a> in the
-<code class="docutils literal"><span class="pre">resources/session06/</span></code> folder.</p>
+Homework explanation</div>
+<p>We have a scaffold with a working <code class="docutils literal"><span class="pre">mymodel.py</span></code> file.</p>
 <p>Let&#8217;s review how it works.</p>
-<p>I&#8217;ve also made a few small changes to make the <code class="docutils literal"><span class="pre">pshell</span></code> command a bit more
-helpful.</p>
+<p><a class="reference external" href="https://github.com/christyheaton/Session06">https://github.com/christyheaton/Session06</a></p>
+<p>Let&#8217;s make sure we all have a working model and can use it to make
+our database.</p>
 <div class="build docutils container">
-<p>In <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code> I added the following function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_session</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-    <span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Session</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Then, in <code class="docutils literal"><span class="pre">development.ini</span></code> I added the following configuration:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[pshell]</span>
-<span class="na">create_session</span> <span class="o">=</span> <span class="s">learning_journal.create_session</span>
-<span class="na">entry</span> <span class="o">=</span> <span class="s">learning_journal.models.Entry</span>
-</pre></div>
-</div>
-</div>
-<p>Here&#8217;s a demo interaction using <code class="docutils literal"><span class="pre">pshell</span></code> with these new features:</p>
-<div class="build docutils container">
-<p>First <code class="docutils literal"><span class="pre">cd</span></code> to your project code, fire up your project virtualenv and
-start python:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> projects/learning-journal/learning_journal
-$ <span class="nb">source</span> ../ljenv/bin/activate
-<span class="o">(</span>ljenv<span class="o">)</span>$ pshell development.ini
-Python 3.5.0 <span class="o">(</span>default, Sep <span class="m">16</span> 2015, 10:42:55<span class="o">)</span>
+<p>Create your database using the <code class="docutils literal"><span class="pre">development.ini</span></code> as the configuration file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ setup_db development.ini
+2017-02-12 18:59:55,426 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> SELECT CAST...
 ...
+2017-02-12 18:59:55,434 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> COMMIT
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">[loggers]</span></code> configuration in our <code class="docutils literal"><span class="pre">.ini</span></code> file sends a stream of
+INFO-level logging to sys.stdout as the console script runs.</p>
+</div>
+<p>Now let&#8217;s add a an entry so that we have something to play with as
+we build our learning journal.</p>
+<p>Let&#8217;s fire up <code class="docutils literal"><span class="pre">pshell</span></code> to do this.</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pshell development.ini
+Python 3.5.2 <span class="o">(</span>February <span class="m">12</span> 2017, 22:18:55<span class="o">)</span>
+Type <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+
+IPython 5.2.2 -- An enhanced Interactive Python.
+?         -&gt; Introduction and overview of IPython<span class="s1">&#39;s features.</span>
+<span class="s1">%quickref -&gt; Quick reference.</span>
+<span class="s1">help      -&gt; Python&#39;</span>s own <span class="nb">help</span> system.
+object?   -&gt; Details about <span class="s1">&#39;object&#39;</span>, use <span class="s1">&#39;object??&#39;</span> <span class="k">for</span> extra details.
+
 Environment:
   app          The WSGI application.
-  ...
-Custom Variables:
-  create_session learning_journal.create_session
-  entry        learning_journal.models.Entry
-
-In <span class="o">[</span>1<span class="o">]</span>: <span class="nv">session</span> <span class="o">=</span> create_session<span class="o">(</span>registry.settings<span class="o">)</span>
+  registry     Active Pyramid registry.
+  request      Active request object.
+  root         Root of the default resource tree.
+  root_factory Default root factory used to create <span class="sb">`</span>root<span class="sb">`</span>.
 </pre></div>
 </div>
-<p>[demo]</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">environment</span></code> created by <code class="docutils literal"><span class="pre">pshell</span></code> provides us with a few useful tools.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>app          The WSGI application.
+registry     Active Pyramid registry.
+request      Active request object.
+root         Root of the default resource tree.
+root_factory Default root factory used to create <span class="sb">`</span>root<span class="sb">`</span>.
+</pre></div>
+</div>
+<ul class="build simple">
+<li>The <code class="docutils literal"><span class="pre">app</span></code> is our new learning journal application</li>
+<li>The <code class="docutils literal"><span class="pre">registry</span></code> provides us with access to settings and other useful
+information</li>
+<li>The <code class="docutils literal"><span class="pre">request</span></code> is an artificial HTTP request we can use if we need to
+pretend we are listening to clients</li>
+<li>...</li>
+</ul>
+<p>Let&#8217;s use this environment to build a database session and interact with our
+data:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+<span class="gp">In [2]: </span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+<span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+<span class="gp">In [4]: </span><span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<span class="gp">In [6]: </span><span class="kn">from</span> <span class="nn">learning_journal.models</span> <span class="kn">import</span> <span class="n">Entry</span>
+</pre></div>
+</div>
+<p>Create a new model. Set the id, title, and body. Then add and commit.</p>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My First Entry&quot;</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="s2">&quot;I like Python&quot;</span><span class="p">)</span>
+<span class="gp">In [8]: </span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_model</span><span class="p">)</span>
+<span class="gp">In [9]: </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>In learning_journal/learning_journal/__init__.py</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyramid.config</span> <span class="kn">import</span> <span class="n">Configurator</span>
+<span class="c1">#add these imports</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+<span class="kn">from</span> <span class="nn">.models.mymodel</span> <span class="kn">import</span> <span class="n">Base</span><span class="p">,</span> <span class="n">DBSession</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.&quot;&quot;&quot;</span>
+  <span class="c1"># add this</span>
+  <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+  <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+  <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
+  <span class="c1"># already there</span>
+  <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>In learning_journal/learning_journal/models/mymodel.py</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.meta</span> <span class="kn">import</span> <span class="n">Base</span>
+
+<span class="c1">#add this</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="kn">as</span> <span class="nn">sa</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="p">(</span>
+  <span class="n">scoped_session</span><span class="p">,</span>
+  <span class="n">sessionmaker</span><span class="p">,</span>
+  <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">zope.sqlalchemy</span> <span class="kn">import</span> <span class="n">ZopeTransactionExtension</span>
+<span class="n">DBSession</span> <span class="o">=</span> <span class="n">scoped_session</span><span class="p">(</span><span class="n">sessionmaker</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="n">ZopeTransactionExtension</span><span class="p">()))</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+<span class="o">...</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -167,7 +252,7 @@ pattern.</p>
 <p>And around and around it goes.</p>
 </div>
 <p>An HTTP request arrives at a server through the magic of a <strong>URL</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>http://uwpce-pythoncert.github.io/training.python_web/html/index.html
+<div class="highlight-bash"><div class="highlight"><pre><span></span>https://christyheaton.github.io/training.python_web/html/index.html
 </pre></div>
 </div>
 <div class="build docutils container">
@@ -175,7 +260,7 @@ pattern.</p>
 <dl class="build docutils">
 <dt>http://:</dt>
 <dd>This part is the <em>protocol</em>, it determines how the request will be sent</dd>
-<dt>uwpce-pythoncert.github.io:</dt>
+<dt>christyheaton.github.io:</dt>
 <dd>This is a <em>domain name</em>.  It&#8217;s the human-facing address for a server
 somewhere.</dd>
 <dt>/training.python_web/html/index.html:</dt>
@@ -192,7 +277,7 @@ location</strong> in the server&#8217;s filesystem.</p>
 to the user as a response.</p>
 <p>If the path leads to a location that doesn&#8217;t exist, the server responds
 with a <strong>404 Not Found</strong> error.</p>
-<p>In the golden days of yore, this was the only way content was served via
+<p>Back in the day, this was the only way content was served via
 HTTP.</p>
 </div>
 <p>In todays world we have dynamic systems, server-side web frameworks like
@@ -210,23 +295,28 @@ handle requests.</p>
 </div>
 <div class="section" id="routes-in-pyramid">
 <h3>Routes in Pyramid<a class="headerlink" href="#routes-in-pyramid" title="Permalink to this headline">¶</a></h3>
-<p>In Pyramid, routes are handled as <em>configuration</em> and are set up in the <em>main</em>
-function in <code class="docutils literal"><span class="pre">__init__.py</span></code>:</p>
+<p>In Pyramid, routes are handled as <em>configuration</em> and are referenced in
+the <em>main</em> function in <code class="docutils literal"><span class="pre">__init__.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># learning_journal/__init__.py</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="c1"># ...</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;.routes&#39;</span><span class="p">)</span>
     <span class="c1"># ...</span>
 </pre></div>
 </div>
-<div class="build docutils container">
+<p>They are set up in <code class="docutils literal"><span class="pre">routes.py</span></code></p>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="c1"># learning_journal/routes.py</span>
+<span class="k">def</span> <span class="nf">includeme</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Our code template created a sample route for us, using the <code class="docutils literal"><span class="pre">add_route</span></code>
 method of the <code class="docutils literal"><span class="pre">Configurator</span></code> class.</p>
 <p>The <code class="docutils literal"><span class="pre">add_route</span></code> method has two required arguments: a <em>name</em> and a
 <em>pattern</em></p>
 <p>In our sample route, the <em>name</em> is <code class="docutils literal"><span class="pre">'home'</span></code></p>
 <p>In our sample route, the <em>pattern</em> is <code class="docutils literal"><span class="pre">'/'</span></code></p>
-</div>
 <p>When a request comes in to a Pyramid application, the framework looks at all
 the <em>routes</em> that have been configured.</p>
 <div class="build docutils container">
@@ -253,7 +343,7 @@ app will do.</p>
 </div>
 <p>Let&#8217;s add routes for our application.</p>
 <div class="build docutils container">
-<p>Open <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code>.</p>
+<p>Open <code class="docutils literal"><span class="pre">learning_journal/routes.py</span></code>.</p>
 <p>For our list page, the existing <code class="docutils literal"><span class="pre">'home'</span></code> route will do fine, leave it.</p>
 <p>Add the following two routes:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="c1"># already there</span>
@@ -289,14 +379,14 @@ marker</em>, a valid Python symbol surrounded by curly braces:</p>
 </div>
 <p>In Pyramid, a <em>route</em> is connected by configuration to a <em>view</em>.</p>
 <div class="build docutils container">
-<p>In our app, a sample view has been created for us, in <code class="docutils literal"><span class="pre">views.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/mytemplate.pt&#39;</span><span class="p">)</span>
+<p>In our app, a sample view has been created for us, in <code class="docutils literal"><span class="pre">views/default.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;../templates/mytemplate.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># ...</span>
 </pre></div>
 </div>
 <p>The order in which <em>routes</em> are configured <em>is important</em>, so that must be
-done in <code class="docutils literal"><span class="pre">__init__.py</span></code>.</p>
+done in <code class="docutils literal"><span class="pre">routes.py</span></code>.</p>
 <p>The order in which views are connected to routes <em>is not important</em>, so the
 <em>declarative</em> <code class="docutils literal"><span class="pre">&#64;view_config</span></code> decorator can be used.</p>
 <p>When <code class="docutils literal"><span class="pre">config.scan</span></code> is called, all files in our application are searched
@@ -321,7 +411,7 @@ nature of <em>views</em></p>
 perhaps using the application&#8217;s <em>models</em>.</p>
 <p>Then, it returns the data it assembled, passing it on to a <a class="reference external" href="http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/narr/renderers.html">renderer</a>.</p>
 <p>Which <em>renderer</em> to use is determined, again, by configuration:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/mytemplate.pt&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;../templates/mytemplate.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># ...</span>
 </pre></div>
@@ -331,7 +421,7 @@ perhaps using the application&#8217;s <em>models</em>.</p>
 <em>model</em> and <em>renderers</em> that offer rendering of the results.</p>
 <p>It is the <em>Controller</em> in our MVC application.</p>
 </div>
-<p>Add temporary views to our application in <code class="docutils literal"><span class="pre">views.py</span></code> (and comment out the
+<p>Add temporary views to our application in <code class="docutils literal"><span class="pre">views\default.py</span></code> (and comment out the
 sample view):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -373,10 +463,9 @@ information from our database</p>
 <p>We&#8217;ll begin with the list view.</p>
 <p>We need some code that will fetch all the journal entries we&#8217;ve written, in
 reverse order, and hand that collection back for rendering.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="p">(</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..models.mymodel</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">DBSession</span><span class="p">,</span>
-    <span class="n">MyModel</span><span class="p">,</span>
-    <span class="n">Entry</span><span class="p">,</span> <span class="c1"># &lt;- Add this import</span>
+    <span class="n">Entry</span> <span class="c1"># &lt;- Add this import</span>
 <span class="p">)</span>
 
 <span class="c1"># and update this view function</span>
@@ -424,6 +513,12 @@ database?</p>
 <li><a class="reference external" href="http://localhost:6543/journal/100">http://localhost:6543/journal/100</a></li>
 </ul>
 </div>
+</div>
+<div class="section" id="break">
+<h3>Break<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h3>
+<p>When we come back:</p>
+<p>Lightning Talks (Sheree Pena, Deana Holmer, and (maybe) Brad Baumel)</p>
+<p>Settings up our views (aka Templates aka Renderers)</p>
 </div>
 </div>
 <div class="section" id="the-mvc-view">
@@ -476,26 +571,8 @@ languages</em> as renderers.</p>
 <p>In fact, one of these was installed by default when you created this
 project.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in setup.py</span>
-<span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c1"># ...</span>
-    <span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">,</span>
-    <span class="c1"># ...</span>
-<span class="p">]</span>
-
-<span class="c1"># in learning_journal/__init__.py</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
-    <span class="c1"># ...</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="build docutils container">
-<p>The <cite>pyramid_chameleon</cite> package supports using the <cite>chameleon</cite> template
+<p>The <cite>pyramid_jinja2</cite> package supports using the <cite>jinja2</cite> template
 language.</p>
-<p>The language is quite nice and powerful, but not so easy to learn.</p>
-<p>Let&#8217;s use a different one, <em>jinja2</em></p>
-</div>
-<p>Change <code class="docutils literal"><span class="pre">pyramid_chameleon</span></code> to <code class="docutils literal"><span class="pre">pyramid_jinja2</span></code> in both of these files:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in setup.py</span>
 <span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># ...</span>
@@ -509,19 +586,9 @@ language.</p>
     <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_jinja2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We&#8217;ve changed the dependencies for our Pyramid project.</p>
+<p>We will use <em>Jinja2</em> templates in our project.</p>
 <div class="build docutils container">
-<p>As a result, we will need to re-install it so the new dependencies are also
-installed:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
-...
-Finished processing dependencies <span class="k">for</span> learning-journal<span class="o">==</span>0.0
-<span class="o">(</span>ljenv<span class="o">)</span>$
-</pre></div>
-</div>
-<p>Now, we can use <em>Jinja2</em> templates in our project.</p>
-<p>Let&#8217;s learn a bit about how <a class="reference external" href="http://jinja.pocoo.org/docs/templates/">Jinja2 templates</a> work.</p>
-</div>
+Let&#8217;s learn a bit about how <a class="reference external" href="http://jinja.pocoo.org/docs/templates/">Jinja2 templates</a> work.</div>
 </div>
 <div class="section" id="jinja2-template-basics">
 <h3>Jinja2 Template Basics<a class="headerlink" href="#jinja2-template-basics" title="Permalink to this headline">¶</a></h3>
@@ -550,27 +617,27 @@ build a template from the contents of a <em>file</em>.</p>
 replaced.</p>
 </div>
 <p>Call the <code class="docutils literal"><span class="pre">render</span></code> method, providing <em>context</em>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">t1</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Freddy&quot;</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">&#39;Hello Freddy, how are you&#39;</span>
-<span class="gp">In [4]: </span><span class="n">t1</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Gloria&quot;</span><span class="p">)</span>
-<span class="gh">Out[4]: </span><span class="go">&#39;Hello Gloria, how are you&#39;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">t1</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cosmo&quot;</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go">&#39;Hello Cosmo, how are you&#39;</span>
+<span class="gp">In [4]: </span><span class="n">t1</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sherry&quot;</span><span class="p">)</span>
+<span class="gh">Out[4]: </span><span class="go">&#39;Hello Sherry, how are you&#39;</span>
 </pre></div>
 </div>
 <div class="build docutils container">
 <p><em>Context</em> can either be keyword arguments, or a dictionary</p>
 <p>Note the resemblance to something you&#8217;ve seen before:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is {owner}&#39;s string&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="s2">&quot;Cris&quot;</span><span class="p">)</span>
-<span class="go">&#39;This is Cris&#39;s string&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;This is {owner}&#39;s string&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="s2">&quot;Christy&quot;</span><span class="p">)</span>
+<span class="go">&#39;This is Christy&#39;s string&#39;</span>
 </pre></div>
 </div>
 </div>
 <p>Dictionaries passed in as part of the <em>context</em> can be addressed with <em>either</em>
 subscript or dotted notation:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Frank&#39;</span><span class="p">,</span>
-<span class="gp">   ...: </span>          <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Herbert&#39;</span><span class="p">}</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Princess&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>          <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Leia&#39;</span><span class="p">}</span>
 <span class="gp">In [6]: </span><span class="n">t2</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="s2">&quot;{{ person.last_name }}, {{ person[&#39;first_name&#39;] }}&quot;</span><span class="p">)</span>
 <span class="gp">In [7]: </span><span class="n">t2</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">person</span><span class="o">=</span><span class="n">person</span><span class="p">)</span>
-<span class="gh">Out[7]: </span><span class="go">&#39;Herbert, Frank&#39;</span>
+<span class="gh">Out[7]: </span><span class="go">&#39;Leia, Princess&#39;</span>
 </pre></div>
 </div>
 <ul class="build simple">
@@ -583,12 +650,12 @@ subscript).</li>
 <div class="build docutils container">
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">t3</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="s2">&quot;{{ obj.x }} + {{ obj[&#39;y&#39;] }} = Fun!&quot;</span><span class="p">)</span>
 <span class="gp">In [9]: </span><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;babies&#39;</span>
-<span class="gp">   ...: </span>    <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;bubbles&#39;</span>
+<span class="gp">   ...: </span>    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;kittens&#39;</span>
+<span class="gp">   ...: </span>    <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;yarn&#39;</span>
 <span class="gp">   ...:</span>
 <span class="gp">In [10]: </span><span class="n">bathtime</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
 <span class="gp">In [11]: </span><span class="n">t3</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">obj</span><span class="o">=</span><span class="n">bathtime</span><span class="p">)</span>
-<span class="gh">Out[11]: </span><span class="go">&#39;babies + bubbles = Fun!&#39;</span>
+<span class="gh">Out[11]: </span><span class="go">&#39;kittens + yarn = Fun!&#39;</span>
 </pre></div>
 </div>
 <p>This means your templates can be agnostic as to the nature of the
@@ -675,8 +742,8 @@ show it.</p>
 <span class="x">&lt;/article&gt;</span>
 </pre></div>
 </div>
-<p>Then wire it up to the detail view in <code class="docutils literal"><span class="pre">views.py</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="c1"># views.py</span>
+<p>Then wire it up to the detail view in <code class="docutils literal"><span class="pre">views\default.py</span></code>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="c1"># views\default.py</span>
 <span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/detail.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="c1"># ...</span>
@@ -724,7 +791,7 @@ that next.</p>
 </div>
 <p>Jinja2 templates are rendered with a <em>context</em>.</p>
 <p>A Pyramid <em>view</em> returns a dictionary, which is passed to the renderer as
-part of of that <em>context</em></p>
+part of that <em>context</em></p>
 <p>This means we can access values we return from our <em>view</em> in the <em>renderer</em>
 using the names we assigned to them.</p>
 </div>
@@ -927,13 +994,20 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
 </pre></div>
 </div>
 </div>
+<p>The first step to working with this library is to install it.</p>
+<div class="build docutils container">
+<p>I still had to pip install <cite>wtforms</cite> to get it to work.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip install wtforms
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="using-wtforms">
 <h3>Using WTForms<a class="headerlink" href="#using-wtforms" title="Permalink to this headline">¶</a></h3>
 <p>We&#8217;ll want a form to allow a user to create a new Journal Entry.</p>
 <div class="build docutils container">
 <p>Add a new file called <code class="docutils literal"><span class="pre">forms.py</span></code> in our learning_journal package, next to
-<code class="docutils literal"><span class="pre">models.py</span></code>:</p>
+<code class="docutils literal"><span class="pre">models\mymodel.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wtforms</span> <span class="kn">import</span> <span class="n">Form</span><span class="p">,</span> <span class="n">TextField</span><span class="p">,</span> <span class="n">TextAreaField</span><span class="p">,</span> <span class="n">validators</span>
 
 <span class="n">strip_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="bp">None</span>
@@ -952,7 +1026,7 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
 </div>
 <p>Next, we need to add a new view that uses this form to create a new entry.</p>
 <div class="build docutils container">
-<p>Add this to <code class="docutils literal"><span class="pre">views.py</span></code>:</p>
+<p>Add this to <code class="docutils literal"><span class="pre">views\default.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add these imports</span>
 <span class="kn">from</span> <span class="nn">pyramid.httpexceptions</span> <span class="kn">import</span> <span class="n">HTTPFound</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">EntryCreateForm</span>
@@ -992,7 +1066,7 @@ serving on http://0.0.0.0:6543
 <code class="docutils literal"><span class="pre">learning_journal/templates</span></code>:</p>
 <div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;templates/layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">&lt;form action=&quot;.&quot; method=&quot;POST&quot;&gt;</span>
+<span class="x">&lt;form method=&quot;POST&quot;&gt;</span>
 <span class="cp">{%</span> <span class="k">for</span> <span class="nv">field</span> <span class="k">in</span> <span class="nv">form</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">  </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">field.errors</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;ul&gt;</span>
@@ -1011,7 +1085,7 @@ serving on http://0.0.0.0:6543
 </div>
 <p>You&#8217;ll need to update the view configuration to use this new renderer.</p>
 <div class="build docutils container">
-<p>Update the configuration in <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code>:</p>
+<p>Update the configuration in <code class="docutils literal"><span class="pre">learning_journal/views/default.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=create&#39;</span><span class="p">,</span>
              <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/edit.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -1157,6 +1231,7 @@ repository to us, we&#8217;ll take a look and make comments.</p>
 <li><a class="reference internal" href="#http-request-response">HTTP Request/Response</a></li>
 <li><a class="reference internal" href="#routes-in-pyramid">Routes in Pyramid</a></li>
 <li><a class="reference internal" href="#the-pyramid-view">The Pyramid View</a></li>
+<li><a class="reference internal" href="#break">Break</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-mvc-view">The MVC View</a><ul>
