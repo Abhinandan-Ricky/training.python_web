@@ -14,9 +14,60 @@ Interacting with Data
 
 **Wherein we learn to display our data, and to create and edit it too!**
 
-
 But First
 ---------
+
+.. rst-class:: build left
+.. container::
+
+Agenda:
+
+    .. rst-class:: build
+
+    * Class website - where to find this week's materials
+    * Review of last week
+    * Homework review
+    * Routes and Controllers (aka Views)
+    * Break
+    * Lightning Talks (Sheree Pena, Deana Holmer, and (maybe) Brad Baumel)
+    * Views (aka Templates aka Renderers)
+    * Homework and plan for next week
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+    Class website - where to find this week's materials
+
+    .. rst-class:: build
+
+    * https://christyheaton.github.io/training.python_web/slides/presentations/session06.html#1
+    * https://github.com/christyheaton/Session06
+    * https://github.com/christyheaton/training.python_web/tree/master/resources/session06
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Review of last week
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Homework Review and Questions
+
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Let's continue working on our Pyramid App
+
+.. nextslide::
 
 Last week we discussed the **model** part of the *MVC* application design
 pattern.
@@ -70,8 +121,7 @@ our database.
 .. rst-class:: build
 .. container::
 
-    We'll need to provide a configuration file name, let's use
-    ``development.ini``:
+    Create your database using the ``development.ini`` as the configuration file:
 
     .. code-block:: bash
 
@@ -87,13 +137,12 @@ our database.
 .. nextslide:: Starter Data
 
 Now let's add a an entry so that we have something to play with as
-we build our learning journal
+we build our learning journal.
 
 
 .. nextslide:: The ``pshell`` command
 
-Let's fire up ``pshell`` and explore for a moment to see what we have at our
-disposal:
+Let's fire up ``pshell`` to do this.
 
 .. rst-class:: build
 .. container::
@@ -659,6 +708,17 @@ We can now verify that these views work correctly.
     database?
 
     * http://localhost:6543/journal/100
+
+
+Break
+-----
+
+When we come back:
+
+Lightning Talks (Sheree Pena, Deana Holmer, and (maybe) Brad Baumel)
+
+Settings up our views (aka Templates aka Renderers)
+
 
 The MVC View
 ============
