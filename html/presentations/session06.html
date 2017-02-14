@@ -463,10 +463,8 @@ information from our database</p>
 <p>We&#8217;ll begin with the list view.</p>
 <p>We need some code that will fetch all the journal entries we&#8217;ve written, in
 reverse order, and hand that collection back for rendering.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..models.mymodel</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DBSession</span><span class="p">,</span>
-    <span class="n">Entry</span> <span class="c1"># &lt;- Add this import</span>
-<span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..models.mymodel</span> <span class="kn">import</span> <span class="n">Entry</span><span class="p">,</span> <span class="n">DBSession</span> <span class="c1"># &lt;- Add this import</span>
+
 
 <span class="c1"># and update this view function</span>
 <span class="k">def</span> <span class="nf">index_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -933,7 +931,7 @@ asset.</p>
 specify which package we want to look in.</p>
 <p>That&#8217;s why we have <code class="docutils literal"><span class="pre">learning_journal:static/styles.css</span></code> in our call.</p>
 </div>
-<p>I&#8217;ve created some very very basic styles for our learning journal.</p>
+<p>We have some very basic styles for our learning journal.</p>
 <div class="build docutils container">
 <p>You can find them in <code class="docutils literal"><span class="pre">resources/session06/styles.css</span></code>.  Go ahead and copy
 that file.</p>
@@ -1007,7 +1005,7 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
 <p>We&#8217;ll want a form to allow a user to create a new Journal Entry.</p>
 <div class="build docutils container">
 <p>Add a new file called <code class="docutils literal"><span class="pre">forms.py</span></code> in our learning_journal package, next to
-<code class="docutils literal"><span class="pre">models\mymodel.py</span></code>:</p>
+<code class="docutils literal"><span class="pre">views\default.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wtforms</span> <span class="kn">import</span> <span class="n">Form</span><span class="p">,</span> <span class="n">TextField</span><span class="p">,</span> <span class="n">TextAreaField</span><span class="p">,</span> <span class="n">validators</span>
 
 <span class="n">strip_filter</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="bp">None</span>
