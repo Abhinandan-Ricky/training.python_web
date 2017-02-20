@@ -26,6 +26,44 @@ Security And Deployment
 But First
 ---------
 
+.. rst-class:: build left
+.. container::
+
+Agenda:
+
+    .. rst-class:: build
+
+    * Class website - where to find this week's materials
+    * Review of last week
+    * Homework review
+    * Adding Security
+    * Break
+    * Lightning Talks (Brad Baumel, Sheree, Pena, Jerry Bearer, Jack Hefner, Marcus Williams)
+    * Deploying to Heroku
+    * Plan for next week
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+    Class website - where to find this week's materials
+
+    .. rst-class:: build
+
+    * Follow along:
+    * https://christyheaton.github.io/training.python_web/html/presentations/session07.html
+    * Fork and clone:
+    * https://github.com/christyheaton/Session07_start
+
+.. nextslide::
+
+.. rst-class:: large centered
+
+Review of last week
+
+.. nextslide::
+
 .. rst-class:: large center
 
 Questions About the Homework?
@@ -37,7 +75,7 @@ Questions About the Homework?
     class EntryEditForm(EntryCreateForm):
         id = HiddenField()
 
-`View the form online <https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/forms.py#L25>`_
+`View the form online <https://github.com/christyheaton/Session07_start/blob/master/learning_journal/views/forms.py#L15>`_
 
 .. nextslide:: A Working Edit View
 
@@ -56,7 +94,7 @@ Questions About the Homework?
             return HTTPFound(location=request.route_url('detail', id=entry.id))
         return {'form': form, 'action': request.matchdict.get('action')}
 
-`See this view online <https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/views.py#L43>`_
+`See this view online <https://github.com/christyheaton/Session07_start/blob/master/learning_journal/views/default.py#L37>`_
 
 .. nextslide:: Linking to the Edit Form
 
@@ -75,7 +113,7 @@ Questions About the Homework?
     {% endblock %}
 
 
-`View this template online <https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/detail.jinja2#L12>`_
+`View this template online <https://github.com/christyheaton/Session07_start/blob/master/learning_journal/templates/detail.jinja2#L13>`_
 
 .. nextslide:: A Working User Model
 
@@ -91,7 +129,7 @@ Questions About the Homework?
         def by_name(cls, name):
             return DBSession.query(cls).filter(cls.name == name).first()
 
-`View this model online <https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/models.py#L62>`_
+`View this model online <https://github.com/christyheaton/Session07_start/blob/master/learning_journal/models/mymodel.py#L52>`_
 
 Securing An Application
 =======================
@@ -157,7 +195,7 @@ In Pyramid these two aspects are handled by separate configuration settings:
 
     Pyramid comes with a few policy classes included.
 
-    You can also roll your own, so long as they fulfill the requried interface.
+    You can also roll your own, so long as they fulfill the required interface.
 
     You can learn about the interfaces for `authentication`_ and
     `authorization`_ in the Pyramid documentation
@@ -520,7 +558,7 @@ passwords.
     In ``learning_journal/models.py`` add the following code:
 
     .. code-block:: python
-    
+
         # add an import at the top
         from passlib.context import CryptContext
 
@@ -758,7 +796,7 @@ We should be ready at this point.
     Load the home page and see your login form:
 
     * http://localhost:6543/
-      
+
     Fill it in and submit the form, verify that you can add a new entry.
 
 .. nextslide:: Break Time
@@ -985,14 +1023,14 @@ app.
 .. rst-class:: build
 .. container::
 
-    You can override this and specify any runtime version of Python 
+    You can override this and specify any runtime version of Python
     `available in Heroku`_.
-    
+
     Just add a file called ``runtime.txt`` to your repository, with one line
     only:
 
     .. code-block:: ini
-    
+
         python-3.5.0
 
     Create that file, add it to your repository, and commit the changes.
@@ -1243,7 +1281,7 @@ We've been handling our application's dependencies by adding them to
     installed in a virtual environment using the ``freeze`` command:
 
     .. code-block:: bash
-    
+
         (ljenv)$ pip freeze
         ...
         zope.interface==4.1.3
@@ -1253,7 +1291,7 @@ We've been handling our application's dependencies by adding them to
     ``requirements.txt`` at the root of our project repository:
 
     .. code-block:: bash
-    
+
         (ljenv)$ pip freeze > requirements.txt
 
     Add this file to your repository and commit the changes.
@@ -1811,7 +1849,7 @@ classes around bits of your code.
     Make sure you are in the directory with ``setup.py`` when you run this:
 
     .. code-block:: bash
-    
+
         (ljenv)$ pygmentize -f html -S colorful -a .codehilite \
              >> learning_journal/static/styles.css
 
@@ -1856,7 +1894,7 @@ When you've got this working as you wish, go ahead and deploy it.
     Then push your results to the ``heroku master``:
 
     .. code-block:: bash
-    
+
         (ljenv)$ git push heroku master
 
 Homework
