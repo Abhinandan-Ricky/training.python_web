@@ -996,7 +996,7 @@ We'll need to do the same thing for initializing the database.
 
         #!/bin/bash
         python setup.py develop
-        initialize_learning_journal_db production.ini
+        setup_db production.ini
 
     Now, add ``run``, ``build_db`` and ``runapp.py`` to your repository and
     commit the changes.
@@ -1028,8 +1028,11 @@ For Heroku to use them, ``run`` and ``build_db`` must be *executable*
         C:\views\myproject>git ls-tree HEAD
         100755 blob 3689ebe2a18a1c8ec858cf531d8c0ec34c8405b4    run
 
-    Commit your changes to git to make them permanent.
+.. nextslide:: Make it Executable
 
+Commit your changes to git to make them permanent.
+
+Windows users: commit even if it doesn't seem like permissions have been changed.
 
 .. nextslide:: Procfile
 
@@ -1072,7 +1075,7 @@ app.
 
     .. code-block:: ini
 
-        python-3.5.0
+        python-3.5.2
 
     Create that file, add it to your repository, and commit the changes.
 
@@ -1163,7 +1166,7 @@ toolbelt:
 
         (ljenv)$ heroku config
         === rocky-atoll-9934 Config Vars
-        DATABASE_URL:                 postgres://<username>:<password>@<domain>:<port>/<database-name>
+        DATABASE_URL: postgres://<username>:<password>@<domain>:<port>/<database-name>
 
 Configuration for Heroku
 ------------------------
@@ -1224,6 +1227,9 @@ We'll need to make the same changes to
 
 .. code-block:: python
 
+    #import os up top
+    import os
+    #then
     def main(argv=sys.argv):
         # ...
         settings = get_appsettings(config_uri, options=options)
@@ -1243,23 +1249,35 @@ for our initial user:
     .. code-block:: python
 
         # in learning_journal/scripts/initializedb.py
+        # import os up top
+        import os
+        # then
         with transaction.manager:
             password = os.environ.get('ADMIN_PASSWORD', 'admin')
             encrypted = password_context.encrypt(password)
             admin = User(name=u'admin', password=encrypted)
             DBSession.add(admin)
 
-    And for the secret value for our AuthTktAuthenticationPolicy
+.. nextslide:: Additional Security
 
-    .. code-block:: python
+And for the secret value for our AuthTktAuthenticationPolicy
 
-        # in learning_journal/__init__.py
-        def main(global_config, **settings):
-            # ...
-            secret = os.environ.get('AUTH_SECRET', 'somesecret')
-            ...
-            authentication_policy=AuthTktAuthenticationPolicy(secret)
-            # ...
+.. code-block:: python
+
+    # in learning_journal/__init__.py
+    def main(global_config, **settings):
+        # ...
+        Base.metadata.bind = engine
+        #add this line
+        secret = os.environ.get('AUTH_SECRET', 'somesecret')
+        config = Configurator(
+            settings=settings,
+            #change this line
+            authentication_policy=AuthTktAuthenticationPolicy(secret),
+            authorization_policy=ACLAuthorizationPolicy(),
+            default_permission='view'
+        )
+        # ...
 
 .. nextslide:: Heroku Config
 
@@ -1355,7 +1373,7 @@ But there is also a new dependency we've added that is only needed for Heroku.
 
     .. code-block:: bash
 
-        psycopg2==2.6.1
+        psycopg2==2.6.2
 
     Commit the change to your repository.
 
@@ -1419,7 +1437,7 @@ At this point, you should be ready to view your application online.
 
         (ljenv)$ heroku ps
         === web (1X): `./run`
-        web.1: up 2015/01/18 16:44:37 (~ 31m ago)
+        web.1: up 2017/02/20 16:44:37 (~ 31m ago)
 
     If you get no results, use the ``scale`` command to try turning on a web
     *dyno*:
@@ -1456,8 +1474,8 @@ Troubleshooting problems with Heroku deployment can be challenging.
 
         (ljenv)$ heroku logs
         ...
-        2015-01-19T01:17:59.443720+00:00 app[web.1]: serving on http://0.0.0.0:53843
-        2015-01-19T01:17:59.505003+00:00 heroku[web.1]: State changed from starting to update
+        2017-02-20T01:17:59.443720+00:00 app[web.1]: serving on http://0.0.0.0:53843
+        2017-02-20T01:17:59.505003+00:00 heroku[web.1]: State changed from starting to update
 
     This command will print the last 50 or so lines of logging from your
     application.
@@ -1512,7 +1530,7 @@ Our ``login`` view is already set up to work for logout.
 
     All we need to do is add a view_config that allows that.
 
-    Open ``learning_journal/views.py`` and make these changes:
+    Open ``learning_journal/views/default.py`` and make these changes:
 
     .. code-block:: python
 
@@ -1560,7 +1578,7 @@ who are not logged in.
 
     .. code-block:: python
 
-        # learning_journal/views.py
+        # learning_journal/views/default.py
         @view_config(route_name='detail', renderer='templates/detail.jinja2')
         def view(request):
             # ...
@@ -1705,7 +1723,7 @@ the database to HTML at template rendering time.
 .. rst-class:: build
 .. container::
 
-    Open ``learning_journal/views.py`` and add the following:
+    Open ``learning_journal/views/default.py`` and add the following:
 
     .. code-block:: python
 
@@ -1848,7 +1866,7 @@ Again, we need to install our new dependency first.
 
 .. nextslide:: Add to Our Filter
 
-The next step is to extend our markdown filter in ``learning_journal/views.py``
+The next step is to extend our markdown filter in ``learning_journal/views/default.py``
 with this feature.
 
 .. rst-class:: build
