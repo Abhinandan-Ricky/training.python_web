@@ -51,10 +51,14 @@ Agenda:
 
     .. rst-class:: build
 
-    * Follow along:
+    * `Follow along:`
     * https://christyheaton.github.io/training.python_web/html/presentations/session07.html
-    * Fork and clone:
+    * `Fork and clone:`
     * https://github.com/christyheaton/Session07_start
+    * `Setup a free Heroku account:`
+    * https://signup.heroku.com/dc?_ga=1.49575009.69317905.1484276660
+    * `Heroku Command Line Interface:`
+    * https://devcenter.heroku.com/articles/getting-started-with-python#set-up
 
 .. nextslide::
 
@@ -498,11 +502,12 @@ Python provides a number of libraries for implementing strong encryption.
 
     .. code-block:: python
 
+        # in learning_journal/security.py, at the top, put:
         from passlib.context import CryptContext
         password_context = CryptContext(schemes=['pbkdf2_sha512'])
         hashed = password_context.encrypt('password')
         if password_context.verify('password', hashed):
-            print "It matched"
+            print("It matched")
 
 .. _Passlib: https://pythonhosted.org/passlib/
 
@@ -552,14 +557,13 @@ passwords.
     the responsibility for password interactions, we'll create our context in
     the same place it is defined.
 
-    In ``learning_journal/models.py`` add the following code:
+    In ``learning_journal/models/mymodel.py`` add the following code:
 
     .. code-block:: python
 
         # add an import at the top
         from passlib.context import CryptContext
-
-        # then lower down, make a context at module scope:
+        # then, make a context at module scope:
         password_context = CryptContext(schemes=['pbkdf2_sha512'])
 
 
@@ -571,7 +575,7 @@ our ``User`` class that uses it to verify a plaintext password:
 .. rst-class:: build
 .. container::
 
-    Again, in ``learning_journal/models.py`` add the following to the ``User``
+    Again, in ``learning_journal/models/mymodel.py`` add the following to the ``User``
     class:
 
     .. code-block:: python
@@ -590,21 +594,59 @@ We'll also need to have a user for our system.
 .. container::
 
     We can use the database initialization script to create one for us.
+    Start by importing the User and password_context from mymodel.py
 
     Open ``learning_journal/scripts/initialzedb.py``:
 
     .. code-block:: python
 
-        from learning_journal.models import password_context
-        from learning_journal.models import User
+        from ..models.mymodel import (
+            DBSession,
+            Base,
+            User, # <-- new
+            password_context, # <-- new
+        )
+
+.. nextslide:: Create a User
+
+.. rst-class:: build
+.. container::
+
+    Tie in some db info
+
+    Open ``learning_journal/scripts/initialzedb.py``:
+
+    .. code-block:: python
+
+        #replace these
+        #engine = get_engine(settings)
+        #session_factory = get_session_factory(engine)
+
+        #with this
+        engine = engine_from_config(settings, 'sqlalchemy.')
+        DBSession.configure(bind=engine)
+
+
+.. nextslide:: Create a User
+
+.. rst-class:: build
+.. container::
+
+    Have the admin user get added when the database is created.
+
+    Open ``learning_journal/scripts/initialzedb.py``:
+
+    .. code-block:: python
+
         # and update the main function like so:
         def main(argv=sys.argv):
             # ...
             with transaction.manager:
-                # replace the code to create a MyModel instance
-                encrypted = password_context.encrypt('admin')
-                admin = User(name='admin', password=encrypted)
-                DBSession.add(admin)
+            password = os.environ.get('ADMIN_PASSWORD', 'admin')
+            encrypted = password_context.encrypt(password)
+            admin = User(name=u'admin', password=encrypted)
+            DBSession.add(admin)
+
 
 .. nextslide:: Rebuild the Database:
 
@@ -626,11 +668,11 @@ re-build it.
 
     .. code-block:: bash
 
-        (ljenv)$ initialize_learning_journal_db development.ini
+        (ljenv)$ setup_db development.ini
         ...
-        2015-01-17 16:43:55,237 INFO  [sqlalchemy.engine.base.Engine][MainThread]
+        2017-02-20 16:43:55,237 INFO  [sqlalchemy.engine.base.Engine][MainThread]
           INSERT INTO users (name, password) VALUES (?, ?)
-        2015-01-17 16:43:55,237 INFO  [sqlalchemy.engine.base.Engine][MainThread]
+        2017-02-20 16:43:55,237 INFO  [sqlalchemy.engine.base.Engine][MainThread]
           ('admin', '$2a$10$4Z6RVNhTE21mPLJW5VeiVe0EG57gN/HOb7V7GUwIr4n1vE.wTTTzy')
 
 Providing Login UI
@@ -647,11 +689,11 @@ We now have a user in our database with a strongly encrypted password.
     We must now provide a view that lets us log in to our application.
 
     We start by adding a new *route* to our configuration in
-    ``learning_journal/__init__.py``:
+    ``learning_journal/routes.py``:
 
     .. code-block:: python
 
-        config.add_rount('action' ...)
+        config.add_route('action',...)
         # ADD THIS
         config.add_route('auth', '/sign/{action}', factory=EntryFactory)
 
@@ -662,7 +704,7 @@ It would be nice to use the form library again to make a login form.
 .. rst-class:: build
 .. container::
 
-    Open ``learning_journal/forms.py`` and add the following:
+    Open ``learning_journal/views/forms.py`` and add the following:
 
     .. code-block:: python
 
@@ -678,11 +720,11 @@ It would be nice to use the form library again to make a login form.
             )
 
 
-.. nextslide:: Login View in ``learning_journal/views.py``
+.. nextslide:: Login View in ``learning_journal/views/default.py``
 
 .. ifnotslides::
 
-    Next, we'll create a login view in ``learning_journal/views.py``
+    Next, we'll create a login view in ``learning_journal/views/default.py``
 
 .. code-block:: python
 
@@ -733,7 +775,7 @@ logged in, if any.
 .. rst-class:: build
 .. container::
 
-    We can use that to update our home page in ``learning_journal/views.py``:
+    We can use that to update our home page in ``learning_journal/views/default.py``:
 
     .. code-block:: python
 
@@ -743,7 +785,7 @@ logged in, if any.
         # and update the index_page view:
         @view_config(...)
         def index_page(request):
-            # ... get all entries here
+            entries = Entry.all()
             form = None
             if not authenticated_userid(request):
                 form = LoginForm()
@@ -800,7 +842,9 @@ We should be ready at this point.
 
 That's enough for now.  We have a working application.
 
-When we return, we'll deploy it.
+When we return, lightning talks: (Brad Baumel, Sheree, Pena, Jerry Bearer, Jack Hefner, Marcus Williams)
+
+Then we'll deploy our app.
 
 
 Deploying An Application
