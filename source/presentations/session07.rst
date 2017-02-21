@@ -224,8 +224,8 @@ We'll be using two built-in policies today:
     * Everyone can view entries, and the list of all entries
     * Users who log in may edit entries or create new ones
 
-.. _authentication ticket: http://docs.pylonsproject.org/docs/pyramid/en/latest/api/authentication.html#pyramid.authentication.AuthTktAuthenticationPolicy
-.. _Access Control List: http://docs.pylonsproject.org/docs/pyramid/en/latest/api/authorization.html#pyramid.authorization.ACLAuthorizationPolicy
+.. _authentication ticket: http://docs.pylonsproject.org/projects/pyramid_zcml/en/latest/zcml/authtktauthenticationpolicy.html
+.. _Access Control List: http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/security.html
 
 .. nextslide:: Engaging Security
 
@@ -308,8 +308,7 @@ Next we have to grant some permissions to principals.
 
 .. nextslide:: Add ``security.py``
 
-In the same folder where you have ``models.py`` and ``views.py``, add a new
-file ``security.py``
+In the base learning_journal directory, add a new file ``security.py``
 
 .. rst-class:: build
 .. container::
@@ -339,17 +338,15 @@ we can tell our configuration to use it.
 .. rst-class:: build
 .. container::
 
-    Open ``learning_journal/__init__.py`` and update the route configuration
+    Open ``learning_journal/routes.py`` and update the route configuration
     for our routes:
 
     .. code-block:: python
 
         # add an import at the top:
         from .security import EntryFactory
-        # update the route configurations:
-        def main(global_config, **settings):
-            """ This function returns a Pyramid WSGI application.
-            """
+        def includeme(config):
+            config.add_static_view('static', 'static', cache_max_age=3600)
             # ... Add the factory keyword argument to our route configurations:
             config.add_route('home', '/', factory=EntryFactory)
             config.add_route('detail', '/journal/{id:\d+}', factory=EntryFactory)
@@ -376,7 +373,7 @@ permission by default.
 
 .. nextslide:: Requiring Permissions for a View
 
-Open ``learning_journal/views.py``, and edit the ``@view_config`` for
+Open ``learning_journal/views/default.py``, and edit the ``@view_config`` for
 ``create`` and ``update``:
 
 .. code-block:: python
