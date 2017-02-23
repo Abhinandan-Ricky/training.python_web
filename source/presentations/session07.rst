@@ -731,7 +731,7 @@ It would be nice to use the form library again to make a login form.
     # new imports:
     from pyramid.security import forget, remember
     from .forms import LoginForm
-    from .models import User
+    from ..models.mymodel import User
     # and a new view
     @view_config(route_name='auth', match_param='action=in', renderer='string',
          request_method='POST')
@@ -793,7 +793,9 @@ logged in, if any.
 
 .. nextslide:: Update ``list.jinja2``
 
-Now we have to update the template for the ``index_page`` to display the form, *if it is there*
+Now we have to update the template for the ``index_page`` to display the form, *if it is there*.
+
+Open templates/list.jinja2
 
 .. rst-class:: build
 .. container::
@@ -1369,7 +1371,7 @@ But there is also a new dependency we've added that is only needed for Heroku.
     We don't want to install this locally, though, where we use sqlite.
 
     Go ahead and add one more line to ``requirements.txt`` with the latest
-    version of the ``pyscopg2`` package:
+    version of the ``psycopg2`` package:
 
     .. code-block:: bash
 
@@ -1757,7 +1759,7 @@ it.
         [app:main]
         ...
         jinja2.filters =
-            markdown = learning_journal.views.render_markdown
+            markdown = learning_journal.views.default.render_markdown
 
     This informs the main app that we wish to register a jinja2 filter.
 
