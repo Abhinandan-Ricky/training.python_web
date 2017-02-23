@@ -954,7 +954,7 @@ password against this encrypted version.</p>
       <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># new imports:</span>
 <span class="kn">from</span> <span class="nn">pyramid.security</span> <span class="kn">import</span> <span class="n">forget</span><span class="p">,</span> <span class="n">remember</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">LoginForm</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">..models.mymodel</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="c1"># and a new view</span>
 <span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=in&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
      <span class="n">request_method</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">)</span>
@@ -1036,7 +1036,8 @@ logged in, if any.</p>
       <h3>Update <code class="docutils literal"><span class="pre">list.jinja2</span></code></h3>
     </hgroup>
     <article class="">
-      <p>Now we have to update the template for the <code class="docutils literal"><span class="pre">index_page</span></code> to display the form, <em>if it is there</em></p>
+      <p>Now we have to update the template for the <code class="docutils literal"><span class="pre">index_page</span></code> to display the form, <em>if it is there</em>.</p>
+<p>Open templates/list.jinja2</p>
 <div class="build docutils container">
 <div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">login_form</span> <span class="cp">%}</span><span class="x"></span>
@@ -1701,7 +1702,7 @@ zope.sqlalchemy<span class="o">==</span>0.7.6
 <code class="docutils literal"><span class="pre">psycopg2</span></code> package, which handles communicating with the database.</p>
 <p>We don't want to install this locally, though, where we use sqlite.</p>
 <p>Go ahead and add one more line to <code class="docutils literal"><span class="pre">requirements.txt</span></code> with the latest
-version of the <code class="docutils literal"><span class="pre">pyscopg2</span></code> package:</p>
+version of the <code class="docutils literal"><span class="pre">psycopg2</span></code> package:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">psycopg2</span><span class="o">==</span>2.6.2
 </pre></div>
 </div>
@@ -2143,7 +2144,7 @@ it.</p>
 <div class="highlight-ini"><div class="highlight"><pre><span></span>[app:main]
 ...
 jinja2.filters =
-    markdown = learning_journal.views.render_markdown
+    markdown = learning_journal.views.default.render_markdown
 </pre></div>
 </div>
 <p>This informs the main app that we wish to register a jinja2 filter.</p>
