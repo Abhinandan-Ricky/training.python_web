@@ -1976,13 +1976,8 @@ Homework
 
         If you wish, play with HTML and CSS to make your journal more personalized.
 
-        However, in preparation for our work with Django next week, I'd like you to
-        get started a bit ahead of time.
-
-        Please read and follow along with this `basic intro to Django`_.
+        We'll get started with Django next week!
 
         .. rst-class:: centered
 
         **See You Then**
-
-.. _basic intro to Django: django_intro.html
