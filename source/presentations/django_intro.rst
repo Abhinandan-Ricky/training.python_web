@@ -48,14 +48,14 @@ Then, activate it::
 Install Django
 --------------
 
-Finally, install Django 1.7.4 using ``pip``::
+Finally, install Django 1.10.5 using ``pip``::
 
-    (djangoenv)$ pip install Django==1.9
-    Collecting Django==1.9
-      Downloading Django-1.9-py2.py3-none-any.whl (6.6MB)
+    (djangoenv)$ pip install Django
+    Collecting django
+      Downloading Django-1.10.5-py2.py3-none-any.whl (6.6MB)
         100% |████████████████████████████████| 6.6MB 47kB/s
     Installing collected packages: Django
-    Successfully installed Django-1.9
+    Successfully installed django-1.10.5
     (djangoenv)$
 
 
@@ -79,8 +79,8 @@ If you're on windows, that command is slightly different:
           `installation documentation`_. For windows users, see also
           `this guide to installation on Windows`_
 
-.. _installation documentation: https://docs.djangoproject.com/en/1.9/intro/install/
-.. _this guide to installation on Windows: https://docs.djangoproject.com/en/1.9/howto/windows/
+.. _installation documentation: https://docs.djangoproject.com/en/1.10/intro/install/
+.. _this guide to installation on Windows: https://docs.djangoproject.com/en/1.10/howto/windows/
 
 
 This will create a folder called 'mysite'. The folder contains the following
@@ -95,7 +95,7 @@ structure::
         └── wsgi.py
 
 If what you see doesn't match that, you're using an older version of Django.
-Make sure you've installed 1.7.4
+Make sure you've installed 1.10.5
 
 
 What Got Created
@@ -140,8 +140,10 @@ Look in the ``manage.py`` script Django created for you. You'll see this:
     if __name__ == "__main__":
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
-        from django.core.management import execute_from_command_line
-
+        try:
+            from django.core.management import execute_from_command_line
+        except ImportError:
+        ....
         execute_from_command_line(sys.argv)
 
 The environmental var ``DJANGO_SETTINGS_MODULE`` is how the ``manage.py``
@@ -157,6 +159,10 @@ At this point, you should be ready to use the development server::
     (djangoenv)$ cd mysite
     (djangoenv)$ ./manage.py runserver
     ...
+
+    Windows users:
+
+    C:/> python manage.py runserver
 
 You'll see a scary warning about unapplied migrations.  Ignore it for a moment.
 Instead, load ``http://localhost:8000`` in your browser. You should see this:
@@ -297,6 +303,7 @@ This should leave you with the following structure:
     ├── myblog
     │   ├── __init__.py
     │   ├── admin.py
+    │   ├── apps.py
     │   ├── migrations
     │   │   └── __init__.py
     │   ├── models.py
@@ -323,7 +330,7 @@ the Django ``Model`` class. This base class hooks in to the ORM functionality
 converting Python code to SQL. You can override methods from the base ``Model``
 class to alter how this works or write new methods to add functionality.
 
-Learn more about `models <https://docs.djangoproject.com/en/1.9/topics/db/models/>`_
+Learn more about `models <https://docs.djangoproject.com/en/1.10/topics/db/models/>`_
 
 
 Our Post Model
@@ -358,7 +365,7 @@ attributes.
 * There are also arguments specific to individual types
 
 You can read much more about
-`Model Fields and options <https://docs.djangoproject.com/en/1.9/ref/models/fields/>`_
+`Model Fields and options <https://docs.djangoproject.com/en/1.10/ref/models/fields/>`_
 
 There are some features of our fields worth mentioning in specific. Notice we
 have no field that is designated as the *primary key*
@@ -453,7 +460,7 @@ Once Django is made aware of the existence of this new app, it can  make a new
 
     (djangoenv)$ ./manage.py makemigrations myblog
     Migrations for 'myblog':
-      0001_initial.py:
+       myblog\migrations\0001_initial.py:
         - Create model Post
 
 And now you can run that migration to make the changes to your database:
@@ -462,9 +469,8 @@ And now you can run that migration to make the changes to your database:
 
     (djangoenv)$ ./manage.py migrate
     Operations to perform:
-      Apply all migrations: sessions, myblog, contenttypes, auth, admin
+      Apply all migrations: admin, auth, contenttypes, myblog, sessions
     Running migrations:
-      Rendering model states... DONE
       Applying myblog.0001_initial... OK
 
 
@@ -565,9 +571,9 @@ When we save our post, these fields will get values assigned:
 
     In [13]: p1.save()
     In [14]: print(p1.created_date)
-    2015-12-31 19:24:29.019293+00:00
+    2017-02-25 19:24:29.019293+00:00
     In [15]: print(p1.modified_date)
-    2015-12-31 19:24:29.019532+00:00
+    2017-02-25 19:24:29.019532+00:00
 
 
 Updating An Instance
@@ -602,8 +608,8 @@ API:
     In [22]: p4 = Post(title="Posters are a great decoration",
        ....:           text="When you are a poor college student",
        ....:           author=all_users[0]).save()
-       ....: Post.objects.count()
-    Out[22]: 4
+    In [23]: Post.objects.count()
+    Out[23]: 4
 
 
 The Django Query API
@@ -649,7 +655,7 @@ Conversely, the latter will issue an SQL query when executed.
 .. code-block:: ipython
 
     In [28]: a.count()  #<-- immediately executes an SQL query
-    Out[28]: 4 
+    Out[28]: 4
 
 
 QuerySets and SQL
@@ -662,10 +668,10 @@ If you are curious, you can see the SQL that a given QuerySet will use:
     In [29]: print(c.query)
     SELECT "myblog_post"."id", "myblog_post"."title", "myblog_post"."text",
            "myblog_post"."author_id", "myblog_post"."created_date",
-           "myblog_post"."modified_date", "myblog_post"."published_date" 
-    FROM "myblog_post" 
+           "myblog_post"."modified_date", "myblog_post"."published_date"
+    FROM "myblog_post"
     WHERE (
-        "myblog_post"."title" LIKE %post% ESCAPE '\' 
+        "myblog_post"."title" LIKE %post% ESCAPE '\'
         AND NOT ("myblog_post"."text" LIKE %created% ESCAPE '\')
     )
 
@@ -677,7 +683,7 @@ The SQL will vary depending on which DBAPI backend you use (yay ORM!!!)
 Exploring the QuerySet API
 --------------------------
 
-See https://docs.djangoproject.com/en/1.9/ref/models/querysets
+See https://docs.djangoproject.com/en/1.10/ref/models/querysets
 
 
 .. code-block:: ipython
@@ -721,10 +727,10 @@ without calling the ``save`` instance method:
     Out[18]: 4
     In [19]: [p.published_date for p in qs]
     Out[19]:
-    [datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=<UTC>),
-     datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=<UTC>),
-     datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=<UTC>),
-     datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=<UTC>)]
+    [datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=<UTC>),
+     datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=<UTC>),
+     datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=<UTC>),
+     datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=<UTC>)]
 
 
 Testing Our Model
@@ -831,9 +837,11 @@ We have yet to implement this enhancement, so our test should fail:
     FAIL: test_string_representation (myblog.tests.PostTestCase)
     ----------------------------------------------------------------------
     Traceback (most recent call last):
-      File "/Users/cewing/projects/training/uw_pce/training.python_web/scripts/session07/mysite/myblog/tests.py", line 15, in test_string_representation
+      File "C:\Users\chris\Projects\mysite\myblog\tests.py", line 18, in test_string_representation
         self.assertEqual(expected, actual)
-    AssertionError: 'This is a title' != u'Post object'
+    AssertionError: 'This is a title' != 'Post object'
+    - This is a title
+    + Post object
 
     ----------------------------------------------------------------------
     Ran 1 test in 0.007s
@@ -884,7 +892,7 @@ of style and taste (and of budget).
 We've only begun to test our blog app. We'll be adding many more tests later.
 In between, you might want to take a look at the `Django testing documentation`_:
 
-.. _Django testing documentation: https://docs.djangoproject.com/en/1.9/topics/testing/
+.. _Django testing documentation: https://docs.djangoproject.com/en/1.10/topics/testing/
 
 
 The Django Admin
@@ -955,12 +963,10 @@ stroke.
 
     .. code-block:: python
 
-
         from django.contrib import admin # <- should be present already
 
         urlpatterns = [
-            ...
-            url(r'^admin/', include(admin.site.urls)), #<- this should be too
+            url(r'^admin/', admin.site.urls), #<- this should be too
         ]
 
 We can now view the admin.  We'll use the Django development server.
@@ -975,12 +981,13 @@ development server:
 ::
 
     (djangoenv)$ ./manage.py runserver
-    Validating models...
+    Performing system checks...
 
-    0 errors found
-    Django version 1.4.3, using settings 'mysite.settings'
-    Development server is running at http://127.0.0.1:8000/
-    Quit the server with CONTROL-C.
+    System check identified no issues (0 silenced).
+    February 25, 2017 - 12:51:42
+    Django version 1.10.5, using settings 'mysite.settings'
+    Starting development server at http://127.0.0.1:8000/
+    Quit the server with CTRL-BREAK.
 
 
 Viewing the Admin
@@ -1047,5 +1054,3 @@ We've also hooked up the Django Admin and noted some shortcomings.
 
 In class we'll learn how to put a front end on this, add new models, and
 customize the admin experience.
-
-
