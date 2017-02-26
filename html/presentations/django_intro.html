@@ -41,7 +41,7 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x0000016E556FB780>  
+<generator object macro at 0x00000248B0566BA0>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -98,10 +98,6 @@ Successfully installed django-1.10.5
 <p>Everything in Django stems from the <em>project</em>. To get started learning, we&#8217;ll
 create one. We&#8217;ll use a script installed by Django, <code class="docutils literal"><span class="pre">django-admin.py</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ django-admin startproject mysite
-</pre></div>
-</div>
-<p>If you&#8217;re on windows, that command is slightly different:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>django-admin.exe startproject mysite
 </pre></div>
 </div>
 <div class="admonition note">
@@ -177,10 +173,6 @@ rename the project package.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ cd mysite
 (djangoenv)$ python manage.py runserver
 ...
-
-Windows users:
-
-C:/&gt; python manage.py runserver
 </pre></div>
 </div>
 <p>You&#8217;ll see a scary warning about unapplied migrations.  Ignore it for a moment.
@@ -229,8 +221,8 @@ Running migrations:
 <p>Great!  Now we can set up an initial user who&#8217;ll be able to do anything, a
 <em>superuser</em>.  Again, we&#8217;ll use <code class="docutils literal"><span class="pre">manage.py</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py createsuperuser
-Username <span class="o">(</span>leave blank to use <span class="s1">&#39;cewing&#39;</span><span class="o">)</span>:
-Email address: cris@crisewing.com
+Username <span class="o">(</span>leave blank to use <span class="s1">&#39;chris&#39;</span><span class="o">)</span>:
+Email address: christyheaton@gmail.com
 Password:
 Password <span class="o">(</span>again<span class="o">)</span>:
 Superuser created successfully.
@@ -499,7 +491,7 @@ this, we need to have an instance of the <code class="docutils literal"><span cl
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="gp">In [6]: </span><span class="n">all_users</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="gp">In [7]: </span><span class="n">all_users</span>
-<span class="gh">Out[7]: </span><span class="go">[&lt;User: cewing&gt;]</span>
+<span class="gh">Out[7]: </span><span class="go">[&lt;User: chris&gt;]</span>
 <span class="gp">In [8]: </span><span class="n">p1</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">all_users</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -909,9 +901,9 @@ customize the admin experience.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x0000016E556FB938>
+      </div><generator object macro at 0x00000248B0566AF0>
       <div class="clearer"></div>
-    </div><generator object macro at 0x0000016E556FB780>
+    </div><generator object macro at 0x00000248B0566BA0>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
