@@ -1,8 +1,6 @@
 from django.conf.urls import url
-
 from myblog.views import stub_view
 from myblog.views import list_view
-
 
 urlpatterns = [
     url(r'^$',
