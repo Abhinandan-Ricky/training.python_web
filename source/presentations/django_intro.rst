@@ -229,8 +229,8 @@ Great!  Now we can set up an initial user who'll be able to do anything, a
 .. code-block:: bash
 
     (djangoenv)$ python manage.py createsuperuser
-    Username (leave blank to use 'cewing'):
-    Email address: cris@crisewing.com
+    Username (leave blank to use 'chris'):
+    Email address: christyheaton@gmail.com
     Password:
     Password (again):
     Superuser created successfully.
@@ -539,7 +539,7 @@ Let's use the *manager* to get an instance of the ``User`` class:
     In [5]: from django.contrib.auth.models import User
     In [6]: all_users = User.objects.all()
     In [7]: all_users
-    Out[7]: [<User: cewing>]
+    Out[7]: [<User: chris>]
     In [8]: p1.author = all_users[0]
 
 And now our instance should validate properly:
