@@ -15,6 +15,23 @@ Building a Django Application
 
 Wherein we build a simple blogging app.
 
+But First
+---------
+
+.. rst-class:: build left
+.. container::
+
+Agenda:
+
+    .. rst-class:: build
+
+    * Class website - where to find this week's materials
+    * Starting our Django blogging app
+    * Break
+    * Lightning Talks (Sasi Mandava, Ninad Naik, Jay Raina, Josh Hicks, Brad Baumel)
+    * Models, views, and templates
+    * Plan for next week
+
 
 A Full Stack Framework
 ----------------------
@@ -63,7 +80,7 @@ Works in concert with the Django ORM to provide automatic CRUD functionality
 
 .. nextslide:: The Pareto Principle
 
-The Django Admin is a great example of the Pareto Priciple, a.k.a. the 80/20
+The Django Admin is a great example of the Pareto Principle, a.k.a. the 80/20
 rule:
 
 .. rst-class:: build
@@ -105,23 +122,8 @@ Clearly the most popular full-stack Python web framework at this time
 
 .. nextslide:: Active Development
 
-Django releases in the last 12+ months (a short list):
+https://www.djangoproject.com/download/
 
-.. rst-class:: build
-.. container::
-
-    .. rst-class:: build
-
-    * 1.9 (December 2015)
-    * 1.8.7 (November 2015)
-    * 1.7.11 (November 2015)
-    * 1.8.5 (October 2015)
-    * 1.7.10 (August 2015)
-    * 1.8.3 (July 2015)
-    * 1.8 (April 2015)
-    * 1.7.7 (March 2015)
-    * 1.7.4 (January 2014)
-      
     Django 1.8 is the second *Long Term Support* version, with a guaranteed support
     period of three years.
 
@@ -145,11 +147,16 @@ Thorough, readable, and discoverable.
 
     **this is awesome**
 
+Let's Get Started!
+-------------------
+
+https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html
+
 
 Where We Stand
 --------------
 
-For your homework this week, you created a ``Post`` model to serve as the heart
+We now have our application started with a ``Post`` model to serve as the heart
 of our blogging app.
 
 .. rst-class:: build
@@ -781,7 +788,7 @@ located).
     that empty list as shown here:
 
     .. code-block:: python
-    
+
         TEMPLATES = [
             {
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -835,7 +842,7 @@ Before we move on, a quick word about Django templates.
 
     Django templates **do not** allow any python expressions.
 
-    https://docs.djangoproject.com/en/1.9/ref/templates/builtins/
+    https://docs.djangoproject.com/en/1.10/ref/templates/builtins/
 
 
 .. nextslide:: Blog Templates
@@ -1483,10 +1490,10 @@ posts
        your ``Category`` admin.
 
 
-.. _Django admin.: https://docs.djangoproject.com/en/1.9/ref/contrib/admin/
-.. _ModelAdmin: https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#modeladmin-objects
-.. _InlineModelAdmin: https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#inlinemodeladmin-objects
-.. _exclude: https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude
+.. _Django admin.: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/
+.. _ModelAdmin: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects
+.. _InlineModelAdmin: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects
+.. _exclude: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude
 
 
 .. nextslide:: Pushing Further
