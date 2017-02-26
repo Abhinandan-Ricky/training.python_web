@@ -43,7 +43,7 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x0000024EC73762B0>  
+<generator object macro at 0x0000016E556FB360>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -212,7 +212,7 @@ while each post has only one author.</p>
 <p>To get these changes set up, we now add a new migration.</p>
 <div class="build docutils container">
 <p>We use the <code class="docutils literal"><span class="pre">makemigrations</span></code> management command to do so:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py makemigrations
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py makemigrations
 Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
   0002_category.py:
     - Create model Category
@@ -222,7 +222,7 @@ Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
 <p>Once the migration has been created, we can apply it with the <code class="docutils literal"><span class="pre">migrate</span></code>
 management command.</p>
 <div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py migrate
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py migrate
 Operations to perform:
   Apply all migrations: sessions, contenttypes, admin, myblog, auth
 Running migrations:
@@ -254,7 +254,7 @@ Start with a test:</p>
 <p>When you run your tests, you now have two, and one is failing because the
 <code class="docutils literal"><span class="pre">Category</span></code> object doesn&#8217;t look right.</p>
 <div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 ...
 
@@ -284,7 +284,7 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 </div>
 </div>
 <p>Fire up the Django development server and see what you have in the admin:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py runserver
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py runserver
 Validating models...
 ...
 Starting development server at http://127.0.0.1:8000/
@@ -502,7 +502,7 @@ are about to create.</p>
 <p>We test first to ensure that each published post is visible in our view.</p>
 <p>Note that we also test to ensure that the unpublished posts are <em>not</em> visible.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 .F.
 <span class="o">======================================================================</span>
@@ -663,7 +663,7 @@ provided automatically by Pyramid</p>
 </pre></div>
 </div>
 <p>Then run your tests again:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 ...
 Ran <span class="m">3</span> tests in 0.033s
 
@@ -727,7 +727,7 @@ unpublished post is requested.</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 .F..
 <span class="o">======================================================================</span>
@@ -811,7 +811,7 @@ you have.</p>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;blog_detail&quot;</span><span class="p">),</span>
 </pre></div>
 </div>
-<div class="build small highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py test myblog
+<div class="build small highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ python manage.py test myblog
 ...
 Ran 4 tests in 0.077s
 
@@ -1007,23 +1007,22 @@ the Post admin</em>.</p>
 posts</p>
 <div class="build docutils container">
 <p>Take the following steps:</p>
-<ol class="arabic simple">
-<li>Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/">Django admin.</a></li>
-<li>You&#8217;ll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
-and <code class="docutils literal"><span class="pre">Category</span></code> models.</li>
-<li>And you&#8217;ll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
-on the Post admin view.</li>
-<li>Finally, you&#8217;ll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the &#8216;posts&#8217; field from the form in
-your <code class="docutils literal"><span class="pre">Category</span></code> admin.</li>
-</ol>
-</div>
+<ol class="arabic">
+<li><p class="first">Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/">Django admin.</a></p>
+</li>
+<li><p class="first">You&#8217;ll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
+and <code class="docutils literal"><span class="pre">Category</span></code> models.</p>
+</li>
+<li><p class="first">And you&#8217;ll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
+on the Post admin view.</p>
+</li>
+<li><p class="first">Finally, you&#8217;ll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the &#8216;posts&#8217; field from the form in
+your <code class="docutils literal"><span class="pre">Category</span></code> admin.</p>
 <p>All told, those changes should not require more than about 15 total lines of
-code.</p>
-<div class="build docutils container">
-<p>The trick of course is reading and finding out which fifteen lines to
+code. The trick of course is reading and finding out which fifteen lines to
 write.</p>
-<p>If you complete that task in less than 3-4 hours of work, consider looking
-into other ways of customizing the admin.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1032,9 +1031,9 @@ into other ways of customizing the admin.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x0000024EC7376A40>
+      </div><generator object macro at 0x0000016E552A63B8>
       <div class="clearer"></div>
-    </div><generator object macro at 0x0000024EC73762B0>
+    </div><generator object macro at 0x0000016E556FB360>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.

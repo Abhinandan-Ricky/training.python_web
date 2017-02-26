@@ -41,7 +41,7 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x0000029D79E17308>  
+<generator object macro at 0x0000016E556FB780>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -175,7 +175,7 @@ rename the project package.</p>
 <h3>Development Server<a class="headerlink" href="#development-server" title="Permalink to this headline">¶</a></h3>
 <p>At this point, you should be ready to use the development server:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ cd mysite
-(djangoenv)$ ./manage.py runserver
+(djangoenv)$ python manage.py runserver
 ...
 
 Windows users:
@@ -216,7 +216,7 @@ back). We&#8217;ll learn much more about this in a bit.</p>
 running <em>migrations</em>.  These migrations create the tables needed to support the
 models that are required by Django out of the box.</p>
 <p>Run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py migrate
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py migrate
 Operations to perform:
   Apply all migrations: admin, contenttypes, auth, sessions
 Running migrations:
@@ -228,7 +228,7 @@ Running migrations:
 </div>
 <p>Great!  Now we can set up an initial user who&#8217;ll be able to do anything, a
 <em>superuser</em>.  Again, we&#8217;ll use <code class="docutils literal"><span class="pre">manage.py</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py createsuperuser
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py createsuperuser
 Username <span class="o">(</span>leave blank to use <span class="s1">&#39;cewing&#39;</span><span class="o">)</span>:
 Email address: cris@crisewing.com
 Password:
@@ -282,7 +282,7 @@ system, the <em>project</em>. We have a project, we need to create an <em>app</e
 <p>This is accomplished using <code class="docutils literal"><span class="pre">manage.py</span></code>. In your terminal, make sure you are
 in the <em>outer</em> mysite directory, where the file <code class="docutils literal"><span class="pre">manage.py</span></code> is located.
 Then:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py startapp myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py startapp myblog
 </pre></div>
 </div>
 <p>This should leave you with the following structure:</p>
@@ -435,14 +435,14 @@ in your editor, and find the INSTALLED_APPS setting.</p>
 </div>
 <p>Once Django is made aware of the existence of this new app, it can  make a new
 <em>migration</em> that will set up the tables for this new class automatically.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py makemigrations myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py makemigrations myblog
 Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
    myblog<span class="se">\m</span>igrations<span class="se">\0</span>001_initial.py:
     - Create model Post
 </pre></div>
 </div>
 <p>And now you can run that migration to make the changes to your database:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py migrate
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py migrate
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, myblog, sessions
 Running migrations:
@@ -470,7 +470,7 @@ directly.</li>
 </pre></div>
 </div>
 <p>Let&#8217;s explore the Model Instance API directly using this shell:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py shell
+<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ python manage.py shell
 </pre></div>
 </div>
 <p>Instances of our model can be created by simple instantiation:</p>
@@ -726,7 +726,7 @@ itself. Then, calling <code class="docutils literal"><span class="pre">str(insta
 run all TestCases it finds in all installed <em>apps</em>. You can pass the name of a
 single app to focus on those tests.</p>
 <p>Quit your Django shell and in your terminal run the test we wrote:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 </pre></div>
 </div>
 <p>We have yet to implement this enhancement, so our test should fail:</p>
@@ -763,7 +763,7 @@ single app to focus on those tests.</p>
 </pre></div>
 </div>
 <p>Re-run the tests to see if that worked:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py test myblog
+<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ python manage.py test myblog
 Creating test database for alias &#39;default&#39;...
 .
 ----------------------------------------------------------------------
@@ -850,7 +850,7 @@ stroke.</p>
 <p>We can now view the admin.  We&#8217;ll use the Django development server.</p>
 <p class="build">In your terminal, use the <code class="docutils literal"><span class="pre">runserver</span></code> management command to start the
 development server:</p>
-<div class="build highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py runserver
+<div class="build highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ python manage.py runserver
 Performing system checks...
 
 System check identified no issues (0 silenced).
@@ -909,9 +909,9 @@ customize the admin experience.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x0000029D79E17048>
+      </div><generator object macro at 0x0000016E556FB938>
       <div class="clearer"></div>
-    </div><generator object macro at 0x0000029D79E17308>
+    </div><generator object macro at 0x0000016E556FB780>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
