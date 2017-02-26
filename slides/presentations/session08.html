@@ -435,7 +435,7 @@ while each post has only one author.</p>
       <p>To get these changes set up, we now add a new migration.</p>
 <div class="build docutils container">
 <p>We use the <code class="docutils literal"><span class="pre">makemigrations</span></code> management command to do so:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py makemigrations
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py makemigrations
 Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
   0002_category.py:
     - Create model Category
@@ -457,7 +457,7 @@ Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
       <p>Once the migration has been created, we can apply it with the <code class="docutils literal"><span class="pre">migrate</span></code>
 management command.</p>
 <div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py migrate
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py migrate
 Operations to perform:
   Apply all migrations: sessions, contenttypes, admin, myblog, auth
 Running migrations:
@@ -513,7 +513,7 @@ Start with a test:</p>
       <p>When you run your tests, you now have two, and one is failing because the
 <code class="docutils literal"><span class="pre">Category</span></code> object doesn't look right.</p>
 <div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 ...
 
@@ -567,7 +567,7 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
     </hgroup>
     <article class="">
       <p>Fire up the Django development server and see what you have in the admin:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py runserver
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py runserver
 Validating models...
 ...
 Starting development server at http://127.0.0.1:8000/
@@ -986,7 +986,7 @@ are about to create.</p>
       <h3>Run Your Tests</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+      <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 .F.
 <span class="o">======================================================================</span>
@@ -1276,7 +1276,7 @@ provided automatically by Pyramid</p>
 </pre></div>
 </div>
 <p>Then run your tests again:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 ...
 Ran <span class="m">3</span> tests in 0.033s
 
@@ -1406,7 +1406,7 @@ unpublished post is requested.</p>
       <h3>Run Your Tests</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py <span class="nb">test</span> myblog
+      <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ python manage.py <span class="nb">test</span> myblog
 Creating <span class="nb">test</span> database <span class="k">for</span> <span class="nb">alias</span> <span class="s1">&#39;default&#39;</span>...
 .F..
 <span class="o">======================================================================</span>
@@ -1550,7 +1550,7 @@ you have.</p>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;blog_detail&quot;</span><span class="p">),</span>
 </pre></div>
 </div>
-<div class="build small highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py test myblog
+<div class="build small highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ python manage.py test myblog
 ...
 Ran 4 tests in 0.077s
 
@@ -1923,40 +1923,27 @@ the Post admin</em>.</p>
 posts</p>
 <div class="build docutils container">
 <p>Take the following steps:</p>
-<ol class="arabic simple">
-<li>Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/">Django admin.</a></li>
-<li>You'll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
-and <code class="docutils literal"><span class="pre">Category</span></code> models.</li>
-<li>And you'll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
-on the Post admin view.</li>
-<li>Finally, you'll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the 'posts' field from the form in
-your <code class="docutils literal"><span class="pre">Category</span></code> admin.</li>
+<ol class="arabic">
+<li><p class="first">Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/">Django admin.</a></p>
+</li>
+<li><p class="first">You'll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
+and <code class="docutils literal"><span class="pre">Category</span></code> models.</p>
+</li>
+<li><p class="first">And you'll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
+on the Post admin view.</p>
+</li>
+<li><p class="first">Finally, you'll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the 'posts' field from the form in
+your <code class="docutils literal"><span class="pre">Category</span></code> admin.</p>
+<p>All told, those changes should not require more than about 15 total lines of
+code. The trick of course is reading and finding out which fifteen lines to
+write.</p>
+</li>
 </ol>
 </div>
 
 
 
 <div class="slide-no">80</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="id64">
-    <hgroup>
-      <h3>Pushing Further</h3>
-    </hgroup>
-    <article class="">
-      <p>All told, those changes should not require more than about 15 total lines of
-code.</p>
-<div class="build docutils container">
-<p>The trick of course is reading and finding out which fifteen lines to
-write.</p>
-<p>If you complete that task in less than 3-4 hours of work, consider looking
-into other ways of customizing the admin.</p>
-</div>
-
-
-
-<div class="slide-no">81</div>
 
 
     </article>
