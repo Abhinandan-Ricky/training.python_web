@@ -1332,6 +1332,7 @@ Django also provides a reasonable set of views for login/logout.
 
             # and update the list of urlconfs
             url(r'^', include('myblog.urls')), #<- already there
+            url(r'^admin/', admin.site.urls), #<- already there
             url(r'^login/$',
                 login,
                 {'template_name': 'login.html'},
@@ -1433,8 +1434,8 @@ In adding a login view, we've gotten a sneak peak at how forms work in Django.
     `Model Forms`_
 
 
-.. _read more about it: https://docs.djangoproject.com/en/1.6/topics/forms/
-.. _Model Forms: https://docs.djangoproject.com/en/1.6/topics/forms/modelforms/
+.. _read more about it: https://docs.djangoproject.com/en/1.10/topics/forms/
+.. _Model Forms: https://docs.djangoproject.com/en/1.10/topics/forms/modelforms/
 
 
 Ta-Daaaaaa!
@@ -1532,4 +1533,4 @@ code.
   the Post admin that allows you to publish posts in bulk from the Post list
   display
 
-.. _admin actions: https://docs.djangoproject.com/en/1.6/ref/contrib/admin/actions/
+.. _admin actions: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/actions/
