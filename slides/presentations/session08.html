@@ -79,7 +79,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h1>Session 08</h1>
     </hgroup>
     <article class="">
-      <div class="figure align-center" id="id2">
+      <div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/django-pony.png"><img alt="../_images/django-pony.png" src="../_images/django-pony.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="http://djangopony.com/">http://djangopony.com/</a></span></p>
 </div>
@@ -100,6 +100,50 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 <div class="slide-no">2</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="but-first">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Class website - where to find this week's materials</li>
+<li>Intro to Django</li>
+<li>Starting our blogging app</li>
+<li>Break</li>
+<li>Lightning Talks (Sasi Mandava, Ninad Naik, Jay Raina, Josh Hicks, Brad Baumel)</li>
+<li>Models, views, and templates</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">3</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <div class="build left docutils container">
+<p>Class website - where to find this week's materials</p>
+<ul class="build simple">
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html">Getting Started</a></li>
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/session08.html">HTML rendering of exercise</a></li>
+<li><a class="reference external" href="https://github.com/christyheaton/training.python_web/tree/master/resources/session08">Our website repo - Resources/Session08</a></li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">4</div>
 
 
     </article>
@@ -125,11 +169,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">3</div>
+<div class="slide-no">5</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id3">
+  </slide>  <slide class="level-3" id="id6">
     <hgroup>
       <h3>What Sets it Apart?</h3>
     </hgroup>
@@ -142,11 +186,11 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">6</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id4">
+  </slide>  <slide class="level-3" id="id7">
     <hgroup>
       <h3>The Django Admin</h3>
     </hgroup>
@@ -159,16 +203,16 @@ URL: https://code.google.com/p/io-2012-slides
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">7</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id5">
+  </slide>  <slide class="level-3" id="id8">
     <hgroup>
       <h3>The Pareto Principle</h3>
     </hgroup>
     <article class="">
-      <p>The Django Admin is a great example of the Pareto Priciple, a.k.a. the 80/20
+      <p>The Django Admin is a great example of the Pareto Principle, a.k.a. the 80/20
 rule:</p>
 <div class="build docutils container">
 <p class="centered"><strong>80% of the problems can be solved by 20% of the effort</strong></p>
@@ -179,11 +223,11 @@ effort.</strong></p>
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">8</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id6">
+  </slide>  <slide class="level-3" id="id9">
     <hgroup>
       <h3>Other Django Advantages</h3>
     </hgroup>
@@ -201,44 +245,32 @@ effort.</strong></p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">9</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id7">
+  </slide>  <slide class="level-3" id="id10">
     <hgroup>
       <h3>Active Development</h3>
     </hgroup>
     <article class="">
-      <p>Django releases in the last 12+ months (a short list):</p>
-<div class="build docutils container">
-<ul class="build simple">
-<li>1.9 (December 2015)</li>
-<li>1.8.7 (November 2015)</li>
-<li>1.7.11 (November 2015)</li>
-<li>1.8.5 (October 2015)</li>
-<li>1.7.10 (August 2015)</li>
-<li>1.8.3 (July 2015)</li>
-<li>1.8 (April 2015)</li>
-<li>1.7.7 (March 2015)</li>
-<li>1.7.4 (January 2014)</li>
-</ul>
+      <p><a class="reference external" href="https://www.djangoproject.com/download/">https://www.djangoproject.com/download/</a></p>
 <p>Django 1.8 is the second <em>Long Term Support</em> version, with a guaranteed support
 period of three years.</p>
-</div>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">10</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id8">
+  </slide>  <slide class="level-3" id="id11">
     <hgroup>
       <h3>Great Documentation</h3>
     </hgroup>
     <article class="">
       <p>Thorough, readable, and discoverable.</p>
+<p>Documentation-Driven-Development</p>
 <div class="build docutils container">
 <p>Led the way to better documentation for all Python</p>
 <p><a class="reference external" href="https://readthedocs.org/">Read The Docs</a> - built in connection with
@@ -250,7 +282,38 @@ Django, sponsored by the Django Software Foundation.</p>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">11</div>
+
+
+    </article>
+  </slide>  <slide class="level-2" id="mvc-application">
+    <hgroup>
+      <h2>MVC Application</h2>
+    </hgroup>
+    <article class="">
+      <p>Like Pyramid, Django also uses the Model View Controller approach to app design.</p>
+<p>Model, View, Templates</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png"><img alt="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" src="http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">By Alan Evangelista (Own work) [CC0], via Wikimedia Commons</span></p>
+</div>
+
+
+
+<div class="slide-no">12</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="let-s-get-started">
+    <hgroup>
+      <h3>Let's Get Started!</h3>
+    </hgroup>
+    <article class="">
+      <p class="large"><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html">Getting Started</a></p>
+
+
+
+<div class="slide-no">13</div>
 
 
     </article>
@@ -259,7 +322,7 @@ Django, sponsored by the Django Software Foundation.</p>
       <h3>Where We Stand</h3>
     </hgroup>
     <article class="">
-      <p>For your homework this week, you created a <code class="docutils literal"><span class="pre">Post</span></code> model to serve as the heart
+      <p>We now have our application started with a <code class="docutils literal"><span class="pre">Post</span></code> model to serve as the heart
 of our blogging app.</p>
 <div class="build docutils container">
 <p>You also took some time to get familiar with the basic workings of the
@@ -270,7 +333,7 @@ Django ORM.</p>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">14</div>
 
 
     </article>
@@ -289,11 +352,11 @@ code.</p>
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">15</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id9">
+  </slide>  <slide class="level-3" id="id12">
     <hgroup>
       <h3>Changing a Database</h3>
     </hgroup>
@@ -308,11 +371,11 @@ code.</p>
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">16</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id10">
+  </slide>  <slide class="level-3" id="id13">
     <hgroup>
       <h3>Adding a Model</h3>
     </hgroup>
@@ -338,11 +401,11 @@ fall into.</p>
 
 
 
-<div class="slide-no">13</div>
+<div class="slide-no">17</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id11">
+  </slide>  <slide class="level-3" id="id14">
     <hgroup>
       <h3>Strange Relationships</h3>
     </hgroup>
@@ -360,11 +423,11 @@ while each post has only one author.</p>
 
 
 
-<div class="slide-no">14</div>
+<div class="slide-no">18</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id12">
+  </slide>  <slide class="level-3" id="id15">
     <hgroup>
       <h3>Add a Migration</h3>
     </hgroup>
@@ -382,11 +445,11 @@ Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
 
 
 
-<div class="slide-no">15</div>
+<div class="slide-no">19</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id13">
+  </slide>  <slide class="level-3" id="id16">
     <hgroup>
       <h3>Apply A Migration</h3>
     </hgroup>
@@ -408,11 +471,11 @@ Running migrations:
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">20</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id14">
+  </slide>  <slide class="level-3" id="id17">
     <hgroup>
       <h3>Make Categories Look Nice</h3>
     </hgroup>
@@ -438,11 +501,11 @@ Start with a test:</p>
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">21</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id15">
+  </slide>  <slide class="level-3" id="id18">
     <hgroup>
       <h3>Make it Pass</h3>
     </hgroup>
@@ -471,11 +534,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">22</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id16">
+  </slide>  <slide class="level-3" id="id19">
     <hgroup>
       <h3>Admin for Categories</h3>
     </hgroup>
@@ -494,11 +557,11 @@ FAILED <span class="o">(</span><span class="nv">failures</span><span class="o">=
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">23</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id17">
+  </slide>  <slide class="level-3" id="id20">
     <hgroup>
       <h3>Test It Out</h3>
     </hgroup>
@@ -519,7 +582,7 @@ ones and then categorize them.</p>
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">24</div>
 
 
     </article>
@@ -531,13 +594,27 @@ ones and then categorize them.</p>
       <p>We've completed a data model for our application.</p>
 <p>And thanks to Django's easy-to-use admin, we have a reasonable CRUD application
 where we can manage blog posts and the categories we put them in.</p>
-<p>When we return, we'll put a public face on our new creation.</p>
+<p>When we return, lightning talks.</p>
+<p>Then we'll put a public face on our new creation.</p>
 <p>If you've fallen behind, the app as it stands now is in our class resources as
 <code class="docutils literal"><span class="pre">mysite_stage_1</span></code></p>
 
 
 
-<div class="slide-no">21</div>
+<div class="slide-no">25</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id21">
+    <hgroup>
+      <h3>Lightning Talks</h3>
+    </hgroup>
+    <article class="">
+      <p>Sasi Mandava, Ninad Naik, Jay Raina, Josh Hicks, Brad Baumel</p>
+
+
+
+<div class="slide-no">26</div>
 
 
     </article>
@@ -556,7 +633,7 @@ where we can manage blog posts and the categories we put them in.</p>
 
 
 
-<div class="slide-no">22</div>
+<div class="slide-no">27</div>
 
 
     </article>
@@ -576,11 +653,11 @@ response.</p>
 
 
 
-<div class="slide-no">23</div>
+<div class="slide-no">28</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id18">
+  </slide>  <slide class="level-3" id="id22">
     <hgroup>
       <h3>A Basic View</h3>
     </hgroup>
@@ -606,16 +683,16 @@ response.</p>
 
 
 
-<div class="slide-no">24</div>
+<div class="slide-no">29</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id19">
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>Hooking It Up</h3>
     </hgroup>
     <article class="">
-      <p>In your homework tutorial, you learned about Django <strong>urlconfs</strong></p>
+      <p>In the intro tutorial, you learned about Django <strong>urlconfs</strong></p>
 <div class="build docutils container">
 <p>We used our project urlconf to hook the Django admin into our project.</p>
 <p>We want to do the same thing for our new app.</p>
@@ -626,11 +703,11 @@ urlconf.</p>
 
 
 
-<div class="slide-no">25</div>
+<div class="slide-no">30</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id20">
+  </slide>  <slide class="level-3" id="id24">
     <hgroup>
       <h3>Adding A Urlconf</h3>
     </hgroup>
@@ -652,11 +729,11 @@ urlconf.</p>
 
 
 
-<div class="slide-no">26</div>
+<div class="slide-no">31</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id21">
+  </slide>  <slide class="level-3" id="id25">
     <hgroup>
       <h3>Include Blog Urls</h3>
     </hgroup>
@@ -681,7 +758,7 @@ urlconf</p>
 
 
 
-<div class="slide-no">27</div>
+<div class="slide-no">32</div>
 
 
     </article>
@@ -704,11 +781,11 @@ url routing.</p>
 
 
 
-<div class="slide-no">28</div>
+<div class="slide-no">33</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id22">
+  </slide>  <slide class="level-3" id="id26">
     <hgroup>
       <h3>Our URLs</h3>
     </hgroup>
@@ -728,11 +805,11 @@ Add this to <code class="docutils literal"><span class="pre">urlpatterns</span><
 
 
 
-<div class="slide-no">29</div>
+<div class="slide-no">34</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id27">
     <hgroup>
       <h3>A Word on Capture in URLs</h3>
     </hgroup>
@@ -750,11 +827,11 @@ Add this to <code class="docutils literal"><span class="pre">urlpatterns</span><
 
 
 
-<div class="slide-no">30</div>
+<div class="slide-no">35</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id28">
     <hgroup>
       <h3>Regular Expression URLS</h3>
     </hgroup>
@@ -763,7 +840,7 @@ Add this to <code class="docutils literal"><span class="pre">urlpatterns</span><
 <div class="build docutils container">
 <p>Unlike Pyramid, Django <em>requires</em> regular expressions to capture segments
 in a route.</p>
-<p>When we built our WSGI book app, we used this same appraoch.</p>
+<p>When we built our WSGI book app, we used this same approach.</p>
 <p>There we learned about regular expression <em>capture groups</em>. We just changed
 an unnamed <em>capture group</em> to a named one.</p>
 <p>How you declare a capture group in your url pattern regexp influences how
@@ -772,11 +849,11 @@ it will be passed to the view callable.</p>
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">36</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id25">
+  </slide>  <slide class="level-3" id="id29">
     <hgroup>
       <h3>Full Urlconf</h3>
     </hgroup>
@@ -797,11 +874,11 @@ it will be passed to the view callable.</p>
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">37</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id26">
+  </slide>  <slide class="level-3" id="id30">
     <hgroup>
       <h3>Testing Views</h3>
     </hgroup>
@@ -819,11 +896,11 @@ are about to create.</p>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">38</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id27">
+  </slide>  <slide class="level-3" id="id31">
     <hgroup>
       <h3>Add a Test Case</h3>
     </hgroup>
@@ -850,7 +927,7 @@ are about to create.</p>
 
 
 
-<div class="slide-no">34</div>
+<div class="slide-no">39</div>
 
 
     </article>
@@ -869,11 +946,11 @@ are about to create.</p>
 
 
 
-<div class="slide-no">35</div>
+<div class="slide-no">40</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id28">
+  </slide>  <slide class="level-3" id="id32">
     <hgroup>
       <h3>Testing the List View</h3>
     </hgroup>
@@ -900,11 +977,11 @@ are about to create.</p>
 
 
 
-<div class="slide-no">36</div>
+<div class="slide-no">41</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id29">
+  </slide>  <slide class="level-3" id="id33">
     <hgroup>
       <h3>Run Your Tests</h3>
     </hgroup>
@@ -924,11 +1001,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">37</div>
+<div class="slide-no">42</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id30">
+  </slide>  <slide class="level-3" id="id34">
     <hgroup>
       <h3>Now Fix That Test!</h3>
     </hgroup>
@@ -953,11 +1030,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">38</div>
+<div class="slide-no">43</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id31">
+  </slide>  <slide class="level-3" id="id35">
     <hgroup>
       <h3>Getting Posts</h3>
     </hgroup>
@@ -976,11 +1053,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">39</div>
+<div class="slide-no">44</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id32">
+  </slide>  <slide class="level-3" id="id36">
     <hgroup>
       <h3>Getting a Template</h3>
     </hgroup>
@@ -997,11 +1074,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">40</div>
+<div class="slide-no">45</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id33">
+  </slide>  <slide class="level-3" id="id37">
     <hgroup>
       <h3>Project Templates</h3>
     </hgroup>
@@ -1028,11 +1105,11 @@ for a directory containing templates.</p>
 
 
 
-<div class="slide-no">41</div>
+<div class="slide-no">46</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id34">
+  </slide>  <slide class="level-3" id="id38">
     <hgroup>
       <h3>Our List View</h3>
     </hgroup>
@@ -1061,7 +1138,7 @@ for a directory containing templates.</p>
 
 
 
-<div class="slide-no">42</div>
+<div class="slide-no">47</div>
 
 
     </article>
@@ -1075,16 +1152,16 @@ for a directory containing templates.</p>
 <p>We've seen Jinja2 which was &quot;inspired by Django's templating system&quot;.</p>
 <p>Basically, you already know how to write Django templates.</p>
 <p>Django templates <strong>do not</strong> allow any python expressions.</p>
-<p><a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/templates/builtins/">https://docs.djangoproject.com/en/1.9/ref/templates/builtins/</a></p>
+<p><a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/templates/builtins/">https://docs.djangoproject.com/en/1.10/ref/templates/builtins/</a></p>
 </div>
 
 
 
-<div class="slide-no">43</div>
+<div class="slide-no">48</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id35">
+  </slide>  <slide class="level-3" id="id39">
     <hgroup>
       <h3>Blog Templates</h3>
     </hgroup>
@@ -1100,11 +1177,11 @@ specialized ones in app directories.</p>
 
 
 
-<div class="slide-no">44</div>
+<div class="slide-no">49</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id36">
+  </slide>  <slide class="level-3" id="id40">
     <hgroup>
       <h3><code class="docutils literal"><span class="pre">list.html</span></code></h3>
     </hgroup>
@@ -1134,11 +1211,11 @@ specialized ones in app directories.</p>
 
 
 
-<div class="slide-no">45</div>
+<div class="slide-no">50</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id37">
+  </slide>  <slide class="level-3" id="id41">
     <hgroup>
       <h3>Template Context</h3>
     </hgroup>
@@ -1158,11 +1235,11 @@ provided automatically by Pyramid</p>
 
 
 
-<div class="slide-no">46</div>
+<div class="slide-no">51</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id38">
+  </slide>  <slide class="level-3" id="id42">
     <hgroup>
       <h3>Return a Response</h3>
     </hgroup>
@@ -1177,11 +1254,11 @@ provided automatically by Pyramid</p>
 
 
 
-<div class="slide-no">47</div>
+<div class="slide-no">52</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id39">
+  </slide>  <slide class="level-3" id="id43">
     <hgroup>
       <h3>Fix URLs</h3>
     </hgroup>
@@ -1210,11 +1287,11 @@ OK
 
 
 
-<div class="slide-no">48</div>
+<div class="slide-no">53</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id40">
+  </slide>  <slide class="level-3" id="id44">
     <hgroup>
       <h3>Common Patterns</h3>
     </hgroup>
@@ -1233,11 +1310,11 @@ OK
 
 
 
-<div class="slide-no">49</div>
+<div class="slide-no">54</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id41">
+  </slide>  <slide class="level-3" id="id45">
     <hgroup>
       <h3>Shorten Our View</h3>
     </hgroup>
@@ -1257,11 +1334,11 @@ OK
 
 
 
-<div class="slide-no">50</div>
+<div class="slide-no">55</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id1">
+  </slide>  <slide class="level-3" id="id2">
     <hgroup>
       <h3>BREAK TIME</h3>
     </hgroup>
@@ -1275,7 +1352,7 @@ our application and the admin behind it.</p>
 
 
 
-<div class="slide-no">51</div>
+<div class="slide-no">56</div>
 
 
     </article>
@@ -1295,11 +1372,11 @@ unpublished post is requested.</p>
 
 
 
-<div class="slide-no">52</div>
+<div class="slide-no">57</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id42">
+  </slide>  <slide class="level-3" id="id46">
     <hgroup>
       <h3>Testing the Details</h3>
     </hgroup>
@@ -1320,11 +1397,11 @@ unpublished post is requested.</p>
 
 
 
-<div class="slide-no">53</div>
+<div class="slide-no">58</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id43">
+  </slide>  <slide class="level-3" id="id47">
     <hgroup>
       <h3>Run Your Tests</h3>
     </hgroup>
@@ -1344,11 +1421,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">54</div>
+<div class="slide-no">59</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id44">
+  </slide>  <slide class="level-3" id="id48">
     <hgroup>
       <h3>Let's Fix That Test</h3>
     </hgroup>
@@ -1367,11 +1444,11 @@ Destroying <span class="nb">test</span> database <span class="k">for</span> <spa
 
 
 
-<div class="slide-no">55</div>
+<div class="slide-no">60</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id45">
+  </slide>  <slide class="level-3" id="id49">
     <hgroup>
       <h3>Missing Content</h3>
     </hgroup>
@@ -1394,11 +1471,11 @@ you have.</p>
 
 
 
-<div class="slide-no">56</div>
+<div class="slide-no">61</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id46">
+  </slide>  <slide class="level-3" id="id50">
     <hgroup>
       <h3>Add the Template</h3>
     </hgroup>
@@ -1426,11 +1503,11 @@ you have.</p>
 
 
 
-<div class="slide-no">57</div>
+<div class="slide-no">62</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id47">
+  </slide>  <slide class="level-3" id="id51">
     <hgroup>
       <h3>Hook it Up</h3>
     </hgroup>
@@ -1454,11 +1531,11 @@ you have.</p>
 
 
 
-<div class="slide-no">58</div>
+<div class="slide-no">63</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id48">
+  </slide>  <slide class="level-3" id="id52">
     <hgroup>
       <h3>Fix URLs</h3>
     </hgroup>
@@ -1483,11 +1560,11 @@ OK
 
 
 
-<div class="slide-no">59</div>
+<div class="slide-no">64</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id49">
+  </slide>  <slide class="level-3" id="id53">
     <hgroup>
       <h3>A Moment To Play</h3>
     </hgroup>
@@ -1501,11 +1578,11 @@ OK
 
 
 
-<div class="slide-no">60</div>
+<div class="slide-no">65</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id50">
+  </slide>  <slide class="level-3" id="id54">
     <hgroup>
       <h3>Congratulations</h3>
     </hgroup>
@@ -1519,7 +1596,7 @@ OK
 
 
 
-<div class="slide-no">61</div>
+<div class="slide-no">66</div>
 
 
     </article>
@@ -1543,11 +1620,11 @@ files, you use a special <em>template tag</em>:</p>
 
 
 
-<div class="slide-no">62</div>
+<div class="slide-no">67</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id51">
+  </slide>  <slide class="level-3" id="id55">
     <hgroup>
       <h3>Add CSS</h3>
     </hgroup>
@@ -1574,11 +1651,11 @@ files, you use a special <em>template tag</em>:</p>
 
 
 
-<div class="slide-no">63</div>
+<div class="slide-no">68</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id52">
+  </slide>  <slide class="level-3" id="id56">
     <hgroup>
       <h3>View Your Results</h3>
     </hgroup>
@@ -1593,7 +1670,7 @@ files, you use a special <em>template tag</em>:</p>
 
 
 
-<div class="slide-no">64</div>
+<div class="slide-no">69</div>
 
 
     </article>
@@ -1622,11 +1699,11 @@ files, you use a special <em>template tag</em>:</p>
 
 
 
-<div class="slide-no">65</div>
+<div class="slide-no">70</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id53">
+  </slide>  <slide class="level-3" id="id57">
     <hgroup>
       <h3>Request Context Revisited</h3>
     </hgroup>
@@ -1642,11 +1719,11 @@ showing the admin link to staff members.</p>
 
 
 
-<div class="slide-no">66</div>
+<div class="slide-no">71</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id54">
+  </slide>  <slide class="level-3" id="id58">
     <hgroup>
       <h3>Login/Logout</h3>
     </hgroup>
@@ -1661,6 +1738,7 @@ showing the admin link to staff members.</p>
 
 <span class="c1"># and update the list of urlconfs</span>
 <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;myblog.urls&#39;</span><span class="p">)),</span> <span class="c1">#&lt;- already there</span>
+<span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span> <span class="c1">#&lt;- already there</span>
 <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^login/$&#39;</span><span class="p">,</span>
     <span class="n">login</span><span class="p">,</span>
     <span class="p">{</span><span class="s1">&#39;template_name&#39;</span><span class="p">:</span> <span class="s1">&#39;login.html&#39;</span><span class="p">},</span>
@@ -1676,11 +1754,11 @@ showing the admin link to staff members.</p>
 
 
 
-<div class="slide-no">67</div>
+<div class="slide-no">72</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id55">
+  </slide>  <slide class="level-3" id="id59">
     <hgroup>
       <h3>Login Template</h3>
     </hgroup>
@@ -1700,11 +1778,11 @@ showing the admin link to staff members.</p>
 
 
 
-<div class="slide-no">68</div>
+<div class="slide-no">73</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id56">
+  </slide>  <slide class="level-3" id="id60">
     <hgroup>
       <h3>Submitting Forms</h3>
     </hgroup>
@@ -1720,11 +1798,11 @@ vector.</p>
 
 
 
-<div class="slide-no">69</div>
+<div class="slide-no">74</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id57">
+  </slide>  <slide class="level-3" id="id61">
     <hgroup>
       <h3>Danger: CSRF</h3>
     </hgroup>
@@ -1738,11 +1816,11 @@ vector.</p>
 
 
 
-<div class="slide-no">70</div>
+<div class="slide-no">75</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id58">
+  </slide>  <slide class="level-3" id="id62">
     <hgroup>
       <h3>Hooking It Up</h3>
     </hgroup>
@@ -1768,11 +1846,11 @@ vector.</p>
 
 
 
-<div class="slide-no">71</div>
+<div class="slide-no">76</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id59">
+  </slide>  <slide class="level-3" id="id63">
     <hgroup>
       <h3>Forms In Django</h3>
     </hgroup>
@@ -1782,14 +1860,14 @@ vector.</p>
 <p>However, learning more about them is beyond what we can achieve in this
 session.</p>
 <p>The form system in Django is quite nice, however. I urge you to
-<a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/forms/">read more about it</a></p>
+<a class="reference external" href="https://docs.djangoproject.com/en/1.10/topics/forms/">read more about it</a></p>
 <p>In particular, you might want to pay attention to the documentation on
-<a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/forms/modelforms/">Model Forms</a></p>
+<a class="reference external" href="https://docs.djangoproject.com/en/1.10/topics/forms/modelforms/">Model Forms</a></p>
 </div>
 
 
 
-<div class="slide-no">72</div>
+<div class="slide-no">77</div>
 
 
     </article>
@@ -1810,7 +1888,7 @@ feature to extend the blog</p>
 
 
 
-<div class="slide-no">73</div>
+<div class="slide-no">78</div>
 
 
     </article>
@@ -1832,7 +1910,7 @@ the Post admin</em>.</p>
 
 
 
-<div class="slide-no">74</div>
+<div class="slide-no">79</div>
 
 
     </article>
@@ -1846,23 +1924,23 @@ posts</p>
 <div class="build docutils container">
 <p>Take the following steps:</p>
 <ol class="arabic simple">
-<li>Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/contrib/admin/">Django admin.</a></li>
-<li>You'll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
+<li>Read the documentation about the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/">Django admin.</a></li>
+<li>You'll need to create a customized <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects">ModelAdmin</a> class for the <code class="docutils literal"><span class="pre">Post</span></code>
 and <code class="docutils literal"><span class="pre">Category</span></code> models.</li>
-<li>And you'll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
+<li>And you'll need to create an <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects">InlineModelAdmin</a> to represent Categories
 on the Post admin view.</li>
-<li>Finally, you'll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the 'posts' field from the form in
+<li>Finally, you'll need to <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude">exclude</a>  the 'posts' field from the form in
 your <code class="docutils literal"><span class="pre">Category</span></code> admin.</li>
 </ol>
 </div>
 
 
 
-<div class="slide-no">75</div>
+<div class="slide-no">80</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id60">
+  </slide>  <slide class="level-3" id="id64">
     <hgroup>
       <h3>Pushing Further</h3>
     </hgroup>
@@ -1878,31 +1956,7 @@ into other ways of customizing the admin.</p>
 
 
 
-<div class="slide-no">76</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="id61">
-    <hgroup>
-      <h3>Tasks you might consider</h3>
-    </hgroup>
-    <article class="">
-      <ul class="build simple">
-<li>Change the admin index to say 'Categories' instead of 'Categorys'. (hint, the
-way to change this has nothing to do with the admin)</li>
-<li>Add columns for the date fields to the list display of Posts.</li>
-<li>Display the created and modified dates for your posts when viewing them in
-the admin.</li>
-<li>Add a column to the list display of Posts that shows the author.  For more
-fun, make this a link that takes you to the admin page for that user.</li>
-<li>For the biggest challenge, look into <a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/actions/">admin actions</a> and add an action to
-the Post admin that allows you to publish posts in bulk from the Post list
-display</li>
-</ul>
-
-
-
-<div class="slide-no">77</div>
+<div class="slide-no">81</div>
 
 
     </article>
