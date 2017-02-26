@@ -388,10 +388,16 @@ We've completed a data model for our application.
 And thanks to Django's easy-to-use admin, we have a reasonable CRUD application
 where we can manage blog posts and the categories we put them in.
 
-When we return, we'll put a public face on our new creation.
+When we return, lightning talks.
+
+Then we'll put a public face on our new creation.
 
 If you've fallen behind, the app as it stands now is in our class resources as
 ``mysite_stage_1``
+
+.. nextslide:: Lightning Talks
+
+Sasi Mandava, Ninad Naik, Jay Raina, Josh Hicks, Brad Baumel
 
 
 A Public Face
@@ -456,7 +462,7 @@ Let's add a really simple view to our app.
 
 .. nextslide:: Hooking It Up
 
-In your homework tutorial, you learned about Django **urlconfs**
+In the intro tutorial, you learned about Django **urlconfs**
 
 .. rst-class:: build
 .. container::
@@ -588,7 +594,7 @@ Like Pyramid, Django uses Python regular expressions to build routes.
     Unlike Pyramid, Django *requires* regular expressions to capture segments
     in a route.
 
-    When we built our WSGI book app, we used this same appraoch.
+    When we built our WSGI book app, we used this same approach.
 
     There we learned about regular expression *capture groups*. We just changed
     an unnamed *capture group* to a named one.
