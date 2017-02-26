@@ -642,10 +642,10 @@ We'll also need to have a user for our system.
         def main(argv=sys.argv):
             # ...
             with transaction.manager:
-            password = os.environ.get('ADMIN_PASSWORD', 'admin')
-            encrypted = password_context.encrypt(password)
-            admin = User(name=u'admin', password=encrypted)
-            DBSession.add(admin)
+                password = os.environ.get('ADMIN_PASSWORD', 'admin')
+                encrypted = password_context.encrypt(password)
+                admin = User(name=u'admin', password=encrypted)
+                DBSession.add(admin)
 
 
 .. nextslide:: Rebuild the Database:
