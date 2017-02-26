@@ -41,16 +41,7 @@
     </a>
   </div>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li> 
-      </ul>
-    </div>  
+<generator object macro at 0x0000027F68CF9570>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -90,13 +81,13 @@ C:\&gt; djangoenv\Scripts\activate.bat
 </div>
 <div class="section" id="install-django">
 <h3>Install Django<a class="headerlink" href="#install-django" title="Permalink to this headline">¶</a></h3>
-<p>Finally, install Django 1.7.4 using <code class="docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ pip install Django==1.9
-Collecting Django==1.9
-  Downloading Django-1.9-py2.py3-none-any.whl (6.6MB)
+<p>Finally, install Django 1.10.5 using <code class="docutils literal"><span class="pre">pip</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ pip install Django
+Collecting django
+  Downloading Django-1.10.5-py2.py3-none-any.whl (6.6MB)
     100% |████████████████████████████████| 6.6MB 47kB/s
 Installing collected packages: Django
-Successfully installed Django-1.9
+Successfully installed django-1.10.5
 (djangoenv)$
 </pre></div>
 </div>
@@ -116,8 +107,8 @@ create one. We&#8217;ll use a script installed by Django, <code class="docutils 
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you run into trouble at this stage, please consult the
-<a class="reference external" href="https://docs.djangoproject.com/en/1.9/intro/install/">installation documentation</a>. For windows users, see also
-<a class="reference external" href="https://docs.djangoproject.com/en/1.9/howto/windows/">this guide to installation on Windows</a></p>
+<a class="reference external" href="https://docs.djangoproject.com/en/1.10/intro/install/">installation documentation</a>. For windows users, see also
+<a class="reference external" href="https://docs.djangoproject.com/en/1.10/howto/windows/">this guide to installation on Windows</a></p>
 </div>
 <p>This will create a folder called &#8216;mysite&#8217;. The folder contains the following
 structure:</p>
@@ -131,7 +122,7 @@ structure:</p>
 </pre></div>
 </div>
 <p>If what you see doesn&#8217;t match that, you&#8217;re using an older version of Django.
-Make sure you&#8217;ve installed 1.7.4</p>
+Make sure you&#8217;ve installed 1.10.5</p>
 <div class="section" id="what-got-created">
 <h3>What Got Created<a class="headerlink" href="#what-got-created" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -169,8 +160,10 @@ project.</p>
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="p">,</span> <span class="s2">&quot;mysite.settings&quot;</span><span class="p">)</span>
 
-    <span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
-
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">django.core.management</span> <span class="kn">import</span> <span class="n">execute_from_command_line</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">....</span>
     <span class="n">execute_from_command_line</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -184,6 +177,10 @@ rename the project package.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ cd mysite
 (djangoenv)$ ./manage.py runserver
 ...
+
+Windows users:
+
+C:/&gt; python manage.py runserver
 </pre></div>
 </div>
 <p>You&#8217;ll see a scary warning about unapplied migrations.  Ignore it for a moment.
@@ -300,6 +297,7 @@ Then:</p>
 ├── myblog
 │   ├── __init__.py
 │   ├── admin.py
+│   ├── apps.py
 │   ├── migrations
 │   │   └── __init__.py
 │   ├── models.py
@@ -323,7 +321,7 @@ file, and so on.</p>
 the Django <code class="docutils literal"><span class="pre">Model</span></code> class. This base class hooks in to the ORM functionality
 converting Python code to SQL. You can override methods from the base <code class="docutils literal"><span class="pre">Model</span></code>
 class to alter how this works or write new methods to add functionality.</p>
-<p>Learn more about <a class="reference external" href="https://docs.djangoproject.com/en/1.9/topics/db/models/">models</a></p>
+<p>Learn more about <a class="reference external" href="https://docs.djangoproject.com/en/1.10/topics/db/models/">models</a></p>
 </div>
 <div class="section" id="our-post-model">
 <h3>Our Post Model<a class="headerlink" href="#our-post-model" title="Permalink to this headline">¶</a></h3>
@@ -354,7 +352,7 @@ attributes.</p>
 <li>There are also arguments specific to individual types</li>
 </ul>
 <p>You can read much more about
-<a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/models/fields/">Model Fields and options</a></p>
+<a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/models/fields/">Model Fields and options</a></p>
 <p>There are some features of our fields worth mentioning in specific. Notice we
 have no field that is designated as the <em>primary key</em></p>
 <ul class="simple">
@@ -439,16 +437,15 @@ in your editor, and find the INSTALLED_APPS setting.</p>
 <em>migration</em> that will set up the tables for this new class automatically.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py makemigrations myblog
 Migrations <span class="k">for</span> <span class="s1">&#39;myblog&#39;</span>:
-  0001_initial.py:
+   myblog<span class="se">\m</span>igrations<span class="se">\0</span>001_initial.py:
     - Create model Post
 </pre></div>
 </div>
 <p>And now you can run that migration to make the changes to your database:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ ./manage.py migrate
 Operations to perform:
-  Apply all migrations: sessions, myblog, contenttypes, auth, admin
+  Apply all migrations: admin, auth, contenttypes, myblog, sessions
 Running migrations:
-  Rendering model states... DONE
   Applying myblog.0001_initial... OK
 </pre></div>
 </div>
@@ -527,9 +524,9 @@ That&#8217;s because a model is not <em>created</em> until it&#8217;s saved into
 When we save our post, these fields will get values assigned:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">p1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 <span class="gp">In [14]: </span><span class="k">print</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">created_date</span><span class="p">)</span>
-<span class="go">2015-12-31 19:24:29.019293+00:00</span>
+<span class="go">2017-02-25 19:24:29.019293+00:00</span>
 <span class="gp">In [15]: </span><span class="k">print</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">modified_date</span><span class="p">)</span>
-<span class="go">2015-12-31 19:24:29.019532+00:00</span>
+<span class="go">2017-02-25 19:24:29.019532+00:00</span>
 </pre></div>
 </div>
 </div>
@@ -558,8 +555,8 @@ API:</p>
 <span class="gp">In [22]: </span><span class="n">p4</span> <span class="o">=</span> <span class="n">Post</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Posters are a great decoration&quot;</span><span class="p">,</span>
 <span class="gp">   ....: </span>          <span class="n">text</span><span class="o">=</span><span class="s2">&quot;When you are a poor college student&quot;</span><span class="p">,</span>
 <span class="gp">   ....: </span>          <span class="n">author</span><span class="o">=</span><span class="n">all_users</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-<span class="gp">   ....: </span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="gh">Out[22]: </span><span class="go">4</span>
+<span class="gp">In [23]: </span><span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="gh">Out[23]: </span><span class="go">4</span>
 </pre></div>
 </div>
 </div>
@@ -621,7 +618,7 @@ return <code class="docutils literal"><span class="pre">QuerySets</span></code> 
 </div>
 <div class="section" id="exploring-the-queryset-api">
 <h3>Exploring the QuerySet API<a class="headerlink" href="#exploring-the-queryset-api" title="Permalink to this headline">¶</a></h3>
-<p>See <a class="reference external" href="https://docs.djangoproject.com/en/1.9/ref/models/querysets">https://docs.djangoproject.com/en/1.9/ref/models/querysets</a></p>
+<p>See <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/models/querysets">https://docs.djangoproject.com/en/1.10/ref/models/querysets</a></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">pk</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;created_date&#39;</span><span class="p">)]</span>
 <span class="gh">Out[3]: </span><span class="go">[1, 2, 3, 4]</span>
 <span class="gp">In [4]: </span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">pk</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-created_date&#39;</span><span class="p">)]</span>
@@ -657,10 +654,10 @@ without calling the <code class="docutils literal"><span class="pre">save</span>
 <span class="gh">Out[18]: </span><span class="go">4</span>
 <span class="gp">In [19]: </span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">published_date</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">]</span>
 <span class="gh">Out[19]:</span>
-<span class="go">[datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=&lt;UTC&gt;),</span>
-<span class="go"> datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=&lt;UTC&gt;),</span>
-<span class="go"> datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=&lt;UTC&gt;),</span>
-<span class="go"> datetime.datetime(2015, 12, 31, 19, 50, 4, 99980, tzinfo=&lt;UTC&gt;)]</span>
+<span class="go">[datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=&lt;UTC&gt;),</span>
+<span class="go"> datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=&lt;UTC&gt;),</span>
+<span class="go"> datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=&lt;UTC&gt;),</span>
+<span class="go"> datetime.datetime(2017, 2, 25, 20, 41, 33, 725439, tzinfo=&lt;UTC&gt;)]</span>
 </pre></div>
 </div>
 </div>
@@ -739,9 +736,11 @@ single app to focus on those tests.</p>
 <span class="n">FAIL</span><span class="p">:</span> <span class="n">test_string_representation</span> <span class="p">(</span><span class="n">myblog</span><span class="o">.</span><span class="n">tests</span><span class="o">.</span><span class="n">PostTestCase</span><span class="p">)</span>
 <span class="o">----------------------------------------------------------------------</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s2">&quot;/Users/cewing/projects/training/uw_pce/training.python_web/scripts/session07/mysite/myblog/tests.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">15</span><span class="p">,</span> <span class="ow">in</span> <span class="n">test_string_representation</span>
+  <span class="n">File</span> <span class="s2">&quot;C:\Users\chris\Projects\mysite\myblog</span><span class="se">\t</span><span class="s2">ests.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">18</span><span class="p">,</span> <span class="ow">in</span> <span class="n">test_string_representation</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
-<span class="ne">AssertionError</span><span class="p">:</span> <span class="s1">&#39;This is a title&#39;</span> <span class="o">!=</span> <span class="s1">u&#39;Post object&#39;</span>
+<span class="ne">AssertionError</span><span class="p">:</span> <span class="s1">&#39;This is a title&#39;</span> <span class="o">!=</span> <span class="s1">&#39;Post object&#39;</span>
+<span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">title</span>
+<span class="o">+</span> <span class="n">Post</span> <span class="nb">object</span>
 
 <span class="o">----------------------------------------------------------------------</span>
 <span class="n">Ran</span> <span class="mi">1</span> <span class="n">test</span> <span class="ow">in</span> <span class="mf">0.007</span><span class="n">s</span>
@@ -785,7 +784,7 @@ framework. I <em>do</em> write tests for functionality I add, and for places whe
 make changes to how the default functionality works. This is largely a matter
 of style and taste (and of budget).</p>
 <p>We&#8217;ve only begun to test our blog app. We&#8217;ll be adding many more tests later.
-In between, you might want to take a look at the <a class="reference external" href="https://docs.djangoproject.com/en/1.9/topics/testing/">Django testing documentation</a>:</p>
+In between, you might want to take a look at the <a class="reference external" href="https://docs.djangoproject.com/en/1.10/topics/testing/">Django testing documentation</a>:</p>
 </div>
 </div>
 <div class="section" id="the-django-admin">
@@ -843,8 +842,7 @@ stroke.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span> <span class="c1"># &lt;- should be present already</span>
 
 <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="o">...</span>
-    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span> <span class="c1">#&lt;- this should be too</span>
+    <span class="n">url</span><span class="p">(</span><span class="s1">r&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span> <span class="c1">#&lt;- this should be too</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -853,12 +851,13 @@ stroke.</p>
 <p class="build">In your terminal, use the <code class="docutils literal"><span class="pre">runserver</span></code> management command to start the
 development server:</p>
 <div class="build highlight-default"><div class="highlight"><pre><span></span>(djangoenv)$ ./manage.py runserver
-Validating models...
+Performing system checks...
 
-0 errors found
-Django version 1.4.3, using settings &#39;mysite.settings&#39;
-Development server is running at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
+System check identified no issues (0 silenced).
+February 25, 2017 - 12:51:42
+Django version 1.10.5, using settings &#39;mysite.settings&#39;
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
 </pre></div>
 </div>
 </div>
@@ -910,98 +909,9 @@ customize the admin experience.</p>
 
           </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">An Introduction To Django</a><ul>
-<li><a class="reference internal" href="#practice-safe-development">Practice Safe Development</a><ul>
-<li><a class="reference internal" href="#set-up-a-virtualenv">Set Up a VirtualEnv</a></li>
-<li><a class="reference internal" href="#install-django">Install Django</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#our-project">Our Project</a><ul>
-<li><a class="reference internal" href="#what-got-created">What Got Created</a></li>
-<li><a class="reference internal" href="#how-manage-py-works">How <em>manage.py</em> Works</a></li>
-<li><a class="reference internal" href="#development-server">Development Server</a></li>
-<li><a class="reference internal" href="#connecting-a-database">Connecting A Database</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#projects-and-apps">Projects and Apps</a><ul>
-<li><a class="reference internal" href="#our-class-app">Our Class App</a></li>
-<li><a class="reference internal" href="#django-models">Django Models</a></li>
-<li><a class="reference internal" href="#our-post-model">Our Post Model</a></li>
-<li><a class="reference internal" href="#field-details">Field Details</a></li>
-<li><a class="reference internal" href="#installing-apps">Installing Apps</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-django-shell">The Django Shell</a><ul>
-<li><a class="reference internal" href="#django-model-managers">Django Model Managers</a></li>
-<li><a class="reference internal" href="#saving-new-objects">Saving New Objects</a></li>
-<li><a class="reference internal" href="#updating-an-instance">Updating An Instance</a></li>
-<li><a class="reference internal" href="#create-a-few-posts">Create a Few Posts</a></li>
-<li><a class="reference internal" href="#the-django-query-api">The Django Query API</a></li>
-<li><a class="reference internal" href="#querysets">QuerySets</a></li>
-<li><a class="reference internal" href="#querysets-and-sql">QuerySets and SQL</a></li>
-<li><a class="reference internal" href="#exploring-the-queryset-api">Exploring the QuerySet API</a></li>
-<li><a class="reference internal" href="#updating-via-querysets">Updating via QuerySets</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#testing-our-model">Testing Our Model</a><ul>
-<li><a class="reference internal" href="#django-testcase-classes">Django TestCase Classes</a></li>
-<li><a class="reference internal" href="#our-first-enhancement">Our First Enhancement</a></li>
-<li><a class="reference internal" href="#what-to-test">What to Test</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#the-django-admin">The Django Admin</a><ul>
-<li><a class="reference internal" href="#django-url-resolution">Django URL Resolution</a></li>
-<li><a class="reference internal" href="#including-the-admin">Including the Admin</a></li>
-<li><a class="reference internal" href="#viewing-the-admin">Viewing the Admin</a></li>
-<li><a class="reference internal" href="#the-admin-index">The Admin Index</a></li>
-<li><a class="reference internal" href="#add-posts-to-the-admin">Add Posts to the Admin</a></li>
-<li><a class="reference internal" href="#next-steps">Next Steps</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/presentations/django_intro.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-  <h3>Slides</h3>
-  <ul class="this-page-menu">
-    <li><a href="../.././slides\presentations/django_intro.html"
-           rel="nofollow">View as slides</a></li>
-  </ul>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+      </div><generator object macro at 0x0000027F68CF9FC0>
       <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li> 
-      </ul>
-    </div>
+    </div><generator object macro at 0x0000027F68CF9570>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
