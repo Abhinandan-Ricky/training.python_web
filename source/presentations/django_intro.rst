@@ -157,7 +157,7 @@ Development Server
 At this point, you should be ready to use the development server::
 
     (djangoenv)$ cd mysite
-    (djangoenv)$ ./manage.py runserver
+    (djangoenv)$ python manage.py runserver
     ...
 
     Windows users:
@@ -214,7 +214,7 @@ Run the following command:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py migrate
+    (djangoenv)$ python manage.py migrate
     Operations to perform:
       Apply all migrations: admin, contenttypes, auth, sessions
     Running migrations:
@@ -228,7 +228,7 @@ Great!  Now we can set up an initial user who'll be able to do anything, a
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py createsuperuser
+    (djangoenv)$ python manage.py createsuperuser
     Username (leave blank to use 'cewing'):
     Email address: cris@crisewing.com
     Password:
@@ -289,7 +289,7 @@ Then:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py startapp myblog
+    (djangoenv)$ python manage.py startapp myblog
 
 This should leave you with the following structure:
 
@@ -458,7 +458,7 @@ Once Django is made aware of the existence of this new app, it can  make a new
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py makemigrations myblog
+    (djangoenv)$ python manage.py makemigrations myblog
     Migrations for 'myblog':
        myblog\migrations\0001_initial.py:
         - Create model Post
@@ -467,7 +467,7 @@ And now you can run that migration to make the changes to your database:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py migrate
+    (djangoenv)$ python manage.py migrate
     Operations to perform:
       Apply all migrations: admin, auth, contenttypes, myblog, sessions
     Running migrations:
@@ -499,7 +499,7 @@ Let's explore the Model Instance API directly using this shell:
 
 ::
 
-    (djangoenv)$ ./manage.py shell
+    (djangoenv)$ python manage.py shell
 
 Instances of our model can be created by simple instantiation:
 
@@ -825,7 +825,7 @@ Quit your Django shell and in your terminal run the test we wrote:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py test myblog
+    (djangoenv)$ python manage.py test myblog
 
 We have yet to implement this enhancement, so our test should fail:
 
@@ -865,7 +865,7 @@ Let's add an appropriate ``__str__`` method to our Post class.
 
 Re-run the tests to see if that worked::
 
-    (djangoenv)$ ./manage.py test myblog
+    (djangoenv)$ python manage.py test myblog
     Creating test database for alias 'default'...
     .
     ----------------------------------------------------------------------
@@ -980,7 +980,7 @@ development server:
 
 ::
 
-    (djangoenv)$ ./manage.py runserver
+    (djangoenv)$ python manage.py runserver
     Performing system checks...
 
     System check identified no issues (0 silenced).

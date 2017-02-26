@@ -296,7 +296,7 @@ To get these changes set up, we now add a new migration.
 
     .. code-block:: bash
 
-        (djangoenv)$ ./manage.py makemigrations
+        (djangoenv)$ python manage.py makemigrations
         Migrations for 'myblog':
           0002_category.py:
             - Create model Category
@@ -311,7 +311,7 @@ management command.
 
     .. code-block:: bash
 
-        (djangoenv)$ ./manage.py migrate
+        (djangoenv)$ python manage.py migrate
         Operations to perform:
           Apply all migrations: sessions, contenttypes, admin, myblog, auth
         Running migrations:
@@ -356,7 +356,7 @@ When you run your tests, you now have two, and one is failing because the
 
     .. code-block:: bash
 
-        (djangoenv)$ ./manage.py test myblog
+        (djangoenv)$ python manage.py test myblog
         Creating test database for alias 'default'...
         ...
 
@@ -399,7 +399,7 @@ Fire up the Django development server and see what you have in the admin:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py runserver
+    (djangoenv)$ python manage.py runserver
     Validating models...
     ...
     Starting development server at http://127.0.0.1:8000/
@@ -742,7 +742,7 @@ We'd like our list view to show our posts.
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py test myblog
+    (djangoenv)$ python manage.py test myblog
     Creating test database for alias 'default'...
     .F.
     ======================================================================
@@ -984,7 +984,7 @@ We need to fix the url for our blog index page
 
     .. code-block:: bash
 
-        (djangoenv)$ ./manage.py test myblog
+        (djangoenv)$ python manage.py test myblog
         ...
         Ran 3 tests in 0.033s
 
@@ -1084,7 +1084,7 @@ Add the following test to our ``FrontEndTestCase`` in ``myblog/tests.py``:
 
 .. code-block:: bash
 
-    (djangoenv)$ ./manage.py test myblog
+    (djangoenv)$ python manage.py test myblog
     Creating test database for alias 'default'...
     .F..
     ======================================================================
@@ -1205,7 +1205,7 @@ Again, we need to insert our new view into the existing ``myblog/urls.py`` in
 
 ::
 
-    (djangoenv)$ ./manage.py test myblog
+    (djangoenv)$ python manage.py test myblog
     ...
     Ran 4 tests in 0.077s
 
@@ -1530,23 +1530,11 @@ posts
     4. Finally, you'll need to `exclude`_  the 'posts' field from the form in
        your ``Category`` admin.
 
+       All told, those changes should not require more than about 15 total lines of
+       code. The trick of course is reading and finding out which fifteen lines to
+       write.
 
 .. _Django admin.: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/
 .. _ModelAdmin: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#modeladmin-objects
 .. _InlineModelAdmin: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#inlinemodeladmin-objects
 .. _exclude: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#django.contrib.admin.ModelAdmin.exclude
-
-
-.. nextslide:: Pushing Further
-
-All told, those changes should not require more than about 15 total lines of
-code.
-
-.. rst-class:: build
-.. container::
-
-    The trick of course is reading and finding out which fifteen lines to
-    write.
-
-    If you complete that task in less than 3-4 hours of work, consider looking
-    into other ways of customizing the admin.
