@@ -69,12 +69,6 @@ create one. We'll use a script installed by Django, ``django-admin.py``:
 
     (djangoenv)$ django-admin startproject mysite
 
-If you're on windows, that command is slightly different:
-
-.. code-block:: bash
-
-    django-admin.exe startproject mysite
-
 .. note:: If you run into trouble at this stage, please consult the
           `installation documentation`_. For windows users, see also
           `this guide to installation on Windows`_
@@ -159,10 +153,6 @@ At this point, you should be ready to use the development server::
     (djangoenv)$ cd mysite
     (djangoenv)$ python manage.py runserver
     ...
-
-    Windows users:
-
-    C:/> python manage.py runserver
 
 You'll see a scary warning about unapplied migrations.  Ignore it for a moment.
 Instead, load ``http://localhost:8000`` in your browser. You should see this:
