@@ -26,11 +26,26 @@ Agenda:
     .. rst-class:: build
 
     * Class website - where to find this week's materials
-    * Starting our Django blogging app
+    * Intro to Django
+    * Starting our blogging app
     * Break
     * Lightning Talks (Sasi Mandava, Ninad Naik, Jay Raina, Josh Hicks, Brad Baumel)
     * Models, views, and templates
-    * Plan for next week
+    * Homework and plan for next week
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+    Class website - where to find this week's materials
+
+    .. rst-class:: build
+
+    * `Getting Started <https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html>`_
+    * `HTML rendering of exercise <https://christyheaton.github.io/training.python_web/html/presentations/session08.html>`_
+    * `Our website repo - Resources/Session08 <https://github.com/christyheaton/training.python_web/tree/master/resources/session08>`_
 
 
 A Full Stack Framework
@@ -124,12 +139,14 @@ Clearly the most popular full-stack Python web framework at this time
 
 https://www.djangoproject.com/download/
 
-    Django 1.8 is the second *Long Term Support* version, with a guaranteed support
-    period of three years.
+Django 1.8 is the second *Long Term Support* version, with a guaranteed support
+period of three years.
 
 .. nextslide:: Great Documentation
 
 Thorough, readable, and discoverable.
+
+Documentation-Driven-Development
 
 .. rst-class:: build
 .. container::
@@ -147,10 +164,27 @@ Thorough, readable, and discoverable.
 
     **this is awesome**
 
+
+MVC Application
+===============
+
+Like Pyramid, Django also uses the Model View Controller approach to app design.
+
+Model, View, Templates
+
+.. figure:: http://upload.wikimedia.org/wikipedia/commons/4/40/MVC_passive_view.png
+    :align: center
+    :width: 40%
+
+    By Alan Evangelista (Own work) [CC0], via Wikimedia Commons
+
+
 Let's Get Started!
 -------------------
 
-https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html
+.. rst-class:: large
+
+    `Getting Started <https://christyheaton.github.io/training.python_web/html/presentations/django_intro.html>`_
 
 
 Where We Stand
@@ -1516,21 +1550,3 @@ code.
 
     If you complete that task in less than 3-4 hours of work, consider looking
     into other ways of customizing the admin.
-
-
-.. nextslide:: Tasks you might consider
-
-.. rst-class:: build
-
-* Change the admin index to say 'Categories' instead of 'Categorys'. (hint, the
-  way to change this has nothing to do with the admin)
-* Add columns for the date fields to the list display of Posts.
-* Display the created and modified dates for your posts when viewing them in
-  the admin.
-* Add a column to the list display of Posts that shows the author.  For more
-  fun, make this a link that takes you to the admin page for that user.
-* For the biggest challenge, look into `admin actions`_ and add an action to
-  the Post admin that allows you to publish posts in bulk from the Post list
-  display
-
-.. _admin actions: https://docs.djangoproject.com/en/1.10/ref/contrib/admin/actions/
