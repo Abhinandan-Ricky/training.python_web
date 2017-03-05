@@ -69,7 +69,43 @@ Demo blog
 Agile
 -----
 
-[placeholder]
+.. rst-class:: build
+.. container::
+
+    Alternatives to traditional project management
+
+    A set of principles for software development
+
+    Designed to help teams respond to unpredictability
+
+    Emphasis on incremental iterative work cadences and empirical feedback
+
+    (Source: http://agilemethodology.org/)
+
+
+Scrum
+-----
+
+.. figure:: /_static/scrum.jpg
+    :align: center
+    :width: 60%
+
+    image: https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg
+
+
+Pair Programming
+----------------
+
+.. rst-class:: build
+.. container::
+
+    Two programmers work at one workstation
+
+    Driver - writes code
+
+    Navigator - reviews code, observes, considers improvements or changes in direction
+
+    The two programmers switch roles frequently
 
 
 Preparation
@@ -94,6 +130,17 @@ In order for this to work properly, we'll need to have a few things in place.
 
         $ git clone https://github.com/<your_name>/mysite_start_session09.git
 
+
+.. nextslide::
+
+.. rst-class:: build
+.. container::
+
+    I'll make an announcement when its time to switch
+
+    We'll take a break for lightning talks
+
+    And hear your thoughts on Pair Programming at the end
 
 Connect to Your Partner
 -----------------------
@@ -151,6 +198,49 @@ You and your partner can work on any of the following enhancements
 If you finish one, start another!
 
 
+Django Rest Framework
+---------------------
+
+Goals:
+
+.. rst-class:: build
+.. container::
+
+    * User can visit a DRF "API View" page to create, retrieve, update, and delete posts and categories.
+    * Your primary resource for this will be the `DRF documentation <http://www.django-rest-framework.org/#installation>`_ "installation" and "example" guides.
+
+
+RSS Feed
+--------
+
+Goals:
+
+.. rst-class:: build
+.. container::
+
+    * A user will be able to visit a page on your site and view an RSS list of posts, like `CNN's RSS feed of top stories <http://rss.cnn.com/rss/cnn_topstories.rss>`_.
+    * Your primary resource will be `this example <https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example>`_ from the Django documentation.
+    * You'll have to change a few things in order to adapt this example to our posts model.
+    * For example, our posts don't have a "pub_date" field, but they do have another similar field.
+    * And our posts don't have a description field, so the call to "item.description" will fail; you'll have to use another similar field.
+    * Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.
+
+Post Creation Form
+------------------
+
+Goals:
+
+.. rst-class:: build
+.. container::
+
+    * User can visit a page on your site which presents a form that they can use to create a post.
+    * The user should be able to at least specify the title and content of the post;
+    * If they can't choose the category then that's OK.
+    * Your primary resource will be `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ of a CreateForm.
+    * You might need to create a template similar to the template in the example,
+    * And you might need to specify the template name using a 'template_name' property like in `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_ of a similar form.
+
+
 All-Auth
 --------
 
@@ -178,50 +268,6 @@ Resources:
     * https://www.youtube.com/watch?v=1yqKNQ3ogKQ
 
 
-Django Rest Framework
----------------------
-
-Goals:
-
-.. rst-class:: build
-.. container::
-
-    * User can visit a DRF "API View" page to create, retrieve, update, and delete posts and categories.
-    * Your primary resource for this will be the `DRF documentation <http://www.django-rest-framework.org/#installation>`_ "installation" and "example" guides.
-
-
-RSS Feed
---------
-
-Goals:
-
-.. rst-class:: build
-.. container::
-
-    * A user will be able to visit a page on your site and view an RSS list of posts, like `CNN's RSS feed of top stories <https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example>`_.
-    * Your primary resource will be `this example <http://rss.cnn.com/rss/cnn_topstories.rss>`_ from the Django documentation.
-    * You'll have to change a few things in order to adapt this example to our posts model.
-    * For example, our posts don't have a "pub_date" field, but they do have another similar field.
-    * And our posts don't have a description field, so the call to "item.description" will fail; you'll have to use another similar field.
-    * Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.
-
-
-Post Creation Form
-------------------
-
-Goals:
-
-.. rst-class:: build
-.. container::
-
-    * User can visit a page on your site which presents a form that they can use to create a post.
-    * The user should be able to at least specify the title and content of the post;
-    * If they can't choose the category then that's OK.
-    * Your primary resource will be `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ of a CreateForm.
-    * You might need to create a template similar to the template in the example,
-    * And you might need to specify the template name using a 'template_name' property like in `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_ of a similar form.
-
-
 Something Else!
 ---------------
 
@@ -230,6 +276,11 @@ Something Else!
 
     * Change the CSS
     * Some other enhancement
+
+Pair Programming
+----------------
+
+How did it go?
 
 
 Homework
