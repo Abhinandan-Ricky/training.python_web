@@ -79,7 +79,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h1>Session 09</h1>
     </hgroup>
     <article class="">
-      <div class="figure align-center" id="id1">
+      <div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/django-pony.png"><img alt="../_images/django-pony.png" src="../_images/django-pony.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="http://djangopony.com/">http://djangopony.com/</a></span></p>
 </div>
@@ -103,6 +103,50 @@ URL: https://code.google.com/p/io-2012-slides
 
 
     </article>
+  </slide>  <slide class="level-3" id="but-first">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Class website - where to find this week's materials</li>
+<li>Status of our Django blog</li>
+<li>Intro to Agile</li>
+<li>Pair programming</li>
+<li>Lightning Talks (Ninad Naik, Abdishu Hagi, Beatrice He, James Richardson)</li>
+<li>Pair programming</li>
+<li>Homework and plan for next week</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">3</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id4">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <div class="build left docutils container">
+<p>Class website - where to find this week's materials</p>
+<ul class="build simple">
+<li><a class="reference external" href="https://github.com/christyheaton/mysite_start_session09">The code</a></li>
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/session09.html">HTML rendering of exercise</a></li>
+<li>More resources below</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">4</div>
+
+
+    </article>
   </slide>  <slide class="level-3" id="last-week">
     <hgroup>
       <h3>Last Week</h3>
@@ -118,7 +162,33 @@ it works.</p>
 
 
 
-<div class="slide-no">3</div>
+<div class="slide-no">5</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="our-status">
+    <hgroup>
+      <h3>Our Status</h3>
+    </hgroup>
+    <article class="">
+      <p>Demo blog</p>
+
+
+
+<div class="slide-no">6</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="agile">
+    <hgroup>
+      <h3>Agile</h3>
+    </hgroup>
+    <article class="">
+      <p>[placeholder]</p>
+
+
+
+<div class="slide-no">7</div>
 
 
     </article>
@@ -133,18 +203,18 @@ it works.</p>
 partner</strong>.</p>
 <p>First, we'll start from a canonical copy of the microblog.  Make a fork of
 the following repository to your github account:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cewing</span><span class="o">/</span><span class="n">djangoblog_uwpce</span><span class="o">.</span><span class="n">git</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">christyheaton</span><span class="o">/</span><span class="n">mysite_start_session09</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>Then, clone that repository to your local machine:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/djangoblog_uwpce.git
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/mysite_start_session09.git
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">8</div>
 
 
     </article>
@@ -166,7 +236,7 @@ to enter your github password).</p>
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">9</div>
 
 
     </article>
@@ -202,7 +272,117 @@ $ git push origin master
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">10</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="enhancement-ideas">
+    <hgroup>
+      <h3>Enhancement Ideas</h3>
+    </hgroup>
+    <article class="">
+      <p>You and your partner can work on any of the following enhancements</p>
+<p>If you finish one, start another!</p>
+
+
+
+<div class="slide-no">11</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>Django All-Auth and Facebook</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>Django-Allauth installed.</li>
+<li>Users can visit the Django-Allauth login page</li>
+<li>The Django-Allauth login page includes a link to login with Facebook</li>
+<li>They can use that link to login to Facebook</li>
+<li>When a user logs in, they are directed to the main index/list page</li>
+<li>When a user visits the main index/list page or the detail page</li>
+<li>They see a link to the allauth login page if they are not logged in</li>
+<li>If they are logged in then they see a link to the logout page</li>
+</ul>
+</div>
+<p>Resources:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=1yqKNQ3ogKQ">https://www.youtube.com/watch?v=1yqKNQ3ogKQ</a></li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">12</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id6">
+    <hgroup>
+      <h3>Django Rest Framework</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
+<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">13</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id7">
+    <hgroup>
+      <h3>RSS Feed</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">CNN's RSS feed of top stories</a>.</li>
+<li>Your primary resource will be <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">this example</a> from the Django documentation.</li>
+<li>You'll have to change a few things in order to adapt this example to our posts model.</li>
+<li>For example, our posts don't have a &quot;pub_date&quot; field, but they do have another similar field.</li>
+<li>And our posts don't have a description field, so the call to &quot;item.description&quot; will fail; you'll have to use another similar field.</li>
+<li>Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">14</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id8">
+    <hgroup>
+      <h3>Post creation form</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
+<li>The user should be able to at least specify the title and content of the post;</li>
+<li>If they can't choose the category then that's OK.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">this example</a> of a CreateForm.</li>
+<li>You might need to create a template similar to the template in the example,</li>
+<li>And you might need to specify the template name using a 'template_name' property like in <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">this example</a> of a similar form.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">15</div>
 
 
     </article>
@@ -223,7 +403,7 @@ Django app.</p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">16</div>
 
 
     </article>
@@ -245,7 +425,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">17</div>
 
 
     </article>
@@ -265,7 +445,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">18</div>
 
 
     </article>
@@ -295,7 +475,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">19</div>
 
 
     </article>
