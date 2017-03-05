@@ -150,7 +150,11 @@ You and your partner can work on any of the following enhancements
 
 If you finish one, start another!
 
-.. nextslide:: Django All-Auth and Facebook
+
+All-Auth
+--------
+
+Django All-Auth and Facebook
 
 Goals:
 
@@ -166,9 +170,6 @@ Goals:
     * They see a link to the allauth login page if they are not logged in
     * If they are logged in then they see a link to the logout page
 
-
-.. next slide::
-
 Resources:
 
 .. rst-class:: build
@@ -177,7 +178,8 @@ Resources:
     * https://www.youtube.com/watch?v=1yqKNQ3ogKQ
 
 
-.. nextslide:: Django Rest Framework
+Django Rest Framework
+---------------------
 
 Goals:
 
@@ -188,7 +190,8 @@ Goals:
     * Your primary resource for this will be the `DRF documentation <http://www.django-rest-framework.org/#installation>`_ "installation" and "example" guides.
 
 
-.. nextslide:: RSS Feed
+RSS Feed
+--------
 
 Goals:
 
@@ -203,7 +206,8 @@ Goals:
     * Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.
 
 
-.. nextslide:: Post creation form
+Post Creation Form
+------------------
 
 Goals:
 
@@ -218,7 +222,14 @@ Goals:
     * And you might need to specify the template name using a 'template_name' property like in `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_ of a similar form.
 
 
-.. nextslide:: Something else!
+Something Else!
+---------------
+
+.. rst-class:: build
+.. container::
+
+    * Change the CSS
+    * Some other enhancement
 
 
 Homework
