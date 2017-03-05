@@ -79,7 +79,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h1>Session 09</h1>
     </hgroup>
     <article class="">
-      <div class="figure align-center" id="id3">
+      <div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/django-pony.png"><img alt="../_images/django-pony.png" src="../_images/django-pony.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="http://djangopony.com/">http://djangopony.com/</a></span></p>
 </div>
@@ -127,7 +127,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
     </article>
-  </slide>  <slide class="level-3" id="id4">
+  </slide>  <slide class="level-3" id="id6">
     <hgroup>
       <h3>But First</h3>
     </hgroup>
@@ -184,11 +184,51 @@ it works.</p>
       <h3>Agile</h3>
     </hgroup>
     <article class="">
-      <p>[placeholder]</p>
+      <div class="build docutils container">
+<p>Alternatives to traditional project management</p>
+<p>A set of principles for software development</p>
+<p>Designed to help teams respond to unpredictability</p>
+<p>Emphasis on incremental iterative work cadences and empirical feedback</p>
+<p>(Source: <a class="reference external" href="http://agilemethodology.org/">http://agilemethodology.org/</a>)</p>
+</div>
 
 
 
 <div class="slide-no">7</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="scrum">
+    <hgroup>
+      <h3>Scrum</h3>
+    </hgroup>
+    <article class="">
+      <div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/scrum.jpg"><img alt="../_images/scrum.jpg" src="../_images/scrum.jpg" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">image: <a class="reference external" href="https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg">https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg</a></span></p>
+</div>
+
+
+
+<div class="slide-no">8</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="pair-programming">
+    <hgroup>
+      <h3>Pair Programming</h3>
+    </hgroup>
+    <article class="">
+      <div class="build docutils container">
+<p>Two programmers work at one workstation</p>
+<p>Driver - writes code</p>
+<p>Navigator - reviews code, observes, considers improvements or changes in direction</p>
+<p>The two programmers switch roles frequently</p>
+</div>
+
+
+
+<div class="slide-no">9</div>
 
 
     </article>
@@ -214,7 +254,24 @@ the following repository to your github account:</p>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">10</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id7">
+    <hgroup>
+      <h3>Preparation</h3>
+    </hgroup>
+    <article class="">
+      <div class="build docutils container">
+<p>I'll make an announcement when its time to switch</p>
+<p>We'll take a break for lightning talks</p>
+<p>And hear your thoughts on Pair Programming at the end</p>
+</div>
+
+
+
+<div class="slide-no">11</div>
 
 
     </article>
@@ -236,7 +293,7 @@ to enter your github password).</p>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">12</div>
 
 
     </article>
@@ -272,7 +329,7 @@ $ git push origin master
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">13</div>
 
 
     </article>
@@ -286,7 +343,72 @@ $ git push origin master
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">14</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="django-rest-framework">
+    <hgroup>
+      <h3>Django Rest Framework</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
+<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">15</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="rss-feed">
+    <hgroup>
+      <h3>RSS Feed</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN's RSS feed of top stories</a>.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
+<li>You'll have to change a few things in order to adapt this example to our posts model.</li>
+<li>For example, our posts don't have a &quot;pub_date&quot; field, but they do have another similar field.</li>
+<li>And our posts don't have a description field, so the call to &quot;item.description&quot; will fail; you'll have to use another similar field.</li>
+<li>Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">16</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="post-creation-form">
+    <hgroup>
+      <h3>Post Creation Form</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
+<li>The user should be able to at least specify the title and content of the post;</li>
+<li>If they can't choose the category then that's OK.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">this example</a> of a CreateForm.</li>
+<li>You might need to create a template similar to the template in the example,</li>
+<li>And you might need to specify the template name using a 'template_name' property like in <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">this example</a> of a similar form.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">17</div>
 
 
     </article>
@@ -318,72 +440,7 @@ $ git push origin master
 
 
 
-<div class="slide-no">12</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="django-rest-framework">
-    <hgroup>
-      <h3>Django Rest Framework</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
-<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">13</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="rss-feed">
-    <hgroup>
-      <h3>RSS Feed</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">CNN's RSS feed of top stories</a>.</li>
-<li>Your primary resource will be <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">this example</a> from the Django documentation.</li>
-<li>You'll have to change a few things in order to adapt this example to our posts model.</li>
-<li>For example, our posts don't have a &quot;pub_date&quot; field, but they do have another similar field.</li>
-<li>And our posts don't have a description field, so the call to &quot;item.description&quot; will fail; you'll have to use another similar field.</li>
-<li>Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">14</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="post-creation-form">
-    <hgroup>
-      <h3>Post Creation Form</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
-<li>The user should be able to at least specify the title and content of the post;</li>
-<li>If they can't choose the category then that's OK.</li>
-<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">this example</a> of a CreateForm.</li>
-<li>You might need to create a template similar to the template in the example,</li>
-<li>And you might need to specify the template name using a 'template_name' property like in <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">this example</a> of a similar form.</li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">15</div>
+<div class="slide-no">18</div>
 
 
     </article>
@@ -401,7 +458,20 @@ $ git push origin master
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">19</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id3">
+    <hgroup>
+      <h3>Pair Programming</h3>
+    </hgroup>
+    <article class="">
+      <p>How did it go?</p>
+
+
+
+<div class="slide-no">20</div>
 
 
     </article>
@@ -422,7 +492,7 @@ Django app.</p>
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">21</div>
 
 
     </article>
@@ -444,7 +514,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">22</div>
 
 
     </article>
@@ -464,7 +534,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">23</div>
 
 
     </article>
@@ -494,7 +564,7 @@ charges for work you do in this class.</p>
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">24</div>
 
 
     </article>

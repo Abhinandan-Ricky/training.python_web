@@ -43,7 +43,7 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x000001D7FAEE4620>  
+<generator object macro at 0x00000299E3C2B678>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -52,7 +52,7 @@
             
   <div class="section" id="session-09">
 <h1>Session 09<a class="headerlink" href="#session-09" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="../_images/django-pony.png"><img alt="../_images/django-pony.png" src="../_images/django-pony.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="http://djangopony.com/">http://djangopony.com/</a></span></p>
 </div>
@@ -98,7 +98,29 @@ it works.</p>
 </div>
 <div class="section" id="agile">
 <h3>Agile<a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h3>
-<p>[placeholder]</p>
+<div class="build docutils container">
+<p>Alternatives to traditional project management</p>
+<p>A set of principles for software development</p>
+<p>Designed to help teams respond to unpredictability</p>
+<p>Emphasis on incremental iterative work cadences and empirical feedback</p>
+<p>(Source: <a class="reference external" href="http://agilemethodology.org/">http://agilemethodology.org/</a>)</p>
+</div>
+</div>
+<div class="section" id="scrum">
+<h3>Scrum<a class="headerlink" href="#scrum" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/scrum.jpg"><img alt="../_images/scrum.jpg" src="../_images/scrum.jpg" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-text">image: <a class="reference external" href="https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg">https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg</a></span></p>
+</div>
+</div>
+<div class="section" id="pair-programming">
+<h3>Pair Programming<a class="headerlink" href="#pair-programming" title="Permalink to this headline">¶</a></h3>
+<div class="build docutils container">
+<p>Two programmers work at one workstation</p>
+<p>Driver - writes code</p>
+<p>Navigator - reviews code, observes, considers improvements or changes in direction</p>
+<p>The two programmers switch roles frequently</p>
+</div>
 </div>
 <div class="section" id="preparation">
 <h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
@@ -115,6 +137,11 @@ the following repository to your github account:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/mysite_start_session09.git
 </pre></div>
 </div>
+</div>
+<div class="build docutils container">
+<p>I&#8217;ll make an announcement when its time to switch</p>
+<p>We&#8217;ll take a break for lightning talks</p>
+<p>And hear your thoughts on Pair Programming at the end</p>
 </div>
 </div>
 <div class="section" id="connect-to-your-partner">
@@ -162,6 +189,44 @@ $ git push origin master
 <p>You and your partner can work on any of the following enhancements</p>
 <p>If you finish one, start another!</p>
 </div>
+<div class="section" id="django-rest-framework">
+<h3>Django Rest Framework<a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a DRF &#8220;API View&#8221; page to create, retrieve, update, and delete posts and categories.</li>
+<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &#8220;installation&#8221; and &#8220;example&#8221; guides.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rss-feed">
+<h3>RSS Feed<a class="headerlink" href="#rss-feed" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN&#8217;s RSS feed of top stories</a>.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
+<li>You&#8217;ll have to change a few things in order to adapt this example to our posts model.</li>
+<li>For example, our posts don&#8217;t have a &#8220;pub_date&#8221; field, but they do have another similar field.</li>
+<li>And our posts don&#8217;t have a description field, so the call to &#8220;item.description&#8221; will fail; you&#8217;ll have to use another similar field.</li>
+<li>Also, we don&#8217;t have a view named &#8216;news-item&#8217;, our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="post-creation-form">
+<h3>Post Creation Form<a class="headerlink" href="#post-creation-form" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
+<li>The user should be able to at least specify the title and content of the post;</li>
+<li>If they can&#8217;t choose the category then that&#8217;s OK.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">this example</a> of a CreateForm.</li>
+<li>You might need to create a template similar to the template in the example,</li>
+<li>And you might need to specify the template name using a &#8216;template_name&#8217; property like in <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">this example</a> of a similar form.</li>
+</ul>
+</div>
+</div>
 <div class="section" id="all-auth">
 <h3>All-Auth<a class="headerlink" href="#all-auth" title="Permalink to this headline">¶</a></h3>
 <p>Django All-Auth and Facebook</p>
@@ -185,44 +250,6 @@ $ git push origin master
 </ul>
 </div>
 </div>
-<div class="section" id="django-rest-framework">
-<h3>Django Rest Framework<a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a DRF &#8220;API View&#8221; page to create, retrieve, update, and delete posts and categories.</li>
-<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &#8220;installation&#8221; and &#8220;example&#8221; guides.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="rss-feed">
-<h3>RSS Feed<a class="headerlink" href="#rss-feed" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">CNN&#8217;s RSS feed of top stories</a>.</li>
-<li>Your primary resource will be <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">this example</a> from the Django documentation.</li>
-<li>You&#8217;ll have to change a few things in order to adapt this example to our posts model.</li>
-<li>For example, our posts don&#8217;t have a &#8220;pub_date&#8221; field, but they do have another similar field.</li>
-<li>And our posts don&#8217;t have a description field, so the call to &#8220;item.description&#8221; will fail; you&#8217;ll have to use another similar field.</li>
-<li>Also, we don&#8217;t have a view named &#8216;news-item&#8217;, our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="post-creation-form">
-<h3>Post Creation Form<a class="headerlink" href="#post-creation-form" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
-<li>The user should be able to at least specify the title and content of the post;</li>
-<li>If they can&#8217;t choose the category then that&#8217;s OK.</li>
-<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">this example</a> of a CreateForm.</li>
-<li>You might need to create a template similar to the template in the example,</li>
-<li>And you might need to specify the template name using a &#8216;template_name&#8217; property like in <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">this example</a> of a similar form.</li>
-</ul>
-</div>
-</div>
 <div class="section" id="something-else">
 <h3>Something Else!<a class="headerlink" href="#something-else" title="Permalink to this headline">¶</a></h3>
 <div class="build docutils container">
@@ -231,6 +258,10 @@ $ git push origin master
 <li>Some other enhancement</li>
 </ul>
 </div>
+</div>
+<div class="section" id="id3">
+<h3>Pair Programming<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>How did it go?</p>
 </div>
 </div>
 <div class="section" id="homework">
@@ -295,9 +326,9 @@ charges for work you do in this class.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x000001D7FAEE49E8>
+      </div><generator object macro at 0x00000299E3C2B518>
       <div class="clearer"></div>
-    </div><generator object macro at 0x000001D7FAEE4620>
+    </div><generator object macro at 0x00000299E3C2B678>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
