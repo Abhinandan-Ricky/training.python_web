@@ -174,17 +174,13 @@ Agile
 
     Emphasis on incremental iterative work cadences and empirical feedback
 
+    `Scrum <https://www.scrumalliance.org/why-scrum>`_
+
+    `Kanban <https://leankit.com/learn/kanban/what-is-kanban>`_
+
+    `Pair Programming <https://www.agilealliance.org/glossary/pairing>`_
+
     (Source: http://agilemethodology.org/)
-
-
-Scrum
------
-
-.. figure:: /_static/scrum.jpg
-    :align: center
-    :width: 60%
-
-    image: https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg
 
 
 Pair Programming
@@ -288,6 +284,13 @@ Now, when you switch roles during your work, here's the workflow you can use:
 
 Pair Programming
 ----------------
+
+.. rst-class:: large
+
+Let's get started!
+
+
+.. nextslide::
 
 How did it go?
 
