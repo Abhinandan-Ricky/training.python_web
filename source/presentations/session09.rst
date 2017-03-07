@@ -234,12 +234,12 @@ Goals:
 .. container::
 
     * User can visit a page on your site which presents a form that they can use to create a post.
-    * The user should be able to at least specify the title and content of the post;
-    * If they can't choose the category then that's OK.
-    * Your primary resource will be `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ of a CreateForm.
-    * You might need to create a template similar to the template in the example,
-    * And you might need to specify the template name using a 'template_name' property like in `this example <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_ of a similar form.
-
+    * The user should be able to at least specify the title and content of the post
+    * If they can't choose the category then that's OK
+    * Your primary resource will be `this example <https://tutorial.djangogirls.org/en/django_forms/>`_ from DjangoGirls
+    * You might need to create a template similar to the template in the example
+    * And you might need to specify the template name using a 'template_name' property
+    * And check out the docs on `createview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ and `fromview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_
 
 All-Auth
 --------
@@ -251,13 +251,11 @@ Goals:
 .. rst-class:: build
 .. container::
 
-    * Django-Allauth installed.
     * Users can visit the Django-Allauth login page
     * The Django-Allauth login page includes a link to login with Facebook
     * They can use that link to login to Facebook
-    * When a user logs in, they are directed to the main index/list page
-    * When a user visits the main index/list page or the detail page
-    * They see a link to the allauth login page if they are not logged in
+    * When a user logs in, they are directed to the main list page
+    * When a user visits the main index/list page or the detail page they see a link to the allauth login page if they are not logged in
     * If they are logged in then they see a link to the logout page
 
 Resources:
@@ -265,7 +263,8 @@ Resources:
 .. rst-class:: build
 .. container::
 
-    * https://www.youtube.com/watch?v=1yqKNQ3ogKQ
+    * `Django docs on allauth <https://django-allauth.readthedocs.io/en/latest/installation.html>`_
+    * `A video on allauth <https://www.youtube.com/watch?v=1yqKNQ3ogKQ>`_
 
 
 Something Else!
@@ -275,7 +274,7 @@ Something Else!
 .. container::
 
     * Change the CSS
-    * Some other enhancement
+    * Some other enhancement that you like
 
 Pair Programming
 ----------------
