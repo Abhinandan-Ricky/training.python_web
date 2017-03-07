@@ -179,6 +179,137 @@ it works.</p>
 
 
     </article>
+  </slide>  <slide class="level-3" id="enhancement-ideas">
+    <hgroup>
+      <h3>Enhancement Ideas</h3>
+    </hgroup>
+    <article class="">
+      <p>You and your partner can work on any of the following enhancements</p>
+<p>Choose one to start with - if you finish it, start another!</p>
+<p>Use your partner first to work with any issues that arise</p>
+<p>Use the proposed resources, but you may still need to troubleshoot, research, and find other materials</p>
+
+
+
+<div class="slide-no">7</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="django-rest-framework">
+    <hgroup>
+      <h3>Django Rest Framework</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
+<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">8</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="rss-feed">
+    <hgroup>
+      <h3>RSS Feed</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN's RSS feed of top stories</a>.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
+<li>You'll have to change a few things in order to adapt this example to our posts model.</li>
+<li>For example, our posts don't have a &quot;pub_date&quot; field, but they do have another similar field.</li>
+<li>And our posts don't have a description field, so the call to &quot;item.description&quot; will fail; you'll have to use another similar field.</li>
+<li>Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">9</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="post-creation-form">
+    <hgroup>
+      <h3>Post Creation Form</h3>
+    </hgroup>
+    <article class="">
+      <p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
+<li>The user should be able to at least specify the title and content of the post</li>
+<li>If they can't choose the category then that's OK</li>
+<li>Your primary resource will be <a class="reference external" href="https://tutorial.djangogirls.org/en/django_forms/">this example</a> from DjangoGirls</li>
+<li>You might need to create a template similar to the template in the example</li>
+<li>And you might need to specify the template name using a 'template_name' property</li>
+<li>And check out the docs on <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">createview</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">fromview</a></li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">10</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="all-auth">
+    <hgroup>
+      <h3>All-Auth</h3>
+    </hgroup>
+    <article class="">
+      <p>Django All-Auth and Facebook</p>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>Users can visit the Django-Allauth login page</li>
+<li>The Django-Allauth login page includes a link to login with Facebook</li>
+<li>They can use that link to login to Facebook</li>
+<li>When a user logs in, they are directed to the main list page</li>
+<li>When a user visits the main index/list page or the detail page they see a link to the allauth login page if they are not logged in</li>
+<li>If they are logged in then they see a link to the logout page</li>
+</ul>
+</div>
+<p>Resources:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li><a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/installation.html">Django docs on allauth</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=1yqKNQ3ogKQ">A video on allauth</a></li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">11</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="something-else">
+    <hgroup>
+      <h3>Something Else!</h3>
+    </hgroup>
+    <article class="">
+      <div class="build docutils container">
+<ul class="simple">
+<li>Change the CSS</li>
+<li>Some other enhancement that you like</li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">12</div>
+
+
+    </article>
   </slide>  <slide class="level-3" id="agile">
     <hgroup>
       <h3>Agile</h3>
@@ -194,7 +325,7 @@ it works.</p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">13</div>
 
 
     </article>
@@ -204,13 +335,13 @@ it works.</p>
     </hgroup>
     <article class="">
       <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/scrum.jpg"><img alt="../_images/scrum.jpg" src="../_images/scrum.jpg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="_static/scrum.jpg"><img alt="_static/scrum.jpg" src="_static/scrum.jpg" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg">https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg</a></span></p>
 </div>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">14</div>
 
 
     </article>
@@ -228,7 +359,7 @@ it works.</p>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">15</div>
 
 
     </article>
@@ -254,7 +385,7 @@ the following repository to your github account:</p>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">16</div>
 
 
     </article>
@@ -271,7 +402,7 @@ the following repository to your github account:</p>
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">17</div>
 
 
     </article>
@@ -293,7 +424,7 @@ to enter your github password).</p>
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">18</div>
 
 
     </article>
@@ -325,135 +456,6 @@ $ git push origin master
 <li>The new driver continues working from where their partner left off.</li>
 <li>PROFIT.....</li>
 </ol>
-</div>
-
-
-
-<div class="slide-no">13</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="enhancement-ideas">
-    <hgroup>
-      <h3>Enhancement Ideas</h3>
-    </hgroup>
-    <article class="">
-      <p>You and your partner can work on any of the following enhancements</p>
-<p>If you finish one, start another!</p>
-
-
-
-<div class="slide-no">14</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="django-rest-framework">
-    <hgroup>
-      <h3>Django Rest Framework</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
-<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">15</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="rss-feed">
-    <hgroup>
-      <h3>RSS Feed</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN's RSS feed of top stories</a>.</li>
-<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
-<li>You'll have to change a few things in order to adapt this example to our posts model.</li>
-<li>For example, our posts don't have a &quot;pub_date&quot; field, but they do have another similar field.</li>
-<li>And our posts don't have a description field, so the call to &quot;item.description&quot; will fail; you'll have to use another similar field.</li>
-<li>Also, we don't have a view named 'news-item', our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">16</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="post-creation-form">
-    <hgroup>
-      <h3>Post Creation Form</h3>
-    </hgroup>
-    <article class="">
-      <p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
-<li>The user should be able to at least specify the title and content of the post</li>
-<li>If they can't choose the category then that's OK</li>
-<li>Your primary resource will be <a class="reference external" href="https://tutorial.djangogirls.org/en/django_forms/">this example</a> from DjangoGirls</li>
-<li>You might need to create a template similar to the template in the example</li>
-<li>And you might need to specify the template name using a 'template_name' property</li>
-<li>And check out the docs on <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">createview</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">fromview</a></li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">17</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="all-auth">
-    <hgroup>
-      <h3>All-Auth</h3>
-    </hgroup>
-    <article class="">
-      <p>Django All-Auth and Facebook</p>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>Users can visit the Django-Allauth login page</li>
-<li>The Django-Allauth login page includes a link to login with Facebook</li>
-<li>They can use that link to login to Facebook</li>
-<li>When a user logs in, they are directed to the main list page</li>
-<li>When a user visits the main index/list page or the detail page they see a link to the allauth login page if they are not logged in</li>
-<li>If they are logged in then they see a link to the logout page</li>
-</ul>
-</div>
-<p>Resources:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li><a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/installation.html">Django docs on allauth</a></li>
-<li><a class="reference external" href="https://www.youtube.com/watch?v=1yqKNQ3ogKQ">A video on allauth</a></li>
-</ul>
-</div>
-
-
-
-<div class="slide-no">18</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="something-else">
-    <hgroup>
-      <h3>Something Else!</h3>
-    </hgroup>
-    <article class="">
-      <div class="build docutils container">
-<ul class="simple">
-<li>Change the CSS</li>
-<li>Some other enhancement that you like</li>
-</ul>
 </div>
 
 

@@ -43,7 +43,23 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x00000290E18E3E60>  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="session10.html" title="Session 10"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="session08.html" title="Session 08"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -96,6 +112,83 @@ it works.</p>
 <h3>Our Status<a class="headerlink" href="#our-status" title="Permalink to this headline">¶</a></h3>
 <p>Demo blog</p>
 </div>
+<div class="section" id="enhancement-ideas">
+<h3>Enhancement Ideas<a class="headerlink" href="#enhancement-ideas" title="Permalink to this headline">¶</a></h3>
+<p>You and your partner can work on any of the following enhancements</p>
+<p>Choose one to start with - if you finish it, start another!</p>
+<p>Use your partner first to work with any issues that arise</p>
+<p>Use the proposed resources, but you may still need to troubleshoot, research, and find other materials</p>
+</div>
+<div class="section" id="django-rest-framework">
+<h3>Django Rest Framework<a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a DRF &#8220;API View&#8221; page to create, retrieve, update, and delete posts and categories.</li>
+<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &#8220;installation&#8221; and &#8220;example&#8221; guides.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rss-feed">
+<h3>RSS Feed<a class="headerlink" href="#rss-feed" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN&#8217;s RSS feed of top stories</a>.</li>
+<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
+<li>You&#8217;ll have to change a few things in order to adapt this example to our posts model.</li>
+<li>For example, our posts don&#8217;t have a &#8220;pub_date&#8221; field, but they do have another similar field.</li>
+<li>And our posts don&#8217;t have a description field, so the call to &#8220;item.description&#8221; will fail; you&#8217;ll have to use another similar field.</li>
+<li>Also, we don&#8217;t have a view named &#8216;news-item&#8217;, our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="post-creation-form">
+<h3>Post Creation Form<a class="headerlink" href="#post-creation-form" title="Permalink to this headline">¶</a></h3>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
+<li>The user should be able to at least specify the title and content of the post</li>
+<li>If they can&#8217;t choose the category then that&#8217;s OK</li>
+<li>Your primary resource will be <a class="reference external" href="https://tutorial.djangogirls.org/en/django_forms/">this example</a> from DjangoGirls</li>
+<li>You might need to create a template similar to the template in the example</li>
+<li>And you might need to specify the template name using a &#8216;template_name&#8217; property</li>
+<li>And check out the docs on <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">createview</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">fromview</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="all-auth">
+<h3>All-Auth<a class="headerlink" href="#all-auth" title="Permalink to this headline">¶</a></h3>
+<p>Django All-Auth and Facebook</p>
+<p>Goals:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li>Users can visit the Django-Allauth login page</li>
+<li>The Django-Allauth login page includes a link to login with Facebook</li>
+<li>They can use that link to login to Facebook</li>
+<li>When a user logs in, they are directed to the main list page</li>
+<li>When a user visits the main index/list page or the detail page they see a link to the allauth login page if they are not logged in</li>
+<li>If they are logged in then they see a link to the logout page</li>
+</ul>
+</div>
+<p>Resources:</p>
+<div class="build docutils container">
+<ul class="simple">
+<li><a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/installation.html">Django docs on allauth</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=1yqKNQ3ogKQ">A video on allauth</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="something-else">
+<h3>Something Else!<a class="headerlink" href="#something-else" title="Permalink to this headline">¶</a></h3>
+<div class="build docutils container">
+<ul class="simple">
+<li>Change the CSS</li>
+<li>Some other enhancement that you like</li>
+</ul>
+</div>
+</div>
 <div class="section" id="agile">
 <h3>Agile<a class="headerlink" href="#agile" title="Permalink to this headline">¶</a></h3>
 <div class="build docutils container">
@@ -109,7 +202,7 @@ it works.</p>
 <div class="section" id="scrum">
 <h3>Scrum<a class="headerlink" href="#scrum" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id4">
-<a class="reference internal image-reference" href="../_images/scrum.jpg"><img alt="../_images/scrum.jpg" src="../_images/scrum.jpg" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="_static/scrum.jpg"><img alt="_static/scrum.jpg" src="_static/scrum.jpg" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-text">image: <a class="reference external" href="https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg">https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg</a></span></p>
 </div>
 </div>
@@ -184,81 +277,6 @@ $ git push origin master
 </ol>
 </div>
 </div>
-<div class="section" id="enhancement-ideas">
-<h3>Enhancement Ideas<a class="headerlink" href="#enhancement-ideas" title="Permalink to this headline">¶</a></h3>
-<p>You and your partner can work on any of the following enhancements</p>
-<p>If you finish one, start another!</p>
-</div>
-<div class="section" id="django-rest-framework">
-<h3>Django Rest Framework<a class="headerlink" href="#django-rest-framework" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a DRF &#8220;API View&#8221; page to create, retrieve, update, and delete posts and categories.</li>
-<li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &#8220;installation&#8221; and &#8220;example&#8221; guides.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="rss-feed">
-<h3>RSS Feed<a class="headerlink" href="#rss-feed" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>A user will be able to visit a page on your site and view an RSS list of posts, like <a class="reference external" href="http://rss.cnn.com/rss/cnn_topstories.rss">CNN&#8217;s RSS feed of top stories</a>.</li>
-<li>Your primary resource will be <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/contrib/syndication/#a-simple-example">this example</a> from the Django documentation.</li>
-<li>You&#8217;ll have to change a few things in order to adapt this example to our posts model.</li>
-<li>For example, our posts don&#8217;t have a &#8220;pub_date&#8221; field, but they do have another similar field.</li>
-<li>And our posts don&#8217;t have a description field, so the call to &#8220;item.description&#8221; will fail; you&#8217;ll have to use another similar field.</li>
-<li>Also, we don&#8217;t have a view named &#8216;news-item&#8217;, our post-detail view has a different name, and it takes a kwarg instead of an arg.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="post-creation-form">
-<h3>Post Creation Form<a class="headerlink" href="#post-creation-form" title="Permalink to this headline">¶</a></h3>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>User can visit a page on your site which presents a form that they can use to create a post.</li>
-<li>The user should be able to at least specify the title and content of the post</li>
-<li>If they can&#8217;t choose the category then that&#8217;s OK</li>
-<li>Your primary resource will be <a class="reference external" href="https://tutorial.djangogirls.org/en/django_forms/">this example</a> from DjangoGirls</li>
-<li>You might need to create a template similar to the template in the example</li>
-<li>And you might need to specify the template name using a &#8216;template_name&#8217; property</li>
-<li>And check out the docs on <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview">createview</a> and <a class="reference external" href="https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview">fromview</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="all-auth">
-<h3>All-Auth<a class="headerlink" href="#all-auth" title="Permalink to this headline">¶</a></h3>
-<p>Django All-Auth and Facebook</p>
-<p>Goals:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li>Users can visit the Django-Allauth login page</li>
-<li>The Django-Allauth login page includes a link to login with Facebook</li>
-<li>They can use that link to login to Facebook</li>
-<li>When a user logs in, they are directed to the main list page</li>
-<li>When a user visits the main index/list page or the detail page they see a link to the allauth login page if they are not logged in</li>
-<li>If they are logged in then they see a link to the logout page</li>
-</ul>
-</div>
-<p>Resources:</p>
-<div class="build docutils container">
-<ul class="simple">
-<li><a class="reference external" href="https://django-allauth.readthedocs.io/en/latest/installation.html">Django docs on allauth</a></li>
-<li><a class="reference external" href="https://www.youtube.com/watch?v=1yqKNQ3ogKQ">A video on allauth</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="something-else">
-<h3>Something Else!<a class="headerlink" href="#something-else" title="Permalink to this headline">¶</a></h3>
-<div class="build docutils container">
-<ul class="simple">
-<li>Change the CSS</li>
-<li>Some other enhancement that you like</li>
-</ul>
-</div>
-</div>
 <div class="section" id="id2">
 <h3>Pair Programming<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>How did it go?</p>
@@ -326,9 +344,89 @@ charges for work you do in this class.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x00000290E18E3DB0>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Session 09</a><ul>
+<li><a class="reference internal" href="#extending-django">Extending Django</a><ul>
+<li><a class="reference internal" href="#but-first">But First</a></li>
+<li><a class="reference internal" href="#last-week">Last Week</a></li>
+<li><a class="reference internal" href="#our-status">Our Status</a></li>
+<li><a class="reference internal" href="#enhancement-ideas">Enhancement Ideas</a></li>
+<li><a class="reference internal" href="#django-rest-framework">Django Rest Framework</a></li>
+<li><a class="reference internal" href="#rss-feed">RSS Feed</a></li>
+<li><a class="reference internal" href="#post-creation-form">Post Creation Form</a></li>
+<li><a class="reference internal" href="#all-auth">All-Auth</a></li>
+<li><a class="reference internal" href="#something-else">Something Else!</a></li>
+<li><a class="reference internal" href="#agile">Agile</a></li>
+<li><a class="reference internal" href="#scrum">Scrum</a></li>
+<li><a class="reference internal" href="#pair-programming">Pair Programming</a></li>
+<li><a class="reference internal" href="#preparation">Preparation</a></li>
+<li><a class="reference internal" href="#connect-to-your-partner">Connect to Your Partner</a></li>
+<li><a class="reference internal" href="#while-you-work">While You Work</a></li>
+<li><a class="reference internal" href="#id2">Pair Programming</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#homework">Homework</a><ul>
+<li><a class="reference internal" href="#sign-up-for-aws">Sign Up For AWS</a></li>
+<li><a class="reference internal" href="#set-up-an-iam-user">Set Up an IAM User</a></li>
+<li><a class="reference internal" href="#prepare-for-login">Prepare for Login</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="session08.html"
+                        title="previous chapter">Session 08</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="session10.html"
+                        title="next chapter">Session 10</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/presentations/session09.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h3>Slides</h3>
+  <ul class="this-page-menu">
+    <li><a href="../.././slides\presentations/session09.html"
+           rel="nofollow">View as slides</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
-    </div><generator object macro at 0x00000290E18E3E60>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="session10.html" title="Session 10"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="session08.html" title="Session 08"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
