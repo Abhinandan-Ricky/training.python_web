@@ -46,6 +46,7 @@ Agenda:
     * `HTML rendering of exercise <https://christyheaton.github.io/training.python_web/html/presentations/session09.html>`_
     * More resources below
 
+
 Last Week
 ---------
 
@@ -61,141 +62,23 @@ Last week, we created a nice, simple Django microblog application.
 
     And today, that's what we are going to do.
 
+
 Our Status
 ----------
 
 Demo blog
 
-Agile
------
-
-.. rst-class:: build
-.. container::
-
-    Alternatives to traditional project management
-
-    A set of principles for software development
-
-    Designed to help teams respond to unpredictability
-
-    Emphasis on incremental iterative work cadences and empirical feedback
-
-    (Source: http://agilemethodology.org/)
-
-
-Scrum
------
-
-.. figure:: /_static/scrum.jpg
-    :align: center
-    :width: 60%
-
-    image: https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg
-
-
-Pair Programming
-----------------
-
-.. rst-class:: build
-.. container::
-
-    Two programmers work at one workstation
-
-    Driver - writes code
-
-    Navigator - reviews code, observes, considers improvements or changes in direction
-
-    The two programmers switch roles frequently
-
-
-Preparation
------------
-
-In order for this to work properly, we'll need to have a few things in place.
-
-.. rst-class:: build
-.. container::
-
-    **For the time being, all these actions should only be taken by one
-    partner**.
-
-    First, we'll start from a canonical copy of the microblog.  Make a fork of
-    the following repository to your github account::
-
-        https://github.com/christyheaton/mysite_start_session09.git
-
-    Then, clone that repository to your local machine:
-
-    .. code-block:: bash
-
-        $ git clone https://github.com/<your_name>/mysite_start_session09.git
-
-
-.. nextslide::
-
-.. rst-class:: build
-.. container::
-
-    I'll make an announcement when its time to switch
-
-    We'll take a break for lightning talks
-
-    And hear your thoughts on Pair Programming at the end
-
-Connect to Your Partner
------------------------
-
-Finally, you'll need to add your partner as a collaborator for your new
-repository.
-
-.. rst-class:: build
-.. container::
-
-    Go to the *settings* for your repository.
-
-    Click the *collaborators* tab on the left side of the window (you'll need
-    to enter your github password).
-
-    Look up your partner by email address or github username.
-
-    Add them.
-
-    Then your partner can clone the repository to their desktop too.
-
-While You Work
---------------
-
-Now, when you switch roles during your work, here's the workflow you can use:
-
-.. rst-class:: build
-.. container::
-
-    .. container::
-
-        1. The current driver commits all changes and pushes to their repository:
-
-        .. code-block:: bash
-
-            $ git commit -a -m "Time to switch roles"
-            $ git push origin master
-
-    .. container::
-
-        2. The new driver gets the changes:
-
-        .. code-block:: bash
-
-            $ git pull origin master
-
-    3. The new driver continues working from where their partner left off.
-    4. PROFIT.....
 
 Enhancement Ideas
 -----------------
 
 You and your partner can work on any of the following enhancements
 
-If you finish one, start another!
+Choose one to start with - if you finish it, start another!
+
+Use your partner first to work with any issues that arise
+
+Use the proposed resources, but you may still need to troubleshoot, research, and find other materials
 
 
 Django Rest Framework
@@ -275,6 +158,133 @@ Something Else!
 
     * Change the CSS
     * Some other enhancement that you like
+
+
+Agile
+-----
+
+.. rst-class:: build
+.. container::
+
+    Alternatives to traditional project management
+
+    A set of principles for software development
+
+    Designed to help teams respond to unpredictability
+
+    Emphasis on incremental iterative work cadences and empirical feedback
+
+    (Source: http://agilemethodology.org/)
+
+
+Scrum
+-----
+
+.. figure:: /_static/scrum.jpg
+    :align: center
+    :width: 60%
+
+    image: https://s-media-cache-ak0.pinimg.com/originals/08/57/d4/0857d4a4d90e24a5b2984e188c21e97e.jpg
+
+
+Pair Programming
+----------------
+
+.. rst-class:: build
+.. container::
+
+    Two programmers work at one workstation
+
+    Driver - writes code
+
+    Navigator - reviews code, observes, considers improvements or changes in direction
+
+    The two programmers switch roles frequently
+
+
+Preparation
+-----------
+
+In order for this to work properly, we'll need to have a few things in place.
+
+.. rst-class:: build
+.. container::
+
+    **For the time being, all these actions should only be taken by one
+    partner**.
+
+    First, we'll start from a canonical copy of the microblog.  Make a fork of
+    the following repository to your github account::
+
+        https://github.com/christyheaton/mysite_start_session09.git
+
+    Then, clone that repository to your local machine:
+
+    .. code-block:: bash
+
+        $ git clone https://github.com/<your_name>/mysite_start_session09.git
+
+
+.. nextslide::
+
+.. rst-class:: build
+.. container::
+
+    I'll make an announcement when its time to switch
+
+    We'll take a break for lightning talks
+
+    And hear your thoughts on Pair Programming at the end
+
+
+Connect to Your Partner
+-----------------------
+
+Finally, you'll need to add your partner as a collaborator for your new
+repository.
+
+.. rst-class:: build
+.. container::
+
+    Go to the *settings* for your repository.
+
+    Click the *collaborators* tab on the left side of the window (you'll need
+    to enter your github password).
+
+    Look up your partner by email address or github username.
+
+    Add them.
+
+    Then your partner can clone the repository to their desktop too.
+
+While You Work
+--------------
+
+Now, when you switch roles during your work, here's the workflow you can use:
+
+.. rst-class:: build
+.. container::
+
+    .. container::
+
+        1. The current driver commits all changes and pushes to their repository:
+
+        .. code-block:: bash
+
+            $ git commit -a -m "Time to switch roles"
+            $ git push origin master
+
+    .. container::
+
+        2. The new driver gets the changes:
+
+        .. code-block:: bash
+
+            $ git pull origin master
+
+    3. The new driver continues working from where their partner left off.
+    4. PROFIT.....
+
 
 Pair Programming
 ----------------
