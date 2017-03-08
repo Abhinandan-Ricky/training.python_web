@@ -89,7 +89,7 @@ Goals:
 .. rst-class:: build
 .. container::
 
-    * User can visit a DRF "API View" page to create, retrieve, update, and delete posts and categories.
+    * User can visit a DRF "API View" page to create and retrieve posts and categories.
     * Your primary resource for this will be the `DRF documentation <http://www.django-rest-framework.org/#installation>`_ "installation" and "example" guides.
 
 
@@ -318,14 +318,13 @@ Next week, we will deploy your Django application to a server.
 Sign Up For AWS
 ---------------
 
-Begin by going to the `AWS homepage`_ and clicking on the large, yellow button
-that reads "Sign In to the Console".
+Begin by going to the `AWS homepage`_ and clicking on the large button
+that reads "Sign in to the Console".
 
 .. rst-class:: build
 .. container::
 
-    On the sign-in page that appears, click the radio button for 'I am a new
-    user', fill in your email address, and then click through to begin the
+    On the sign-in page that appears, click the radio button for 'I am a new user.', fill in your email address, and then click through to begin the
     sign-up process.
 
     You will be required to provide credit card information.
@@ -346,14 +345,14 @@ Once you've signed up for an account take the following actions:
   * Set up Security Credentials for that IAM user.
   * Save these Security Credentials in a safe place so you can use them for class.
 
-.. _Create an IAM user: http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html
+.. _Create an IAM user: http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-setup.html
 
 Prepare for Login
 -----------------
 
 * `Create a Keypair`_
 
-  * Choose the 'US West (Oregon)' region since it's geographically closest to you.</li>
+  * Choose the 'US West (Oregon)' region since it's geographically closest to you.
   * When you download your private key, save it to ~/.ssh/pk-aws.pem
   * Make sure that the private key is secure and useable by doing the following command
 
@@ -363,8 +362,9 @@ Prepare for Login
 
   * The security group should be named 'ssh-access'
   * Add one custom TCP rule
+
     * allow port 22
     * allow addresses 0.0.0.0/0
 
-.. _Create a Keypair: http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-create-key-pair.html
+.. _Create a Keypair: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair
 .. _Create a custom security group: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html
