@@ -43,23 +43,7 @@
     </a>
   </div>
 </div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="session10.html" title="Session 10"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="session08.html" title="Session 08"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>  
+<generator object macro at 0x00000269E7D595C8>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -124,7 +108,7 @@ it works.</p>
 <p>Goals:</p>
 <div class="build docutils container">
 <ul class="simple">
-<li>User can visit a DRF &#8220;API View&#8221; page to create, retrieve, update, and delete posts and categories.</li>
+<li>User can visit a DRF &#8220;API View&#8221; page to create and retrieve posts and categories.</li>
 <li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &#8220;installation&#8221; and &#8220;example&#8221; guides.</li>
 </ul>
 </div>
@@ -292,11 +276,10 @@ Django app.</p>
 </div>
 <div class="section" id="sign-up-for-aws">
 <h3>Sign Up For AWS<a class="headerlink" href="#sign-up-for-aws" title="Permalink to this headline">¶</a></h3>
-<p>Begin by going to the <a class="reference external" href="http://aws.amazon.com">AWS homepage</a> and clicking on the large, yellow button
-that reads &#8220;Sign In to the Console&#8221;.</p>
+<p>Begin by going to the <a class="reference external" href="http://aws.amazon.com">AWS homepage</a> and clicking on the large button
+that reads &#8220;Sign in to the Console&#8221;.</p>
 <div class="build docutils container">
-<p>On the sign-in page that appears, click the radio button for &#8216;I am a new
-user&#8217;, fill in your email address, and then click through to begin the
+<p>On the sign-in page that appears, click the radio button for &#8216;I am a new user.&#8217;, fill in your email address, and then click through to begin the
 sign-up process.</p>
 <p>You will be required to provide credit card information.</p>
 <p>If you are still eligible for the AWS free tier, you will not incur any
@@ -307,7 +290,7 @@ charges for work you do in this class.</p>
 <h3>Set Up an IAM User<a class="headerlink" href="#set-up-an-iam-user" title="Permalink to this headline">¶</a></h3>
 <p>Once you&#8217;ve signed up for an account take the following actions:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html">Create an IAM user</a> and place them in a group with Power User access. (Search for PowerUser when selecting a policy for your group).<ul>
+<li><a class="reference external" href="http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-setup.html">Create an IAM user</a> and place them in a group with Power User access. (Search for PowerUser when selecting a policy for your group).<ul>
 <li>Set up Security Credentials for that IAM user.</li>
 <li>Save these Security Credentials in a safe place so you can use them for class.</li>
 </ul>
@@ -317,8 +300,8 @@ charges for work you do in this class.</p>
 <div class="section" id="prepare-for-login">
 <h3>Prepare for Login<a class="headerlink" href="#prepare-for-login" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-create-key-pair.html">Create a Keypair</a><ul>
-<li>Choose the &#8216;US West (Oregon)&#8217; region since it&#8217;s geographically closest to you.&lt;/li&gt;</li>
+<li><a class="reference external" href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">Create a Keypair</a><ul>
+<li>Choose the &#8216;US West (Oregon)&#8217; region since it&#8217;s geographically closest to you.</li>
 <li>When you download your private key, save it to ~/.ssh/pk-aws.pem</li>
 <li>Make sure that the private key is secure and useable by doing the following command<ul>
 <li><code class="docutils literal"><span class="pre">$</span> <span class="pre">chmod</span> <span class="pre">400</span> <span class="pre">~/.ssh/pk-aws.pem</span></code></li>
@@ -328,9 +311,11 @@ charges for work you do in this class.</p>
 </li>
 <li><a class="reference external" href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Create a custom security group</a><ul>
 <li>The security group should be named &#8216;ssh-access&#8217;</li>
-<li>Add one custom TCP rule
-* allow port 22
-* allow addresses 0.0.0.0/0</li>
+<li>Add one custom TCP rule<ul>
+<li>allow port 22</li>
+<li>allow addresses 0.0.0.0/0</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -341,88 +326,9 @@ charges for work you do in this class.</p>
 
           </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Session 09</a><ul>
-<li><a class="reference internal" href="#extending-django">Extending Django</a><ul>
-<li><a class="reference internal" href="#but-first">But First</a></li>
-<li><a class="reference internal" href="#last-week">Last Week</a></li>
-<li><a class="reference internal" href="#our-status">Our Status</a></li>
-<li><a class="reference internal" href="#enhancement-ideas">Enhancement Ideas</a></li>
-<li><a class="reference internal" href="#django-rest-framework">Django Rest Framework</a></li>
-<li><a class="reference internal" href="#rss-feed">RSS Feed</a></li>
-<li><a class="reference internal" href="#post-creation-form">Post Creation Form</a></li>
-<li><a class="reference internal" href="#all-auth">All-Auth</a></li>
-<li><a class="reference internal" href="#something-else">Something Else!</a></li>
-<li><a class="reference internal" href="#agile">Agile</a></li>
-<li><a class="reference internal" href="#id2">Pair Programming</a></li>
-<li><a class="reference internal" href="#preparation">Preparation</a></li>
-<li><a class="reference internal" href="#connect-to-your-partner">Connect to Your Partner</a></li>
-<li><a class="reference internal" href="#while-you-work">While You Work</a></li>
-<li><a class="reference internal" href="#id3">Pair Programming</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#homework">Homework</a><ul>
-<li><a class="reference internal" href="#sign-up-for-aws">Sign Up For AWS</a></li>
-<li><a class="reference internal" href="#set-up-an-iam-user">Set Up an IAM User</a></li>
-<li><a class="reference internal" href="#prepare-for-login">Prepare for Login</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="session08.html"
-                        title="previous chapter">Session 08</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="session10.html"
-                        title="next chapter">Session 10</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/presentations/session09.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-  <h3>Slides</h3>
-  <ul class="this-page-menu">
-    <li><a href="../.././slides\presentations/session09.html"
-           rel="nofollow">View as slides</a></li>
-  </ul>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+      </div><generator object macro at 0x00000269E7D59FC0>
       <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="session10.html" title="Session 10"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="session08.html" title="Session 08"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
-      </ul>
-    </div>
+    </div><generator object macro at 0x00000269E7D595C8>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.

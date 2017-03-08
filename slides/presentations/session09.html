@@ -203,7 +203,7 @@ it works.</p>
       <p>Goals:</p>
 <div class="build docutils container">
 <ul class="simple">
-<li>User can visit a DRF &quot;API View&quot; page to create, retrieve, update, and delete posts and categories.</li>
+<li>User can visit a DRF &quot;API View&quot; page to create and retrieve posts and categories.</li>
 <li>Your primary resource for this will be the <a class="reference external" href="http://www.django-rest-framework.org/#installation">DRF documentation</a> &quot;installation&quot; and &quot;example&quot; guides.</li>
 </ul>
 </div>
@@ -503,11 +503,10 @@ Django app.</p>
       <h3>Sign Up For AWS</h3>
     </hgroup>
     <article class="">
-      <p>Begin by going to the <a class="reference external" href="http://aws.amazon.com">AWS homepage</a> and clicking on the large, yellow button
-that reads &quot;Sign In to the Console&quot;.</p>
+      <p>Begin by going to the <a class="reference external" href="http://aws.amazon.com">AWS homepage</a> and clicking on the large button
+that reads &quot;Sign in to the Console&quot;.</p>
 <div class="build docutils container">
-<p>On the sign-in page that appears, click the radio button for 'I am a new
-user', fill in your email address, and then click through to begin the
+<p>On the sign-in page that appears, click the radio button for 'I am a new user.', fill in your email address, and then click through to begin the
 sign-up process.</p>
 <p>You will be required to provide credit card information.</p>
 <p>If you are still eligible for the AWS free tier, you will not incur any
@@ -527,7 +526,7 @@ charges for work you do in this class.</p>
     <article class="">
       <p>Once you've signed up for an account take the following actions:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html">Create an IAM user</a> and place them in a group with Power User access. (Search for PowerUser when selecting a policy for your group).<ul>
+<li><a class="reference external" href="http://docs.aws.amazon.com/IAM/latest/UserGuide/getting-setup.html">Create an IAM user</a> and place them in a group with Power User access. (Search for PowerUser when selecting a policy for your group).<ul>
 <li>Set up Security Credentials for that IAM user.</li>
 <li>Save these Security Credentials in a safe place so you can use them for class.</li>
 </ul>
@@ -546,8 +545,8 @@ charges for work you do in this class.</p>
     </hgroup>
     <article class="">
       <ul class="simple">
-<li><a class="reference external" href="http://docs.aws.amazon.com/gettingstarted/latest/wah/getting-started-create-key-pair.html">Create a Keypair</a><ul>
-<li>Choose the 'US West (Oregon)' region since it's geographically closest to you.&lt;/li&gt;</li>
+<li><a class="reference external" href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">Create a Keypair</a><ul>
+<li>Choose the 'US West (Oregon)' region since it's geographically closest to you.</li>
 <li>When you download your private key, save it to ~/.ssh/pk-aws.pem</li>
 <li>Make sure that the private key is secure and useable by doing the following command<ul>
 <li><code class="docutils literal"><span class="pre">$</span> <span class="pre">chmod</span> <span class="pre">400</span> <span class="pre">~/.ssh/pk-aws.pem</span></code></li>
@@ -557,9 +556,11 @@ charges for work you do in this class.</p>
 </li>
 <li><a class="reference external" href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Create a custom security group</a><ul>
 <li>The security group should be named 'ssh-access'</li>
-<li>Add one custom TCP rule
-* allow port 22
-* allow addresses 0.0.0.0/0</li>
+<li>Add one custom TCP rule<ul>
+<li>allow port 22</li>
+<li>allow addresses 0.0.0.0/0</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
