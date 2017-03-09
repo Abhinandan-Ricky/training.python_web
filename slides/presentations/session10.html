@@ -120,7 +120,7 @@ see it.</p>
     <article class="">
       <p>There are many many different ways to deploy a web application.</p>
 <div class="build docutils container">
-<p>And there are many many services offering platforms for deployment.</p>
+<p>And there are many services offering platforms for deployment.</p>
 <p>How do you choose the right one for you?</p>
 <p>In general there are a few rules of thumb to consider:</p>
 <ul class="build simple">
@@ -192,11 +192,6 @@ stack so that we can learn how the stack works from front to back?</p>
 servers we create.</p>
 <p>You've also set up an IAM user and configured security credentials for that
 user.</p>
-<p>If we were to be automating our work today, we'd use those credentials to
-allow the <a class="reference external" href="https://boto.readthedocs.org/">boto</a> library to connect to AWS as that IAM user.</p>
-<p>Then you could <a class="reference external" href="http://codefellows.github.io/python-dev-accelerator/lectures/day11/boto.html">create or destroy resources</a> using that library.</p>
-<p>Issues surrounding using that library on Windows prevent us from trying
-that path tonight.</p>
 </div>
 
 
@@ -210,7 +205,7 @@ that path tonight.</p>
       <h3>Preparing for AWS Deployment</h3>
     </hgroup>
     <article class="">
-      <p>Instead we'll be making a manual deployment using AWS.</p>
+      <p>We are going to be making a manual deployment using AWS.</p>
 <div class="build docutils container">
 <p>This is always the first step to automation anyway, so this is an important
 first step.</p>
@@ -239,7 +234,7 @@ called <a class="reference external" href="http://12factor.net/">12-factor</a>.<
 <div class="build docutils container">
 <p>The basic idea is that any data that your app uses for configuration that
 is <em>external</em> to the app itself, should be separated from the app.</p>
-<p>The link about contains much more effective explanations, read it.</p>
+<p>The link above contains much more effective explanations, you should read it.</p>
 <p>We've already done this to some degree with our Pyramid application, by
 putting some configuration values into <em>environment variables</em></p>
 <p><code class="docutils literal"><span class="pre">dj-database-url</span></code> allows us to do that with the configuration for our
