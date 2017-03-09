@@ -122,7 +122,7 @@ Goals:
     * Your primary resource will be `this example <https://tutorial.djangogirls.org/en/django_forms/>`_ from DjangoGirls
     * You might need to create a template similar to the template in the example
     * And you might need to specify the template name using a 'template_name' property
-    * And check out the docs on `createview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ and `fromview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_
+    * And check out the docs on `createview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#createview>`_ and `formview <https://docs.djangoproject.com/en/1.10/ref/class-based-views/generic-editing/#formview>`_
 
 All-Auth
 --------
