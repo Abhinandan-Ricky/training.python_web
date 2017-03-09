@@ -39,7 +39,7 @@ There are many many different ways to deploy a web application.
 .. rst-class:: build
 .. container::
 
-    And there are many many services offering platforms for deployment.
+    And there are many services offering platforms for deployment.
 
     How do you choose the right one for you?
 
@@ -88,7 +88,7 @@ We are going to ignore all these questions, and simply ask one question.
 Preparing for AWS Deployment
 ----------------------------
 
-You've started out this week by signing up for AWS.  
+You've started out this week by signing up for AWS.
 
 .. rst-class:: build
 .. container::
@@ -99,17 +99,9 @@ You've started out this week by signing up for AWS.
     You've also set up an IAM user and configured security credentials for that
     user.
 
-    If we were to be automating our work today, we'd use those credentials to
-    allow the `boto`_ library to connect to AWS as that IAM user.
-
-    Then you could `create or destroy resources`_ using that library.
-
-    Issues surrounding using that library on Windows prevent us from trying
-    that path tonight.
-
 .. nextslide::
 
-Instead we'll be making a manual deployment using AWS.
+We are going to be making a manual deployment using AWS.
 
 .. rst-class:: build
 .. container::
@@ -124,13 +116,10 @@ Instead we'll be making a manual deployment using AWS.
     virtual environment.
 
     .. code-block:: bash
-    
+
         (djangoenv)$ pip install dj-database-url
 
-
-
 .. _boto: https://boto.readthedocs.org/
-.. _create or destroy resources: http://codefellows.github.io/python-dev-accelerator/lectures/day11/boto.html
 
 
 .. nextslide:: 12-Factor
@@ -144,7 +133,7 @@ called `12-factor`_.
     The basic idea is that any data that your app uses for configuration that
     is *external* to the app itself, should be separated from the app.
 
-    The link about contains much more effective explanations, read it.
+    The link above contains much more effective explanations, you should read it.
 
     We've already done this to some degree with our Pyramid application, by
     putting some configuration values into *environment variables*
@@ -198,7 +187,7 @@ between production and development to a minimum.
     command:
 
     .. code-block:: bash
-    
+
         (djangoenv)$ pip freeze > requirements.txt
 
     Then, add that file to your repository and commit the changes.
@@ -238,7 +227,7 @@ to create your security group and key pair.
 
     Click the large blue "Launch Instance" button to start a new instance.
 
-    You should see a list of types of operating system listed.  
+    You should see a list of types of operating system listed.
 
     If you don't click on *quick start* at the left.
 
@@ -253,7 +242,7 @@ The next page of the launch wizard allows you to choose how much CPU power and
 RAM your machine will have.
 
 .. rst-class:: build
-.. container:: 
+.. container::
 
     There are only two types of instance that are in the free tier, and one is
     now deprecated.
@@ -314,12 +303,12 @@ machine.
     ssh into that machine:
 
     .. code-block:: bash
-    
+
         ssh -i ~/.ssh/pk-aws.pem ubuntu@<your-public-dns-name.com>
 
     You will need to indicate that you trust this connection.
 
-    You are now logged in to the server as the default user.  
+    You are now logged in to the server as the default user.
 
     AWS sets this user up with the ability to run commands using *sudo*
 
@@ -327,7 +316,7 @@ machine.
     having the latest versions of any software you install:
 
     .. code-block:: bash
-    
+
         sudo apt-get update
 
 Deployment Layer 1: Web Server
@@ -349,7 +338,7 @@ In our deployment stack, the frontmost facing layer is the Web Server.
     Begin by using the Ubuntu package manager to install ``nginx``:
 
     .. code-block:: bash
-    
+
         sudo apt-get install nginx
 
 .. nextslide:: Controlling ``nginx``
@@ -414,7 +403,7 @@ In order to deploy our database, we'll need to install some more software
 
 .. nextslide:: RDS
 
-You *can* set up postgres directly on the machine you just built, but that's no fun.  
+You *can* set up postgres directly on the machine you just built, but that's no fun.
 
 .. rst-class:: build
 .. container::
@@ -495,13 +484,13 @@ following format::
 .. container::
 
     .. code-block:: bash
-    
+
         export DATABASE_URL=<that string>
 
     You can now test access with dbshell:
 
     .. code-block:: bash
-    
+
         python manage.py dbshell
 
     Work through any issues in getting that to work
@@ -514,14 +503,14 @@ Once working, we can point nginx at the instance:
 .. container::
 
     .. code-block:: bash
-    
+
         sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
         sudo vi /etc/nginx/sites-available/default
 
     Add the following content:
 
     .. code-block:: nginx
-    
+
         server {
             listen 80;
             server_name <your-ec2-public-dns-name>;
@@ -603,14 +592,14 @@ Then set an environment variable to point at production settings::
     export DJANGO_SETTINGS_MODULE=mysite.production
 
 Now, run the site using gunicorn::
-    
+
     gunicorn -b 127.0.0.1:8000 -w 4 -D mysite.wsgi
 
 Wahooo!
 
-But still not great, because nothing is monitoring this process.  
+But still not great, because nothing is monitoring this process.
 
-There's no way to keep track of how it is doing. 
+There's no way to keep track of how it is doing.
 
 We can do better.  First, let's kill the processes that spawned::
 
