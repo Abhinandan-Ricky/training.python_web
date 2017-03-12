@@ -150,6 +150,9 @@ Open ``settings.py`` and replace the current DATABASES dictionary with this:
 
 .. code-block:: python
 
+    # up top
+    import dj_database_url
+    # lower - replace existing
     DATABASES = {
         'default': dj_database_url.config(
             default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
@@ -392,7 +395,7 @@ In order to deploy our database, we'll need to install some more software
 .. rst-class:: build
 .. container::
 
-    Use ``apt-get istall`` to add each of the following packages:
+    Use ``sudo apt-get install`` to add each of the following packages:
 
     * build-essential
     * python-dev
@@ -470,8 +473,8 @@ Back on the EC2 instance, in your ssh terminal, clone your django application:
 
     pip install the requirements for your app::
 
-        $ cd djangoblog_uwpce
-        $ pip install -r requirements.txt
+        $ cd mysite_test_session09
+        $ sudo pip install -r requirements.txt
 
 .. nextslide::
 
@@ -552,7 +555,7 @@ Install gunicorn on the server
 
 .. code-block:: bash
 
-    pip install gunicorn
+    sudo pip install gunicorn
 
 Back on your own machine, create ``mysite/production.py`` and add the following
 content:
@@ -580,7 +583,7 @@ Update nginx config (/etc/nginx/sites-available/default) to serve static files:
         # ...
 
         location /static/ {
-            root /home/ubuntu/djangoblog_uwpce;
+            root /home/ubuntu/mysite_test_session09;
         }
 
     }
@@ -623,7 +626,7 @@ Put the following in ``/etc/init/djangoblog.conf``
     respawn
     setuid nobody
     setgid nogroup
-    chdir /home/ubuntu/djangoblog_uwpce
+    chdir /home/ubuntu/mysite_test_session09
     env DJANGO_SETTINGS_MODULE=mysite.production
     env DATABASE_URL=postgres://<username>:<password>@<host>:<port>/djangoblog
     exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
