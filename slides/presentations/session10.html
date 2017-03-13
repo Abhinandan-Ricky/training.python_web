@@ -113,6 +113,58 @@ see it.</p>
 
 
     </article>
+  </slide>  <slide class="level-3" id="but-first">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Visit from Chris Barker</li>
+<li>Final lightning talks: Umair Ahmad, Matthew Weidner, Darryl Wong</li>
+<li>Deploy our Django app to AWS</li>
+</ul>
+</div></blockquote>
+
+
+
+<div class="slide-no">3</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id2">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <div class="build left docutils container">
+<p>Class website - where to find this week's materials</p>
+<ul class="build simple">
+<li>Use your own Django app or <a class="reference external" href="https://github.com/christyheaton/mysite_start_session09">Last week's starting point</a></li>
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/session10.html">HTML rendering of exercise</a></li>
+</ul>
+</div>
+
+
+
+<div class="slide-no">4</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id3">
+    <hgroup>
+      <h3>But First</h3>
+    </hgroup>
+    <article class="">
+      <p class="large">Questions before we start?</p>
+
+
+
+<div class="slide-no">5</div>
+
+
+    </article>
   </slide>  <slide class="level-3" id="choosing-a-deployment-strategy">
     <hgroup>
       <h3>Choosing a Deployment Strategy</h3>
@@ -132,11 +184,11 @@ see it.</p>
 
 
 
-<div class="slide-no">3</div>
+<div class="slide-no">6</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id2">
+  </slide>  <slide class="level-3" id="id4">
     <hgroup>
       <h3>Choosing a Deployment Strategy</h3>
     </hgroup>
@@ -158,11 +210,11 @@ for you.</p>
 
 
 
-<div class="slide-no">4</div>
+<div class="slide-no">7</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id3">
+  </slide>  <slide class="level-3" id="id5">
     <hgroup>
       <h3>Our Choice for Today</h3>
     </hgroup>
@@ -177,7 +229,7 @@ stack so that we can learn how the stack works from front to back?</p>
 
 
 
-<div class="slide-no">5</div>
+<div class="slide-no">8</div>
 
 
     </article>
@@ -196,11 +248,11 @@ user.</p>
 
 
 
-<div class="slide-no">6</div>
+<div class="slide-no">9</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id4">
+  </slide>  <slide class="level-3" id="id6">
     <hgroup>
       <h3>Preparing for AWS Deployment</h3>
     </hgroup>
@@ -220,11 +272,11 @@ virtual environment.</p>
 
 
 
-<div class="slide-no">7</div>
+<div class="slide-no">10</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id5">
+  </slide>  <slide class="level-3" id="id7">
     <hgroup>
       <h3>12-Factor</h3>
     </hgroup>
@@ -243,17 +295,20 @@ database.</p>
 
 
 
-<div class="slide-no">8</div>
+<div class="slide-no">11</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id6">
+  </slide>  <slide class="level-3" id="id8">
     <hgroup>
       <h3>Updating Settings</h3>
     </hgroup>
     <article class="">
       <p>Open <code class="docutils literal"><span class="pre">settings.py</span></code> and replace the current DATABASES dictionary with this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># up top</span>
+<span class="kn">import</span> <span class="nn">dj_database_url</span>
+<span class="c1"># lower - replace existing</span>
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
         <span class="n">default</span><span class="o">=</span><span class="s1">&#39;sqlite:///&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;db.sqlite3&#39;</span><span class="p">)</span>
     <span class="p">)</span>
@@ -271,11 +326,11 @@ Django expects.</p>
 
 
 
-<div class="slide-no">9</div>
+<div class="slide-no">12</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id7">
+  </slide>  <slide class="level-3" id="id9">
     <hgroup>
       <h3>Repeatable Envs</h3>
     </hgroup>
@@ -296,7 +351,7 @@ command:</p>
 
 
 
-<div class="slide-no">10</div>
+<div class="slide-no">13</div>
 
 
     </article>
@@ -320,11 +375,11 @@ password.</p>
 
 
 
-<div class="slide-no">11</div>
+<div class="slide-no">14</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id8">
+  </slide>  <slide class="level-3" id="id10">
     <hgroup>
       <h3>Setting up An EC2 Instance</h3>
     </hgroup>
@@ -342,11 +397,11 @@ system.</p>
 
 
 
-<div class="slide-no">12</div>
+<div class="slide-no">15</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id9">
+  </slide>  <slide class="level-3" id="id11">
     <hgroup>
       <h3>Setting up An EC2 Instance</h3>
     </hgroup>
@@ -364,11 +419,11 @@ instance details&quot;</p>
 
 
 
-<div class="slide-no">13</div>
+<div class="slide-no">16</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id10">
+  </slide>  <slide class="level-3" id="id12">
     <hgroup>
       <h3>Setting up An EC2 Instance</h3>
     </hgroup>
@@ -387,11 +442,11 @@ instance, but only on port 22 (SSH).</p>
 
 
 
-<div class="slide-no">14</div>
+<div class="slide-no">17</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id11">
+  </slide>  <slide class="level-3" id="id13">
     <hgroup>
       <h3>Setting up An EC2 Instance</h3>
     </hgroup>
@@ -409,7 +464,7 @@ destroy it and create a new one.</p>
 
 
 
-<div class="slide-no">15</div>
+<div class="slide-no">18</div>
 
 
     </article>
@@ -437,7 +492,7 @@ having the latest versions of any software you install:</p>
 
 
 
-<div class="slide-no">16</div>
+<div class="slide-no">19</div>
 
 
     </article>
@@ -461,11 +516,11 @@ SSL connection.</p>
 
 
 
-<div class="slide-no">17</div>
+<div class="slide-no">20</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id12">
+  </slide>  <slide class="level-3" id="id14">
     <hgroup>
       <h3>Controlling <code class="docutils literal"><span class="pre">nginx</span></code></h3>
     </hgroup>
@@ -484,11 +539,11 @@ sudo service nginx start
 
 
 
-<div class="slide-no">18</div>
+<div class="slide-no">21</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id13">
+  </slide>  <slide class="level-3" id="id15">
     <hgroup>
       <h3>Configuring Nginx</h3>
     </hgroup>
@@ -503,11 +558,11 @@ files there in particular:</p>
 
 
 
-<div class="slide-no">19</div>
+<div class="slide-no">22</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id14">
+  </slide>  <slide class="level-3" id="id16">
     <hgroup>
       <h3>Check Your results</h3>
     </hgroup>
@@ -523,7 +578,7 @@ files there in particular:</p>
 
 
 
-<div class="slide-no">20</div>
+<div class="slide-no">23</div>
 
 
     </article>
@@ -534,7 +589,7 @@ files there in particular:</p>
     <article class="">
       <p>In order to deploy our database, we'll need to install some more software</p>
 <div class="build docutils container">
-<p>Use <code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">istall</span></code> to add each of the following packages:</p>
+<p>Use <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span></code> to add each of the following packages:</p>
 <ul class="simple">
 <li>build-essential</li>
 <li>python-dev</li>
@@ -547,11 +602,11 @@ files there in particular:</p>
 
 
 
-<div class="slide-no">21</div>
+<div class="slide-no">24</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id15">
+  </slide>  <slide class="level-3" id="id17">
     <hgroup>
       <h3>RDS</h3>
     </hgroup>
@@ -567,11 +622,11 @@ files there in particular:</p>
 
 
 
-<div class="slide-no">22</div>
+<div class="slide-no">25</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id16">
+  </slide>  <slide class="level-3" id="id18">
     <hgroup>
       <h3>Deployment Layer 3: Database</h3>
     </hgroup>
@@ -589,11 +644,11 @@ files there in particular:</p>
 
 
 
-<div class="slide-no">23</div>
+<div class="slide-no">26</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id17">
+  </slide>  <slide class="level-3" id="id19">
     <hgroup>
       <h3>Deployment Layer 3: Database</h3>
     </hgroup>
@@ -611,7 +666,7 @@ EC2</p>
 
 
 
-<div class="slide-no">24</div>
+<div class="slide-no">27</div>
 
 
     </article>
@@ -626,19 +681,19 @@ EC2</p>
 </div>
 <div class="build docutils container">
 <p>pip install the requirements for your app:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd djangoblog_uwpce
-$ pip install -r requirements.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd mysite_start_session09
+$ sudo pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
 
 
 
-<div class="slide-no">25</div>
+<div class="slide-no">28</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id18">
+  </slide>  <slide class="level-3" id="id20">
     <hgroup>
       <h3>Deployment Layer 2: Application</h3>
     </hgroup>
@@ -661,16 +716,36 @@ following format:</p>
 
 
 
-<div class="slide-no">26</div>
+<div class="slide-no">29</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id19">
+  </slide>  <slide class="level-3" id="id21">
+    <hgroup>
+      <h3>Deployment Layer 2: Application</h3>
+    </hgroup>
+    <article class="">
+      <p>Now that we have our database configured, we can actually create the database</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py migrate
+</pre></div>
+</div>
+<p>You should see some logs of migrations happening</p>
+<p>Go ahead and create your super user account, you will need it to log in</p>
+</div>
+
+
+
+<div class="slide-no">30</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id22">
     <hgroup>
       <h3>Wiring It Up</h3>
     </hgroup>
     <article class="">
-      <p>Once working, we can point nginx at the instance:</p>
+      <p>Once we have access to the dbshell and a working database, we can point nginx at the instance:</p>
 <div class="build docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 sudo vi /etc/nginx/sites-available/default
@@ -695,11 +770,11 @@ sudo vi /etc/nginx/sites-available/default
 
 
 
-<div class="slide-no">27</div>
+<div class="slide-no">31</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id20">
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>Deployment Layer 2: Application</h3>
     </hgroup>
@@ -710,7 +785,7 @@ sudo vi /etc/nginx/sites-available/default
 </div>
 <p>Then reload your aws instance in a web browser, you should see a BAD GATEWAY
 error</p>
-<p>now start django and then reload:</p>
+<p>now, start django and then reload the page in your browser:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py runserver
 </pre></div>
 </div>
@@ -719,7 +794,7 @@ want a long-running process we can leave behind.</p>
 
 
 
-<div class="slide-no">28</div>
+<div class="slide-no">32</div>
 
 
     </article>
@@ -729,7 +804,7 @@ want a long-running process we can leave behind.</p>
     </hgroup>
     <article class="">
       <p>Install gunicorn on the server</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install gunicorn
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo pip install gunicorn
 </pre></div>
 </div>
 <p>Back on your own machine, create <code class="docutils literal"><span class="pre">mysite/production.py</span></code> and add the following
@@ -747,11 +822,11 @@ content:</p>
 
 
 
-<div class="slide-no">29</div>
+<div class="slide-no">33</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id21">
+  </slide>  <slide class="level-3" id="id24">
     <hgroup>
       <h3>Configuration Changes for Nginx</h3>
     </hgroup>
@@ -761,7 +836,7 @@ content:</p>
     <span class="c1"># ...</span>
 
     <span class="kn">location</span> <span class="s">/static/</span> <span class="p">{</span>
-        <span class="kn">root</span> <span class="s">/home/ubuntu/djangoblog_uwpce</span><span class="p">;</span>
+        <span class="kn">root</span> <span class="s">/home/ubuntu/mysite_start_session09</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -770,11 +845,28 @@ content:</p>
 
 
 
-<div class="slide-no">30</div>
+<div class="slide-no">34</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id22">
+  </slide>  <slide class="level-3" id="id25">
+    <hgroup>
+      <h3>Collect Static Files</h3>
+    </hgroup>
+    <article class="">
+      <p>Run the command to collect static files and put them in a static directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py collectstatic
+</pre></div>
+</div>
+<p>Type yes to confirm</p>
+
+
+
+<div class="slide-no">35</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id26">
     <hgroup>
       <h3>Running with Gunicorn</h3>
     </hgroup>
@@ -797,11 +889,11 @@ content:</p>
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">36</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id27">
     <hgroup>
       <h3>Managing Gunicorn</h3>
     </hgroup>
@@ -817,7 +909,7 @@ stop on runlevel [016]
 respawn
 setuid nobody
 setgid nogroup
-chdir /home/ubuntu/djangoblog_uwpce
+chdir /home/ubuntu/mysite_start_session09
 env DJANGO_SETTINGS_MODULE=mysite.production
 env DATABASE_URL=postgres://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/djangoblog
 exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
@@ -826,11 +918,11 @@ exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">37</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id28">
     <hgroup>
       <h3>Using Upstart</h3>
     </hgroup>
@@ -856,7 +948,7 @@ commands, it means you have an error in your configuration file.</p>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">38</div>
 
 
     </article>

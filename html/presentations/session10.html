@@ -85,6 +85,25 @@ see it.</p>
 <p>Instead, we&#8217;ll deploy to <strong>A</strong>mazon <strong>W</strong>eb <strong>S</strong>ervices (AWS)</p>
 </div>
 </div>
+<div class="section" id="but-first">
+<h3>But First<a class="headerlink" href="#but-first" title="Permalink to this headline">¶</a></h3>
+<p class="build left">Agenda:</p>
+<blockquote>
+<div><ul class="build simple">
+<li>Visit from Chris Barker</li>
+<li>Final lightning talks: Umair Ahmad, Matthew Weidner, Darryl Wong</li>
+<li>Deploy our Django app to AWS</li>
+</ul>
+</div></blockquote>
+<div class="build left docutils container">
+<p>Class website - where to find this week&#8217;s materials</p>
+<ul class="build simple">
+<li>Use your own Django app or <a class="reference external" href="https://github.com/christyheaton/mysite_start_session09">Last week&#8217;s starting point</a></li>
+<li><a class="reference external" href="https://christyheaton.github.io/training.python_web/html/presentations/session10.html">HTML rendering of exercise</a></li>
+</ul>
+</div>
+<p class="large">Questions before we start?</p>
+</div>
 <div class="section" id="choosing-a-deployment-strategy">
 <h3>Choosing a Deployment Strategy<a class="headerlink" href="#choosing-a-deployment-strategy" title="Permalink to this headline">¶</a></h3>
 <p>There are many many different ways to deploy a web application.</p>
@@ -153,7 +172,10 @@ putting some configuration values into <em>environment variables</em></p>
 database.</p>
 </div>
 <p>Open <code class="docutils literal"><span class="pre">settings.py</span></code> and replace the current DATABASES dictionary with this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># up top</span>
+<span class="kn">import</span> <span class="nn">dj_database_url</span>
+<span class="c1"># lower - replace existing</span>
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
         <span class="n">default</span><span class="o">=</span><span class="s1">&#39;sqlite:///&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;db.sqlite3&#39;</span><span class="p">)</span>
     <span class="p">)</span>
@@ -302,7 +324,7 @@ files there in particular:</p>
 <h3>Deployment Layer 3: Database<a class="headerlink" href="#deployment-layer-3-database" title="Permalink to this headline">¶</a></h3>
 <p>In order to deploy our database, we&#8217;ll need to install some more software</p>
 <div class="build docutils container">
-<p>Use <code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">istall</span></code> to add each of the following packages:</p>
+<p>Use <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span></code> to add each of the following packages:</p>
 <ul class="simple">
 <li>build-essential</li>
 <li>python-dev</li>
@@ -349,8 +371,8 @@ EC2</p>
 </div>
 <div class="build docutils container">
 <p>pip install the requirements for your app:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd djangoblog_uwpce
-$ pip install -r requirements.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd mysite_start_session09
+$ sudo pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
@@ -369,7 +391,15 @@ following format:</p>
 </div>
 <p>Work through any issues in getting that to work</p>
 </div>
-<p>Once working, we can point nginx at the instance:</p>
+<p>Now that we have our database configured, we can actually create the database</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py migrate
+</pre></div>
+</div>
+<p>You should see some logs of migrations happening</p>
+<p>Go ahead and create your super user account, you will need it to log in</p>
+</div>
+<p>Once we have access to the dbshell and a working database, we can point nginx at the instance:</p>
 <div class="build docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 sudo vi /etc/nginx/sites-available/default
@@ -397,7 +427,7 @@ sudo vi /etc/nginx/sites-available/default
 </div>
 <p>Then reload your aws instance in a web browser, you should see a BAD GATEWAY
 error</p>
-<p>now start django and then reload:</p>
+<p>now, start django and then reload the page in your browser:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py runserver
 </pre></div>
 </div>
@@ -407,7 +437,7 @@ want a long-running process we can leave behind.</p>
 <div class="section" id="deployment-layer-4-permanence">
 <h3>Deployment Layer 4: Permanence<a class="headerlink" href="#deployment-layer-4-permanence" title="Permalink to this headline">¶</a></h3>
 <p>Install gunicorn on the server</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install gunicorn
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo pip install gunicorn
 </pre></div>
 </div>
 <p>Back on your own machine, create <code class="docutils literal"><span class="pre">mysite/production.py</span></code> and add the following
@@ -427,12 +457,17 @@ content:</p>
     <span class="c1"># ...</span>
 
     <span class="kn">location</span> <span class="s">/static/</span> <span class="p">{</span>
-        <span class="kn">root</span> <span class="s">/home/ubuntu/djangoblog_uwpce</span><span class="p">;</span>
+        <span class="kn">root</span> <span class="s">/home/ubuntu/mysite_start_session09</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Run the command to collect static files and put them in a static directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py collectstatic
+</pre></div>
+</div>
+<p>Type yes to confirm</p>
 <p>Then set an environment variable to point at production settings:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DJANGO_SETTINGS_MODULE</span><span class="o">=</span><span class="n">mysite</span><span class="o">.</span><span class="n">production</span>
 </pre></div>
@@ -459,7 +494,7 @@ stop on runlevel [016]
 respawn
 setuid nobody
 setgid nogroup
-chdir /home/ubuntu/djangoblog_uwpce
+chdir /home/ubuntu/mysite_start_session09
 env DJANGO_SETTINGS_MODULE=mysite.production
 env DATABASE_URL=postgres://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/djangoblog
 exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
@@ -497,6 +532,7 @@ commands, it means you have an error in your configuration file.</p>
   <ul>
 <li><a class="reference internal" href="#">Session 10</a><ul>
 <li><a class="reference internal" href="#deploying-django">Deploying Django</a><ul>
+<li><a class="reference internal" href="#but-first">But First</a></li>
 <li><a class="reference internal" href="#choosing-a-deployment-strategy">Choosing a Deployment Strategy</a></li>
 <li><a class="reference internal" href="#preparing-for-aws-deployment">Preparing for AWS Deployment</a></li>
 <li><a class="reference internal" href="#setting-up-an-ec2-instance">Setting up An EC2 Instance</a></li>
