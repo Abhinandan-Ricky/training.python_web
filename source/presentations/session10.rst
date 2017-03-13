@@ -31,6 +31,40 @@ Deploying Django
         Instead, we'll deploy to **A**\ mazon **W**\ eb **S**\ ervices (AWS)
 
 
+But First
+---------
+
+.. rst-class:: build left
+.. container::
+
+Agenda:
+
+    .. rst-class:: build
+
+    * Visit from Chris Barker
+    * Final lightning talks: Umair Ahmad, Matthew Weidner, Darryl Wong
+    * Deploy our Django app to AWS
+
+
+.. nextslide::
+
+.. rst-class:: build left
+.. container::
+
+    Class website - where to find this week's materials
+
+    .. rst-class:: build
+
+    * Use your own Django app or `Last week's starting point <https://github.com/christyheaton/mysite_start_session09>`_
+    * `HTML rendering of exercise <https://christyheaton.github.io/training.python_web/html/presentations/session10.html>`_
+
+.. nextslide::
+
+.. rst-class:: large
+
+Questions before we start?
+
+
 Choosing a Deployment Strategy
 ------------------------------
 
@@ -473,7 +507,7 @@ Back on the EC2 instance, in your ssh terminal, clone your django application:
 
     pip install the requirements for your app::
 
-        $ cd mysite_test_session09
+        $ cd mysite_start_session09
         $ sudo pip install -r requirements.txt
 
 .. nextslide::
@@ -498,9 +532,26 @@ following format::
 
     Work through any issues in getting that to work
 
+
+.. nextslide::
+
+Now that we have our database configured, we can actually create the database
+
+.. rst-class:: build
+.. container::
+
+    .. code-block:: bash
+
+        $ python manage.py migrate
+
+    You should see some logs of migrations happening
+
+    Go ahead and create your super user account, you will need it to log in
+
+
 .. nextslide::  Wiring It Up
 
-Once working, we can point nginx at the instance:
+Once we have access to the dbshell and a working database, we can point nginx at the instance:
 
 .. rst-class:: build
 .. container::
@@ -538,7 +589,7 @@ Save that file and restart nginx:
 Then reload your aws instance in a web browser, you should see a BAD GATEWAY
 error
 
-now start django and then reload:
+now, start django and then reload the page in your browser:
 
 .. code-block:: bash
 
@@ -583,10 +634,22 @@ Update nginx config (/etc/nginx/sites-available/default) to serve static files:
         # ...
 
         location /static/ {
-            root /home/ubuntu/mysite_test_session09;
+            root /home/ubuntu/mysite_start_session09;
         }
 
     }
+
+
+.. nextslide:: Collect Static Files
+
+Run the command to collect static files and put them in a static directory
+
+.. code-block:: bash
+
+    python manage.py collectstatic
+
+Type yes to confirm
+
 
 .. nextslide:: Running with Gunicorn
 
@@ -626,7 +689,7 @@ Put the following in ``/etc/init/djangoblog.conf``
     respawn
     setuid nobody
     setgid nogroup
-    chdir /home/ubuntu/mysite_test_session09
+    chdir /home/ubuntu/mysite_start_session09
     env DJANGO_SETTINGS_MODULE=mysite.production
     env DATABASE_URL=postgres://<username>:<password>@<host>:<port>/djangoblog
     exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
