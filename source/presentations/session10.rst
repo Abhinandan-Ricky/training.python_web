@@ -432,9 +432,9 @@ In order to deploy our database, we'll need to install some more software
     Use ``sudo apt-get install`` to add each of the following packages:
 
     * build-essential
-    * python-dev
-    * python-pip
-    * python-psycopg2
+    * python3-dev
+    * python3-pip
+    * python3-psycopg2
     * postgresql-client
     * git
 
@@ -508,7 +508,27 @@ Back on the EC2 instance, in your ssh terminal, clone your django application:
     pip install the requirements for your app::
 
         $ cd mysite_start_session09
-        $ sudo pip install -r requirements.txt
+        $ sudo pip3 install -r requirements.txt
+
+.. nextslide::
+
+Verify settings and add host
+
+open up mysite/settings.py
+
+.. code-block:: bash
+
+    $ sudo vi mysite/settings.py
+
+See the db settings we added earlier
+
+Also add your public DNS to ALLOWED_HOSTS = []
+
+.. code-block:: python
+
+    ALLOWED_HOSTS = ['ec2-54-213-16-249.us-west-2.compute.amazonaws.com']
+
+Save a close vi (Esc, then :wq ENTER)
 
 .. nextslide::
 
@@ -528,7 +548,7 @@ following format::
 
     .. code-block:: bash
 
-        python manage.py dbshell
+        python3 manage.py dbshell
 
     Work through any issues in getting that to work
 
@@ -542,7 +562,7 @@ Now that we have our database configured, we can actually create the database
 
     .. code-block:: bash
 
-        $ python manage.py migrate
+        $ python3 manage.py migrate
 
     You should see some logs of migrations happening
 
@@ -593,7 +613,7 @@ now, start django and then reload the page in your browser:
 
 .. code-block:: bash
 
-    python manage.py runserver
+    python3 manage.py runserver
 
 This works, but as soon as you exit your ssh terminal, django will quit.  We
 want a long-running process we can leave behind.
@@ -606,14 +626,14 @@ Install gunicorn on the server
 
 .. code-block:: bash
 
-    sudo pip install gunicorn
+    sudo pip3 install gunicorn
 
 Back on your own machine, create ``mysite/production.py`` and add the following
 content:
 
 .. code-block:: python
 
-    from settings import *
+    from .settings import *
 
     DEBUG = False
     TEMPLATE_DEBUG = False
@@ -639,18 +659,6 @@ Update nginx config (/etc/nginx/sites-available/default) to serve static files:
 
     }
 
-
-.. nextslide:: Collect Static Files
-
-Run the command to collect static files and put them in a static directory
-
-.. code-block:: bash
-
-    python manage.py collectstatic
-
-Type yes to confirm
-
-
 .. nextslide:: Running with Gunicorn
 
 Then set an environment variable to point at production settings::
@@ -662,6 +670,22 @@ Now, run the site using gunicorn::
     gunicorn -b 127.0.0.1:8000 -w 4 -D mysite.wsgi
 
 Wahooo!
+
+
+.. nextslide:: Collect Static Files
+
+Run the command to collect static files and put them in a static directory
+
+.. code-block:: bash
+
+    python3 manage.py collectstatic
+
+Type yes to confirm
+
+You may need to restart nginx to see the static files
+
+
+.. nextslide:: Running with Gunicorn
 
 But still not great, because nothing is monitoring this process.
 
