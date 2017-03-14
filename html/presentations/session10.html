@@ -43,7 +43,23 @@
     </a>
   </div>
 </div>
-<generator object macro at 0x000001CA32925570>  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../readings.html" title="Supplementary Course Readings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="session09.html" title="Session 09"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -90,7 +106,7 @@ see it.</p>
 </div>
 <div class="section" id="choosing-a-deployment-strategy">
 <h3>Choosing a Deployment Strategy<a class="headerlink" href="#choosing-a-deployment-strategy" title="Permalink to this headline">¶</a></h3>
-<p>There are many many different ways to deploy a web application.</p>
+<p>There are many different ways to deploy a web application.</p>
 <div class="build docutils container">
 <p>And there are many services offering platforms for deployment.</p>
 <p>How do you choose the right one for you?</p>
@@ -121,6 +137,21 @@ for you.</p>
 stack so that we can learn how the stack works from front to back?</p>
 <p>The simplest answer to that question is <strong>AWS</strong>.</p>
 <p>Therefore, that&#8217;s the service we will use today.</p>
+</div>
+</div>
+<div class="section" id="deployment-layers">
+<h3>Deployment Layers<a class="headerlink" href="#deployment-layers" title="Permalink to this headline">¶</a></h3>
+<div class="build docutils container">
+<p>Deployment Layer 1: Web Server</p>
+<p>Deployment Layer 2: Application</p>
+<p>Deployment Layer 3: Database</p>
+<p>Deployment Layer 4: Permanence</p>
+</div>
+<div class="build docutils container">
+<p>We will be working in the command line today</p>
+<p><a class="reference external" href="http://cheatsheetworld.com/programming/unix-linux-cheat-sheet/">Unix commands</a></p>
+<p>Using vi editor</p>
+<p>If you are not familiar with vi, you might want to keep a <a class="reference external" href="http://www.lagmonster.org/docs/vi.html">cheat sheet</a> handy</p>
 </div>
 </div>
 <div class="section" id="preparing-for-aws-deployment">
@@ -262,6 +293,7 @@ having the latest versions of any software you install:</p>
 </pre></div>
 </div>
 </div>
+<p class="large">Check in</p>
 </div>
 <div class="section" id="deployment-layer-1-web-server">
 <h3>Deployment Layer 1: Web Server<a class="headerlink" href="#deployment-layer-1-web-server" title="Permalink to this headline">¶</a></h3>
@@ -303,6 +335,7 @@ files there in particular:</p>
 </div>
 <p>Add port 80 to your security group.  Then reload.</p>
 </div>
+<p class="large">Check in</p>
 </div>
 <div class="section" id="deployment-layer-3-database">
 <h3>Deployment Layer 3: Database<a class="headerlink" href="#deployment-layer-3-database" title="Permalink to this headline">¶</a></h3>
@@ -346,6 +379,7 @@ instance from the list of VPC security groups.</p>
 <p>While the database launches, let&#8217;s return to setting up our application on
 EC2</p>
 </div>
+<p class="large">Check in</p>
 </div>
 <div class="section" id="deployment-layer-2-application">
 <h3>Deployment Layer 2: Application<a class="headerlink" href="#deployment-layer-2-application" title="Permalink to this headline">¶</a></h3>
@@ -370,7 +404,7 @@ $ sudo pip3 install -r requirements.txt
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ec2-54-213-16-249.us-west-2.compute.amazonaws.com&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Save a close vi (Esc, then :wq ENTER)</p>
+<p>Save and close vi (Esc, then :wq ENTER)</p>
 <p>Finally, export a system environment variable called DATABASE_URL with the
 following format:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="nd">@host</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">dbname</span>
@@ -386,6 +420,7 @@ following format:</p>
 </div>
 <p>Work through any issues in getting that to work</p>
 </div>
+<p class="large">Check in</p>
 <p>Now that we have our database configured, we can actually create the database</p>
 <div class="build docutils container">
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 manage.py migrate
@@ -428,6 +463,7 @@ error</p>
 </div>
 <p>This works, but as soon as you exit your ssh terminal, django will quit.  We
 want a long-running process we can leave behind.</p>
+<p class="large">Check in</p>
 </div>
 <div class="section" id="deployment-layer-4-permanence">
 <h3>Deployment Layer 4: Permanence<a class="headerlink" href="#deployment-layer-4-permanence" title="Permalink to this headline">¶</a></h3>
@@ -521,9 +557,77 @@ commands, it means you have an error in your configuration file.</p>
 
           </div>
         </div>
-      </div><generator object macro at 0x000001CA32925990>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Session 10</a><ul>
+<li><a class="reference internal" href="#deploying-django">Deploying Django</a><ul>
+<li><a class="reference internal" href="#but-first">But First</a></li>
+<li><a class="reference internal" href="#choosing-a-deployment-strategy">Choosing a Deployment Strategy</a></li>
+<li><a class="reference internal" href="#deployment-layers">Deployment Layers</a></li>
+<li><a class="reference internal" href="#preparing-for-aws-deployment">Preparing for AWS Deployment</a></li>
+<li><a class="reference internal" href="#setting-up-an-ec2-instance">Setting up An EC2 Instance</a></li>
+<li><a class="reference internal" href="#accessing-your-instance">Accessing Your Instance</a></li>
+<li><a class="reference internal" href="#deployment-layer-1-web-server">Deployment Layer 1: Web Server</a></li>
+<li><a class="reference internal" href="#deployment-layer-3-database">Deployment Layer 3: Database</a></li>
+<li><a class="reference internal" href="#deployment-layer-2-application">Deployment Layer 2: Application</a></li>
+<li><a class="reference internal" href="#deployment-layer-4-permanence">Deployment Layer 4: Permanence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="session09.html"
+                        title="previous chapter">Session 09</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../readings.html"
+                        title="next chapter">Supplementary Course Readings</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/presentations/session10.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h3>Slides</h3>
+  <ul class="this-page-menu">
+    <li><a href="../.././slides\presentations/session10.html"
+           rel="nofollow">View as slides</a></li>
+  </ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
       <div class="clearer"></div>
-    </div><generator object macro at 0x000001CA32925570>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../readings.html" title="Supplementary Course Readings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="session09.html" title="Session 09"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2012-2016, Cris Ewing.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
