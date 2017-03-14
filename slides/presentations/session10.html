@@ -592,9 +592,9 @@ files there in particular:</p>
 <p>Use <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span></code> to add each of the following packages:</p>
 <ul class="simple">
 <li>build-essential</li>
-<li>python-dev</li>
-<li>python-pip</li>
-<li>python-psycopg2</li>
+<li>python3-dev</li>
+<li>python3-pip</li>
+<li>python3-psycopg2</li>
 <li>postgresql-client</li>
 <li>git</li>
 </ul>
@@ -682,7 +682,7 @@ EC2</p>
 <div class="build docutils container">
 <p>pip install the requirements for your app:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ cd mysite_start_session09
-$ sudo pip install -r requirements.txt
+$ sudo pip3 install -r requirements.txt
 </pre></div>
 </div>
 </div>
@@ -698,21 +698,17 @@ $ sudo pip install -r requirements.txt
       <h3>Deployment Layer 2: Application</h3>
     </hgroup>
     <article class="">
-      <p>Finally, export a system environment variable called DATABASE_URL with the
-following format:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="nd">@host</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">dbname</span>
+      <p>Verify settings and add host</p>
+<p>open up mysite/settings.py</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo vi mysite/settings.py
 </pre></div>
 </div>
-<div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATABASE_URL</span><span class="o">=</span>&lt;that string&gt;
+<p>See the db settings we added earlier</p>
+<p>Also add your public DNS to ALLOWED_HOSTS = []</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ec2-54-213-16-249.us-west-2.compute.amazonaws.com&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>You can now test access with dbshell:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py dbshell
-</pre></div>
-</div>
-<p>Work through any issues in getting that to work</p>
-</div>
+<p>Save a close vi (Esc, then :wq ENTER)</p>
 
 
 
@@ -725,13 +721,20 @@ following format:</p>
       <h3>Deployment Layer 2: Application</h3>
     </hgroup>
     <article class="">
-      <p>Now that we have our database configured, we can actually create the database</p>
-<div class="build docutils container">
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python manage.py migrate
+      <p>Finally, export a system environment variable called DATABASE_URL with the
+following format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="nd">@host</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">dbname</span>
 </pre></div>
 </div>
-<p>You should see some logs of migrations happening</p>
-<p>Go ahead and create your super user account, you will need it to log in</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATABASE_URL</span><span class="o">=</span>&lt;that string&gt;
+</pre></div>
+</div>
+<p>You can now test access with dbshell:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python3 manage.py dbshell
+</pre></div>
+</div>
+<p>Work through any issues in getting that to work</p>
 </div>
 
 
@@ -741,6 +744,26 @@ following format:</p>
 
     </article>
   </slide>  <slide class="level-3" id="id22">
+    <hgroup>
+      <h3>Deployment Layer 2: Application</h3>
+    </hgroup>
+    <article class="">
+      <p>Now that we have our database configured, we can actually create the database</p>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python3 manage.py migrate
+</pre></div>
+</div>
+<p>You should see some logs of migrations happening</p>
+<p>Go ahead and create your super user account, you will need it to log in</p>
+</div>
+
+
+
+<div class="slide-no">31</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id23">
     <hgroup>
       <h3>Wiring It Up</h3>
     </hgroup>
@@ -770,11 +793,11 @@ sudo vi /etc/nginx/sites-available/default
 
 
 
-<div class="slide-no">31</div>
+<div class="slide-no">32</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id23">
+  </slide>  <slide class="level-3" id="id24">
     <hgroup>
       <h3>Deployment Layer 2: Application</h3>
     </hgroup>
@@ -786,7 +809,7 @@ sudo vi /etc/nginx/sites-available/default
 <p>Then reload your aws instance in a web browser, you should see a BAD GATEWAY
 error</p>
 <p>now, start django and then reload the page in your browser:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py runserver
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python3 manage.py runserver
 </pre></div>
 </div>
 <p>This works, but as soon as you exit your ssh terminal, django will quit.  We
@@ -794,7 +817,7 @@ want a long-running process we can leave behind.</p>
 
 
 
-<div class="slide-no">32</div>
+<div class="slide-no">33</div>
 
 
     </article>
@@ -804,12 +827,12 @@ want a long-running process we can leave behind.</p>
     </hgroup>
     <article class="">
       <p>Install gunicorn on the server</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo pip install gunicorn
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo pip3 install gunicorn
 </pre></div>
 </div>
 <p>Back on your own machine, create <code class="docutils literal"><span class="pre">mysite/production.py</span></code> and add the following
 content:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
@@ -822,11 +845,11 @@ content:</p>
 
 
 
-<div class="slide-no">33</div>
+<div class="slide-no">34</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id24">
+  </slide>  <slide class="level-3" id="id25">
     <hgroup>
       <h3>Configuration Changes for Nginx</h3>
     </hgroup>
@@ -842,23 +865,6 @@ content:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-
-
-
-<div class="slide-no">34</div>
-
-
-    </article>
-  </slide>  <slide class="level-3" id="id25">
-    <hgroup>
-      <h3>Collect Static Files</h3>
-    </hgroup>
-    <article class="">
-      <p>Run the command to collect static files and put them in a static directory</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py collectstatic
-</pre></div>
-</div>
-<p>Type yes to confirm</p>
 
 
 
@@ -880,12 +886,6 @@ content:</p>
 </pre></div>
 </div>
 <p>Wahooo!</p>
-<p>But still not great, because nothing is monitoring this process.</p>
-<p>There's no way to keep track of how it is doing.</p>
-<p>We can do better.  First, let's kill the processes that spawned:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">killall</span> <span class="n">gunicorn</span>
-</pre></div>
-</div>
 
 
 
@@ -894,6 +894,42 @@ content:</p>
 
     </article>
   </slide>  <slide class="level-3" id="id27">
+    <hgroup>
+      <h3>Collect Static Files</h3>
+    </hgroup>
+    <article class="">
+      <p>Run the command to collect static files and put them in a static directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python3 manage.py collectstatic
+</pre></div>
+</div>
+<p>Type yes to confirm</p>
+<p>You may need to restart nginx to see the static files</p>
+
+
+
+<div class="slide-no">37</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id28">
+    <hgroup>
+      <h3>Running with Gunicorn</h3>
+    </hgroup>
+    <article class="">
+      <p>But still not great, because nothing is monitoring this process.</p>
+<p>There's no way to keep track of how it is doing.</p>
+<p>We can do better.  First, let's kill the processes that spawned:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">killall</span> <span class="n">gunicorn</span>
+</pre></div>
+</div>
+
+
+
+<div class="slide-no">38</div>
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id29">
     <hgroup>
       <h3>Managing Gunicorn</h3>
     </hgroup>
@@ -918,11 +954,11 @@ exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
 
 
 
-<div class="slide-no">37</div>
+<div class="slide-no">39</div>
 
 
     </article>
-  </slide>  <slide class="level-3" id="id28">
+  </slide>  <slide class="level-3" id="id30">
     <hgroup>
       <h3>Using Upstart</h3>
     </hgroup>
@@ -948,7 +984,7 @@ commands, it means you have an error in your configuration file.</p>
 
 
 
-<div class="slide-no">38</div>
+<div class="slide-no">40</div>
 
 
     </article>
