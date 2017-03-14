@@ -68,7 +68,7 @@ Questions before we start?
 Choosing a Deployment Strategy
 ------------------------------
 
-There are many many different ways to deploy a web application.
+There are many different ways to deploy a web application.
 
 .. rst-class:: build
 .. container::
@@ -118,6 +118,36 @@ We are going to ignore all these questions, and simply ask one question.
     The simplest answer to that question is **AWS**.
 
     Therefore, that's the service we will use today.
+
+
+Deployment Layers
+-----------------
+
+.. rst-class:: build
+.. container::
+
+    Deployment Layer 1: Web Server
+
+    Deployment Layer 2: Application
+
+    Deployment Layer 3: Database
+
+    Deployment Layer 4: Permanence
+
+
+.. nextslide:: Editing in the Command Line
+
+.. rst-class:: build
+.. container::
+
+    We will be working in the command line today
+
+    `Unix commands <http://cheatsheetworld.com/programming/unix-linux-cheat-sheet/>`_
+
+    Using vi editor
+
+    If you are not familiar with vi, you might want to keep a `cheat sheet <http://www.lagmonster.org/docs/vi.html>`_ handy
+
 
 Preparing for AWS Deployment
 ----------------------------
@@ -207,6 +237,7 @@ Open ``settings.py`` and replace the current DATABASES dictionary with this:
     Here, we've set the default to be the same as what we had previously.
 
 .. _url-style: https://github.com/kennethreitz/dj-database-url#url-schema
+
 
 .. nextslide:: Repeatable Envs
 
@@ -356,6 +387,14 @@ machine.
 
         sudo apt-get update
 
+
+.. nextslide::
+
+.. rst-class:: large
+
+Check in
+
+
 Deployment Layer 1: Web Server
 ------------------------------
 
@@ -420,6 +459,14 @@ Check your results by loading your public DNS name in a browser
         :width: 40%
 
     Add port 80 to your security group.  Then reload.
+
+
+.. nextslide::
+
+.. rst-class:: large
+
+Check in
+
 
 Deployment Layer 3: Database
 ----------------------------
@@ -493,6 +540,14 @@ your EC2 instance.
     While the database launches, let's return to setting up our application on
     EC2
 
+
+.. nextslide::
+
+.. rst-class:: large
+
+Check in
+
+
 Deployment Layer 2: Application
 -------------------------------
 
@@ -528,7 +583,7 @@ Also add your public DNS to ALLOWED_HOSTS = []
 
     ALLOWED_HOSTS = ['ec2-54-213-16-249.us-west-2.compute.amazonaws.com']
 
-Save a close vi (Esc, then :wq ENTER)
+Save and close vi (Esc, then :wq ENTER)
 
 .. nextslide::
 
@@ -551,6 +606,13 @@ following format::
         python3 manage.py dbshell
 
     Work through any issues in getting that to work
+
+
+.. nextslide::
+
+.. rst-class:: large
+
+Check in
 
 
 .. nextslide::
@@ -617,6 +679,13 @@ now, start django and then reload the page in your browser:
 
 This works, but as soon as you exit your ssh terminal, django will quit.  We
 want a long-running process we can leave behind.
+
+
+.. nextslide::
+
+.. rst-class:: large
+
+Check in
 
 
 Deployment Layer 4: Permanence
